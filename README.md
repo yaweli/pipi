@@ -73,6 +73,8 @@ somtimes on application you need to check and validate a form fields
 		enter name: <input id=id102 type="text" value=80 name=name1 /> <br/>
 	</form>
 <m>
+START ;
+   Q
 CHECKN ;
 	I M>100 D ALERT("BIG"),FOCUS("id100")
 	I M<100 D ALERT("SMALL"),FOCUS("id100") ;>
@@ -97,11 +99,17 @@ GO|jump to a new url
 |...more to come
 
 The #INCLUDE will help us reference the labels without the name of the routine. 
-instead of : D GO^%ESLJX("aaa.html")
-just write: D GO("aaa.html")
+instead of : 
+```mumps
+D GO^%ESLJX("aaa.html")
+```
+just write:
+```mumps
+D GO("aaa.html")
+```
 
 #### exmaple 3 - links
-```
+```html
 <center>
 Click on image: 
 <img src=/images/tree.jpg onclick="mLabel('TREE','T')" />
@@ -109,6 +117,8 @@ Click on image:
 Click on a link:
 <a href=# onclick="mLabel('GOINFO','G')">Info</a>
 <m>
+START ;
+   Q
 GOINFO ;
 	D GO("info.html")
 	Q
@@ -117,5 +127,34 @@ TREE ;
 	Q
 	#INCLUDE %ESLJXI
 </m>
-
 ```
+
+### Embeded bootstrap
+it will be nice if the farmework will include support for bootstrap and include
+the js files and the css files without the need to enter a long lines. 
+So the framework come the packs. 
+#### 1. bootstrap 4 + jquery +popper
+```html
+<m#import mpak1 />
+```
+
+This will include all the html need to use the bootstrap
+
+##### example 1 - simple bootstrape button
+```html
+<m#import mpak1 />
+
+INFO PAGE:<BR>
+<m>
+START ;
+   Q
+BACK	;
+	D GO^%ESLJX("start.html")
+	Q
+</m>
+<HR>
+<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')"">Back</button>
+<hr>
+```
+
+![](https://github.com/yaweli/pipi/blob/master/EXAMPLE2.png)
