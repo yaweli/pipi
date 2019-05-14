@@ -209,4 +209,6 @@ GOINFO ;
 ```
 this time the mumps also generated a bootstrap elements with it's library.
 you can combine BS elements as html and also BS generated inside the mumps , it's up to you.
-![](https://github.com/yaweli/pipi/blob/master/EXAMPLE2.png)
+
+
+![](https://github.com/yaweli/pipi/blob/master/EXAMPLE3.png)
