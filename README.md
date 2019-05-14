@@ -60,7 +60,27 @@ START	;
   Q   
 </m>  
 ```
-
-
+result: 
 
 ![](https://github.com/yaweli/pipi/blob/master/example1.png)
+#### exmaple 2 - interact with forms
+somtimes on application you need to check and validate a form fields
+
+```html
+	<form>
+		enter number: <input id=id100 type="text" value=80 name=var1 onChange="mLabel('CHECKN',this)" /> <br/>
+		enter number: <input id=id101 type="text" value=80 name=var2 /> <br/>
+		enter name: <input id=id102 type="text" value=80 name=name1 /> <br/>
+	</form>
+<m>
+CHECKN ;
+	I M>100 D ALERT^%ESLJX("BIG"),FOCUS^%ESLJX("id100")
+	I M<100 D ALERT^%ESLJX("SMALL"),FOCUS^%ESLJX("id100") ;>
+	I M=100 D SETV^%ESLJX("id100","CORRECT")
+	I M=100 D FOCUS^%ESLJX("id102")
+	I M=90  D GO^%ESLJX("next.html")
+	Q
+</m>
+```
+
+
