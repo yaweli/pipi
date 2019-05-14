@@ -80,8 +80,10 @@ CHECKN ;
 	I M=100 D FOCUS("id102")
 	I M=90  D GO("next.html")
 	Q
+	#INCLUDE %ESLJXI
 </m>
 ```
+use onChange=mLabel("LABEL",this) to instruct the browser to come check the field value in the mumps !
 -alert  - will show a message
 -focus - will restore focus to a field
 -setv    - 
@@ -94,3 +96,26 @@ SETV|replace a value inside a form field
 GO|jump to a new url
 |...more to come
 
+The #INCLUDE will help us reference the labels without the name of the routine. 
+instead of : D GO^%ESLJX("aaa.html")
+just write: D GO("aaa.html")
+
+#### exmaple 3 - links
+```
+<center>
+Click on image: 
+<img src=/images/tree.jpg onclick="mLabel('TREE','T')" />
+<br>
+Click on a link:
+<a href=# onclick="mLabel('GOINFO','G')">Info</a>
+<m>
+GOINFO ;
+	D GO("info.html")
+	Q
+TREE ;
+	D GO("tree.html")
+	Q
+	#INCLUDE %ESLJXI
+</m>
+
+```
