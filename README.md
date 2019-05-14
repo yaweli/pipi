@@ -74,13 +74,23 @@ somtimes on application you need to check and validate a form fields
 	</form>
 <m>
 CHECKN ;
-	I M>100 D ALERT^%ESLJX("BIG"),FOCUS^%ESLJX("id100")
-	I M<100 D ALERT^%ESLJX("SMALL"),FOCUS^%ESLJX("id100") ;>
-	I M=100 D SETV^%ESLJX("id100","CORRECT")
-	I M=100 D FOCUS^%ESLJX("id102")
-	I M=90  D GO^%ESLJX("next.html")
+	I M>100 D ALERT("BIG"),FOCUS("id100")
+	I M<100 D ALERT("SMALL"),FOCUS("id100") ;>
+	I M=100 D SETV("id100","CORRECT")
+	I M=100 D FOCUS("id102")
+	I M=90  D GO("next.html")
 	Q
 </m>
 ```
+-alert  - will show a message
+-focus - will restore focus to a field
+-setv    - 
 
+actions  | description
+--------- | -------------
+ALERT | show a message
+FOCUS|restore focus to a field
+SETV|replace a value inside a form field
+GO|jump to a new url
+|...more to come
 
