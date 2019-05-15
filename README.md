@@ -215,32 +215,41 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use to
 
 ### accessing the GPIO on the pi
 ```html
-<m#import mpak1 />
-
-Gpio status: 
-<m>
 GPIO	;
 	S GL=$NA(^W(JB,11)) K @GL
-	D ACTIV^%ESGP(GL) ; return a list of all live gpio pins
+	D ACTIV(GL)
 	w "<TABLE BORDER=2>" D  W "</TABLE>"
 	.W "<TR><TH>GPIO</TH><TH>DIR</TH><TH>Current Value</TH><TR>"
 	.FOR I IN @GL D
 	..S X=^(I)
 	..W "<TR>" D  W "</TR>"
 	...W "<TD>",X,"</TD>" ; /sys/class/gpio/gpio14 
-	...W "<TD>",$$DIR^%ESGP(X),"</TD>" ; in / out  ;direction of the pin
-	...W "<TD>",$$VAL^%ESGP(X),"</TD>" ; 0/1        ;value 1=light is on
+	...W "<TD>",$$DIR^%ESGP(X),"</TD>" ; in / out
+	...W "<TD>",$$VAL^%ESGP(X),"</TD>" ; 0/1
 	Q
 BACK ;
 	D GO^%ESLJX("start.html")
 	Q
+FLASH ;  FLASH THE RED LIGHT - RUN THIS IN JOB CMD
+	;
+	D EXP(14)
+	D SETDIR(14,"out") H 1
+	F  D FLASH1
+	Q
+FLASH1	;
+	D SETVAL(14,1) H 1
+	D SETVAL(14,0) H 1
+	Q
+	#INCLUDE %ESGPI
+	Q
+	;
 </m>
 
 <HR>
 <button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')">Back</button>
 
 <BR>
-to make the red light on the pi flash every seconds<br>
+to make the red light on the pi flash every second<br>
 bash script code example:
 <pre>
 #!/bin/sh
@@ -264,7 +273,7 @@ if you start it on pi startup (using /etc/rc.local) the pi will flash the light 
 ![](https://github.com/yaweli/pipi/blob/master/led.png)
 
 see it works:
-https://github.com/yaweli/pipi/blob/master/IMG-4864.MOV
+https://drive.google.com/file/d/1-1Cs0CPVFwJA_8xEhxe5D6U4bHGuoUnG/view?usp=sharing
 
 
 one way is to run a bash script , to flash the light every second , also add it to the linux startup
