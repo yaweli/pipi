@@ -214,7 +214,6 @@ note:
 to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use to use the D CARD()
 
 ### accessing the GPIO on the pi
-![](https://github.com/yaweli/pipi/blob/master/led.png)
 ```html
 <m#import mpak1 />
 
@@ -261,7 +260,11 @@ done
 
 if you start it on pi startup (using /etc/rc.local) the pi will flash the light forever
 ```
-![](https://github.com/yaweli/pipi/blob/master/IMG-4864.MOV)
+
+![](https://github.com/yaweli/pipi/blob/master/led.png)
+
+see it works:
+https://github.com/yaweli/pipi/blob/master/IMG-4864.MOV
 
 
 one way is to run a bash script , to flash the light every second , also add it to the linux startup
