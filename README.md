@@ -86,13 +86,11 @@ CHECKN ;
 </m>
 ```
 use onChange=mLabel("LABEL",this) to instruct the browser to come check the field value in the mumps !
--alert  - will show a message
--focus - will restore focus to a field
--setv    - 
+
 
 actions  | description
---------- | -------------
-ALERT | show a message
+--------  | -------------
+ALERT | show an error message
 FOCUS|restore focus to a field
 SETV|replace a value inside a form field
 GO|jump to a new url
@@ -133,7 +131,7 @@ TREE ;
 it will be nice if the farmework will include support for bootstrap and include
 the js files and the css files without the need to enter a long lines. 
 So the framework come the packs. 
-#### 1. bootstrap 4 + jquery +popper
+####  bootstrap 4 + jquery +popper
 ```html
 <m#import mpak1 />
 ```
@@ -212,3 +210,135 @@ you can combine BS elements as html and also BS generated inside the mumps , it'
 
 
 ![](https://github.com/yaweli/pipi/blob/master/EXAMPLE3.png)
+note:
+to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use to use the D CARD()
+
+
+
+####  cgi environment
+the mumps include the VRU() vectore with all the linux environment where the cgi include envirment for the session posted from you browser. 
+examples: 
+```mumps
+VRU("QUERY_STRING")="a=Start&REDUCI=ELI"
+VRU("REMOTE_ADDR")="192.168.88.9"
+VRU("REMOTE_PORT")=62994
+VRU("REQUEST_METHOD")="GET"
+VRU("REQUEST_SCHEME")="http"
+VRU("REQUEST_URI")="/cgi-bin/es?a=Start&REDUCI=ELI"
+VRU(:)
+```
+the form variables from the url:
+```mumps
+%PARK("REDUCI")="ELI"
+%PARK("a")="Start"
+```
+headers
+```mumps
+VR("Referer")="http://elilap/proj/piz/"
+VR("User-Agent")="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
+```
+..and more, depends on the apache webserver
+
+
+### Mumps enviroment system wide
+
+connect by ssh to getinto the linux enviroment
+to log into the gtm (mumps) enter __m__
+```sh
+eli@eli-laptop:~/projects/mumps$ m
+
+MGR>
+```
+
+This mumps is DSM style which have a subdevistions of database OR namespaces we call UCI. 
+first login will take you to the MGR uci
+all routines from MGR can be see on all other uci's
+
+switch between uci's  enter __D ^%UCI__ then the 3 upper case uci name
+```mumps
+MGR>D ^%UCI
+
+GT.M V6.3-005 Linux x86_64 JOB 26712
+UCI : ELI
+WELCOME TO E.S. GTM 1.01
+J26712 I/dev/pts/3
+----------------------------
+ELI>
+```
+
+view the uci's globals - __D ^%G __
+```mumps
+ELI>D ^%G
+
+
+Global ^W()
+        W()
+Global ^%ZUCI
+        %ZUCI
+^%ZUCI("ELI") =
+^%ZUCI("ELI","G") = /gtm/ELI.gld
+^%ZUCI("ELI","R") = /gtm/eli/r/ /gtm/mgr/r/ /gtm/
+^%ZUCI("MGR") =
+^%ZUCI("MGR","G") = /gtm/MGR.gld
+^%ZUCI("MGR","R") = /gtm/mgr/r/ /gtm/
+Global ^
+```
+we are using dsm style global listing , include a lot of extensions , will be documented later on.
+
+
+### gtm management
+login with ssh to the linux
+enter __gman__
+```sh
+eli@eli-laptop:~/projects/mumps$ gman
+Mumps manager
+1 - gtm system
+2 - uci
+options :
+1
+ 1 - start gtm
+ 2 - stop gtm
+ option?
+1 - gtm system
+2 - uci
+N - CREATE NEW UCI
+D - DELETE UCI
+F - FIRST TIME CREATE MGR
+S - SHOW UCI INFO
+M - MOUNT UCI
+options:
+```
+
+Gtm management will be documented later
+management gtm will let you
+1. start and stop gtm
+2. create remove or mount a uci
+3. first time create the MGR uci 
+
+
+### routine utilities
+in addition to the GTM own utility (like %RO/%RI/%RD/%RSE/....)
+the m framework come wi a set of % utility routines. part of the are the source of the runs framework and other part is the mumps general utility
+routines:
+
+routine name | description
+--------------- | ----
+%ESD|date and time manipulation
+%ESS|string and general manipulation
+%ZU|UCI manipulation
+%ESF|Files manipulations
+%ESLIB|Html web development
+%ESGP|Pi GPIO utility
+%ESBS|bootstrape web utility
+%ESLJX|ajax
+%ESLJXI|ajax include
+%ESDEV|m framework internal routine
+%ESET|Error trap
+%ESRL|mumps macro extensions
+%ESWS|cgi engine
+%ZGL|D ^%G source
+%UCI|mapped to D ^%ZU
+%G|mapped to D ^%ZGL
+%MGR|jump to uci MGR
+
+__MGR__ uci will contain all the %routines + all the %globals
