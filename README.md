@@ -213,6 +213,68 @@ you can combine BS elements as html and also BS generated inside the mumps , it'
 note:
 to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use to use the D CARD()
 
+### accessing the GPIO on the pi
+![](https://github.com/yaweli/pipi/blob/master/led.png)
+```html
+<m#import mpak1 />
+
+Gpio status: 
+<m>
+GPIO	;
+	S GL=$NA(^W(JB,11)) K @GL
+	D ACTIV^%ESGP(GL) ; return a list of all live gpio pins
+	w "<TABLE BORDER=2>" D  W "</TABLE>"
+	.W "<TR><TH>GPIO</TH><TH>DIR</TH><TH>Current Value</TH><TR>"
+	.FOR I IN @GL D
+	..S X=^(I)
+	..W "<TR>" D  W "</TR>"
+	...W "<TD>",X,"</TD>" ; /sys/class/gpio/gpio14 
+	...W "<TD>",$$DIR^%ESGP(X),"</TD>" ; in / out  ;direction of the pin
+	...W "<TD>",$$VAL^%ESGP(X),"</TD>" ; 0/1        ;value 1=light is on
+	Q
+BACK ;
+	D GO^%ESLJX("start.html")
+	Q
+</m>
+
+<HR>
+<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')">Back</button>
+
+<BR>
+to make the red light on the pi flash every seconds<br>
+bash script code example:
+<pre>
+#!/bin/sh
+cd /sys/class/gpio
+echo "14" > unexport
+echo "14" > export
+cd gpio14
+echo out > direction
+sleep 1
+while true
+do
+        echo "1" > value
+        sleep 1
+        echo "0" > value
+        sleep 1
+done
+
+if you start it on pi startup (using /etc/rc.local) the pi will flash the light forever
+```
+![](https://github.com/yaweli/pipi/blob/master/IMG-4864.MOV)
+
+
+one way is to run a bash script , to flash the light every second , also add it to the linux startup
+
+from th mumps with %ESGP you can
+
+action|description|same as command
+--|-----
+1|get the value or direction for each gpio|cat value
+1|get a list of all live gpio|ls gpio*
+2|set the value of the direction of the pin|echo out>direction
+4|set the value of the pin|echo "1" > value
+5|start / stop gpio pin by export function|echo "14">export
 
 
 ####  cgi environment
