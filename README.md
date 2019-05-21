@@ -24,7 +24,7 @@ just use this:
 ```
       FOR I IN ^MYGLO(V1,V2,V3) D SOMETHING(I)
 ```
-this new smart for loop can work no locals and on globals with any variations including indirecion like this :
+this new smart for loop can work on locals and on globals with any variations including indirection like this :
 ```
       FOR J IN @GLO D IT
 ```
@@ -438,5 +438,5 @@ note the prompt will point to the current uci.
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyMTUwMjU2N119
+eyJoaXN0b3J5IjpbLTIxMDU2Mjg2MzMsMTEyMTUwMjU2N119
 -->
