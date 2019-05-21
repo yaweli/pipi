@@ -3,112 +3,444 @@
 
 ---
 
-<h1 id="welcome-to-stackedit">Welcome to StackEdit!</h1>
-<p>Hi! I’m your first Markdown file in <strong>StackEdit</strong>. If you want to learn about StackEdit, you can read me. If you want to play with Markdown, you can edit me. Once you have finished with me, you can create new files by opening the <strong>file explorer</strong> on the left corner of the navigation bar.</p>
-<h1 id="files">Files</h1>
-<p>StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible <strong>offline!</strong></p>
-<h2 id="create-files-and-folders">Create files and folders</h2>
-<p>The file explorer is accessible using the button in left corner of the navigation bar. You can create a new file by clicking the <strong>New file</strong> button in the file explorer. You can also create folders by clicking the <strong>New folder</strong> button.</p>
-<h2 id="switch-to-another-file">Switch to another file</h2>
-<p>All your files are listed in the file explorer. You can switch from one to another by clicking a file in the list.</p>
-<h2 id="rename-a-file">Rename a file</h2>
-<p>You can rename the current file by clicking the file name in the navigation bar or by clicking the <strong>Rename</strong> button in the file explorer.</p>
-<h2 id="delete-a-file">Delete a file</h2>
-<p>You can delete the current file by clicking the <strong>Remove</strong> button in the file explorer. The file will be moved into the <strong>Trash</strong> folder and automatically deleted after 7 days of inactivity.</p>
-<h2 id="export-a-file">Export a file</h2>
-<p>You can export the current file by clicking <strong>Export to disk</strong> in the menu. You can choose to export the file as plain Markdown, as HTML using a Handlebars template or as a PDF.</p>
-<h1 id="synchronization">Synchronization</h1>
-<p>Synchronization is one of the biggest features of StackEdit. It enables you to synchronize any file in your workspace with other files stored in your <strong>Google Drive</strong>, your <strong>Dropbox</strong> and your <strong>GitHub</strong> accounts. This allows you to keep writing on other devices, collaborate with people you share the file with, integrate easily into your workflow… The synchronization mechanism takes place every minute in the background, downloading, merging, and uploading file modifications.</p>
-<p>There are two types of synchronization and they can complement each other:</p>
-<ul>
-<li>
-<p>The workspace synchronization will sync all your files, folders and settings automatically. This will allow you to fetch your workspace on any other device.</p>
-<blockquote>
-<p>To start syncing your workspace, just sign in with Google in the menu.</p>
-</blockquote>
-</li>
-<li>
-<p>The file synchronization will keep one file of the workspace synced with one or multiple files in <strong>Google Drive</strong>, <strong>Dropbox</strong> or <strong>GitHub</strong>.</p>
-<blockquote>
-<p>Before starting to sync files, you must link an account in the <strong>Synchronize</strong> sub-menu.</p>
-</blockquote>
-</li>
-</ul>
-<h2 id="open-a-file">Open a file</h2>
-<p>You can open a file from <strong>Google Drive</strong>, <strong>Dropbox</strong> or <strong>GitHub</strong> by opening the <strong>Synchronize</strong> sub-menu and clicking <strong>Open from</strong>. Once opened in the workspace, any modification in the file will be automatically synced.</p>
-<h2 id="save-a-file">Save a file</h2>
-<p>You can save any file of the workspace to <strong>Google Drive</strong>, <strong>Dropbox</strong> or <strong>GitHub</strong> by opening the <strong>Synchronize</strong> sub-menu and clicking <strong>Save on</strong>. Even if a file in the workspace is already synced, you can save it to another location. StackEdit can sync one file with multiple locations and accounts.</p>
-<h2 id="synchronize-a-file">Synchronize a file</h2>
-<p>Once your file is linked to a synchronized location, StackEdit will periodically synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be resolved.</p>
-<p>If you just have modified your file and you want to force syncing, click the <strong>Synchronize now</strong> button in the navigation bar.</p>
-<blockquote>
-<p><strong>Note:</strong> The <strong>Synchronize now</strong> button is disabled if you have no file to synchronize.</p>
-</blockquote>
-<h2 id="manage-file-synchronization">Manage file synchronization</h2>
-<p>Since one file can be synced with multiple locations, you can list and manage synchronized locations by clicking <strong>File synchronization</strong> in the <strong>Synchronize</strong> sub-menu. This allows you to list and remove synchronized locations that are linked to your file.</p>
-<h1 id="publication">Publication</h1>
-<p>Publishing in StackEdit makes it simple for you to publish online your files. Once you’re happy with a file, you can publish it to different hosting platforms like <strong>Blogger</strong>, <strong>Dropbox</strong>, <strong>Gist</strong>, <strong>GitHub</strong>, <strong>Google Drive</strong>, <strong>WordPress</strong> and <strong>Zendesk</strong>. With <a href="http://handlebarsjs.com/">Handlebars templates</a>, you have full control over what you export.</p>
-<blockquote>
-<p>Before starting to publish, you must link an account in the <strong>Publish</strong> sub-menu.</p>
-</blockquote>
-<h2 id="publish-a-file">Publish a File</h2>
-<p>You can publish your file by opening the <strong>Publish</strong> sub-menu and by clicking <strong>Publish to</strong>. For some locations, you can choose between the following formats:</p>
-<ul>
-<li>Markdown: publish the Markdown text on a website that can interpret it (<strong>GitHub</strong> for instance),</li>
-<li>HTML: publish the file converted to HTML via a Handlebars template (on a blog for example).</li>
-</ul>
-<h2 id="update-a-publication">Update a publication</h2>
-<p>After publishing, StackEdit keeps your file linked to that publication which makes it easy for you to re-publish it. Once you have modified your file and you want to update your publication, click on the <strong>Publish now</strong> button in the navigation bar.</p>
-<blockquote>
-<p><strong>Note:</strong> The <strong>Publish now</strong> button is disabled if your file has not been published yet.</p>
-</blockquote>
-<h2 id="manage-file-publication">Manage file publication</h2>
-<p>Since one file can be published to multiple locations, you can list and manage publish locations by clicking <strong>File publication</strong> in the <strong>Publish</strong> sub-menu. This allows you to list and remove publication locations that are linked to your file.</p>
-<h1 id="markdown-extensions">Markdown extensions</h1>
-<p>StackEdit extends the standard Markdown syntax by adding extra <strong>Markdown extensions</strong>, providing you with some nice features.</p>
-<blockquote>
-<p><strong>ProTip:</strong> You can disable any <strong>Markdown extension</strong> in the <strong>File properties</strong> dialog.</p>
-</blockquote>
-<h2 id="smartypants">SmartyPants</h2>
-<p>SmartyPants converts ASCII punctuation characters into “smart” typographic punctuation HTML entities. For example:</p>
+<h1 id="pipi">pipi</h1>
+<p>This project include a full mumps framework running on the Raspberry pi<br>
+accessed by the browser (desktop or mobile)<br>
+it’s a platform to develop a web apps / desktop apps and websites with mumps as a code<br>
+that will generate nice web ui using latest bootstap</p>
+<p>His big brother runs this same framework on a docker , or on any linux machine.<br>
+<img src="https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png" alt=""></p>
+<h3 id="features">Features</h3>
+<h4 id="mumps-extension-commands">mumps extension commands</h4>
+<h4 id="a.-for-loop">a. for loop</h4>
+<pre><code>  instead of those line:
+</code></pre>
+<pre><code>      N I
+      S I=""
+      F  S I=$O(^MYGLO(V1,V2,V3,I)) Q:I=""  D SOMTHING(I)
+      Q
+    SOMTHING(I) ;
+      : 
+      Q
+</code></pre>
+<p>just use this:</p>
+<pre><code>      FOR I IN ^MYGLO(V1,V2,V3) D SOMETHING(I)
+</code></pre>
+<p>this new smart for loop can work no locals and on globals with any variations including indirecion like this :</p>
+<pre><code>      FOR J IN @GLO D IT
+</code></pre>
+<h4 id="b.-include-routinename">b. #INCLUDE routineName</h4>
+<p>this will merge the routineName into my routine,<br>
+you can find this usefull when writing tools , and need to access a lot of labels of the tool during the entire routine , so including it will a) keep its current version and b) will let you reference the labels without label^routine - just the “label” which make a routine more clean.</p>
+<h4 id="c.-auto-versioning">c. auto versioning</h4>
+<p>each time you save the routine (whith changes) if you have a label name VERSION() the tool will automatically increment the subVersion , and add a timestamps , for example :</p>
+<pre><code>VERSION()  Q "1.01.006" ;14/03/2019 18:06:52
+</code></pre>
+<h2 id="the-framework">the framework</h2>
+<p>html + mumps - one place development of your application</p>
+<h4 id="exmaple-1---simple-html">exmaple 1 - simple html</h4>
+<p>A mix of an html page +  javascript + a mumps code , which will run during the load of the page</p>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span><span class="token punctuation">&gt;</span></span> Hello world <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+&lt;3&gt; multiplication table <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h3</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
+START	;
+	W !,"DATE: ",$H,!
+	W !,"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>card</span><span class="token punctuation">&gt;</span></span>"
+	W !,"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span>card-body</span><span class="token punctuation">&gt;</span></span>"
+	F LIN=1:1:10 W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BR</span><span class="token punctuation">&gt;</span></span>" F ROW=1:1:10 W " ",ROW*LIN
+	W !,"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>"
+	W !,"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>"
+  Q   
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>  
+</code></pre>
+<p>result:</p>
+<p><img src="https://github.com/yaweli/pipi/blob/master/example1.png" alt=""></p>
+<h4 id="exmaple-2---interact-with-forms">exmaple 2 - interact with forms</h4>
+<p>somtimes on application you need to check and validate a form fields</p>
+<pre class=" language-html"><code class="prism  language-html">	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+		enter number: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>id100</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>80</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>var1</span> <span class="token attr-name">onChange</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>CHECKN<span class="token punctuation">'</span>,this)<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+		enter number: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>id101</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>80</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>var2</span> <span class="token punctuation">/&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+		enter name: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>id102</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation">=</span>80</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span>name1</span> <span class="token punctuation">/&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">/&gt;</span></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
+START ;
+   Q
+CHECKN ;
+	I M&gt;100 D ALERT("BIG"),FOCUS("id100")
+	I M&lt;100 D ALERT("SMALL"),FOCUS("id100") ;&gt;
+	I M=100 D SETV("id100","CORRECT")
+	I M=100 D FOCUS("id102")
+	I M=90  D GO("next.html")
+	Q
+	#INCLUDE %ESLJXI
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>use onChange=mLabel(“LABEL”,this) to instruct the browser to come check the field value in the mumps !</p>
 
 <table>
 <thead>
 <tr>
-<th></th>
-<th>ASCII</th>
-<th>HTML</th>
+<th>actions</th>
+<th>description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Single backticks</td>
-<td><code>'Isn't this fun?'</code></td>
-<td>‘Isn’t this fun?’</td>
+<td>ALERT</td>
+<td>show an error message</td>
 </tr>
 <tr>
-<td>Quotes</td>
-<td><code>"Isn't this fun?"</code></td>
-<td>“Isn’t this fun?”</td>
+<td>FOCUS</td>
+<td>restore focus to a field</td>
 </tr>
 <tr>
-<td>Dashes</td>
-<td><code>-- is en-dash, --- is em-dash</code></td>
-<td>– is en-dash, — is em-dash</td>
+<td>SETV</td>
+<td>replace a value inside a form field</td>
+</tr>
+<tr>
+<td>GO</td>
+<td>jump to a new url</td>
+</tr>
+<tr>
+<td>…more to come</td>
+<td></td>
 </tr>
 </tbody>
-</table><h2 id="katex">KaTeX</h2>
-<p>You can render LaTeX mathematical expressions using <a href="https://khan.github.io/KaTeX/">KaTeX</a>:</p>
-<p>The <em>Gamma function</em> satisfying <span class="katex--inline"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>!</mo><mspace width="1em"></mspace><mi mathvariant="normal">∀</mi><mi>n</mi><mo>∈</mo><mi mathvariant="double-struck">N</mi></mrow><annotation encoding="application/x-tex">\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">Γ</span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mopen">(</span><span class="mord mathit">n</span><span class="mspace" style="margin-right: 0.222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.222222em;"></span></span><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mclose">!</span><span class="mspace" style="margin-right: 1em;"></span><span class="mord">∀</span><span class="mord mathit">n</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 0.68889em; vertical-align: 0em;"></span><span class="mord mathbb">N</span></span></span></span></span> is via the Euler integral</p>
-<p><span class="katex--display"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Γ</mi><mo>(</mo><mi>z</mi><mo>)</mo><mo>=</mo><msubsup><mo>∫</mo><mn>0</mn><mi mathvariant="normal">∞</mi></msubsup><msup><mi>t</mi><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow></msup><msup><mi>e</mi><mrow><mo>−</mo><mi>t</mi></mrow></msup><mi>d</mi><mi>t</mi>&amp;ThinSpace;<mi mathvariant="normal">.</mi></mrow><annotation encoding="application/x-tex">
-\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span class="mord">Γ</span><span class="mopen">(</span><span style="margin-right: 0.04398em;" class="mord mathit">z</span><span class="mclose">)</span><span class="mspace" style="margin-right: 0.277778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right: 0.277778em;"></span></span><span class="base"><span class="strut" style="height: 2.32624em; vertical-align: -0.91195em;"></span><span class="mop"><span style="margin-right: 0.44445em; position: relative; top: -0.001125em;" class="mop op-symbol large-op">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height: 1.41429em;"><span class="" style="top: -1.78805em; margin-left: -0.44445em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span><span class="" style="top: -3.8129em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">∞</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height: 0.91195em;"><span class=""></span></span></span></span></span></span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord"><span class="mord mathit">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.864108em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span style="margin-right: 0.04398em;" class="mord mathit mtight">z</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height: 0.843556em;"><span class="" style="top: -3.113em; margin-right: 0.05em;"><span class="pstrut" style="height: 2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathit mtight">t</span></span></span></span></span></span></span></span></span><span class="mord mathit">d</span><span class="mord mathit">t</span><span class="mspace" style="margin-right: 0.166667em;"></span><span class="mord">.</span></span></span></span></span></span></p>
-<blockquote>
-<p>You can find more information about <strong>LaTeX</strong> mathematical expressions <a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">here</a>.</p>
-</blockquote>
-<h2 id="uml-diagrams">UML diagrams</h2>
-<p>You can render UML diagrams using <a href="https://mermaidjs.github.io/">Mermaid</a>. For example, this will produce a sequence diagram:</p>
-<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-pwygkDnAJaHwkos6" height="100%" width="100%" style="max-width:750px;" viewBox="-50 -10 750 457"><g></g><g><line id="actor3" x1="75" y1="5" x2="75" y2="446" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="0" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="32.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="75" dy="0">Alice</tspan></text></g><g><line id="actor4" x1="275" y1="5" x2="275" y2="446" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="200" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="275" y="32.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="275" dy="0">Bob</tspan></text></g><g><line id="actor5" x1="475" y1="5" x2="475" y2="446" class="actor-line" stroke-width="0.5px" stroke="#999"></line><rect x="400" y="0" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="475" y="32.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="475" dy="0">John</tspan></text></g><defs><marker id="arrowhead" refX="5" refY="2" markerWidth="6" markerHeight="4" orient="auto"><path d="M 0,0 V 4 L6,2 Z"></path></marker></defs><defs><marker id="crosshead" markerWidth="15" markerHeight="8" orient="auto" refX="16" refY="4"><path fill="black" stroke="#000000" style="stroke-dasharray: 0, 0;" stroke-width="1px" d="M 9,2 V 6 L16,4 Z"></path><path fill="none" stroke="#000000" style="stroke-dasharray: 0, 0;" stroke-width="1px" d="M 0,1 L 6,7 M 6,1 L 0,7"></path></marker></defs><g><text x="175" y="93" style="text-anchor: middle;" class="messageText">Hello Bob, how are you?</text><line x1="75" y1="100" x2="275" y2="100" class="messageLine0" stroke-width="2" stroke="black" style="fill: none;" marker-end="url(#arrowhead)"></line></g><g><text x="375" y="128" style="text-anchor: middle;" class="messageText">How about you John?</text><line x1="275" y1="135" x2="475" y2="135" style="stroke-dasharray: 3, 3; fill: none;" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#arrowhead)"></line></g><g><text x="175" y="163" style="text-anchor: middle;" class="messageText">I am good thanks!</text><line x1="275" y1="170" x2="75" y2="170" style="stroke-dasharray: 3, 3; fill: none;" class="messageLine1" stroke-width="2" stroke="black" marker-end="url(#crosshead)"></line></g><g><text x="375" y="198" style="text-anchor: middle;" class="messageText">I am good thanks!</text><line x1="275" y1="205" x2="475" y2="205" class="messageLine0" stroke-width="2" stroke="black" style="fill: none;" marker-end="url(#crosshead)"></line></g><g><rect x="500" y="215" fill="#EDF2AE" stroke="#666" width="150" height="76" rx="0" ry="0" class="note"></rect><text x="496" y="239" fill="black" class="noteText"><tspan x="516" fill="black">Bob thinks a long</tspan></text><text x="496" y="253" fill="black" class="noteText"><tspan x="516" fill="black">long time, so long</tspan></text><text x="496" y="267" fill="black" class="noteText"><tspan x="516" fill="black">that the text does</tspan></text><text x="496" y="281" fill="black" class="noteText"><tspan x="516" fill="black">not fit on a row.</tspan></text></g><g><text x="175" y="319" style="text-anchor: middle;" class="messageText">Checking with John...</text><line x1="275" y1="326" x2="75" y2="326" style="stroke-dasharray: 3, 3; fill: none;" class="messageLine1" stroke-width="2" stroke="black"></line></g><g><text x="275" y="354" style="text-anchor: middle;" class="messageText">Yes... John, how are you?</text><line x1="75" y1="361" x2="475" y2="361" class="messageLine0" stroke-width="2" stroke="black" style="fill: none;"></line></g><g><rect x="0" y="381" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="75" y="413.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="75" dy="0">Alice</tspan></text></g><g><rect x="200" y="381" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="275" y="413.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="275" dy="0">Bob</tspan></text></g><g><rect x="400" y="381" fill="#eaeaea" stroke="#666" width="150" height="65" rx="3" ry="3" class="actor"></rect><text x="475" y="413.5" style="text-anchor: middle;" dominant-baseline="central" alignment-baseline="central" class="actor"><tspan x="475" dy="0">John</tspan></text></g></svg></div>
-<p>And this will produce a flow chart:</p>
-<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-F3KT6qYOMudYjDjC" width="100%" style="max-width: 500.9549789428711px;" viewBox="0 0 500.9549789428711 172.59999084472656"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M120.4875176804892,78.23333358764648L179.31665802001953,49.94166564941406L255.2583236694336,49.94166564941406" marker-end="url(#arrowhead33)" style="fill:none"></path><defs><marker id="arrowhead33" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M120.4875176804892,124.94999313354492L179.31665802001953,153.24166107177734L234.79998779296875,153.24166107177734" marker-end="url(#arrowhead34)" style="fill:none"></path><defs><marker id="arrowhead34" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M315.1416549682617,49.94166564941406L360.59999084472656,49.94166564941406L408.70982831217043,79.48182589315182" marker-end="url(#arrowhead35)" style="fill:none"></path><defs><marker id="arrowhead35" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M335.59999084472656,153.24166107177734L360.59999084472656,153.24166107177734L408.70982831217043,124.7015008280396" marker-end="url(#arrowhead36)" style="fill:none"></path><defs><marker id="arrowhead36" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" style="opacity: 1;" transform="translate(179.31665802001953,49.94166564941406)"><g transform="translate(-30.48332977294922,-13.358329772949219)" class="label"><foreignObject width="60.96665954589844" height="26.716659545898438"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel">Link text</span></div></foreignObject></g></g><g class="edgeLabel" style="opacity: 1;" transform=""><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" style="opacity: 1;" transform=""><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" style="opacity: 1;" transform=""><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" style="opacity: 1;" id="A" transform="translate(71.91666412353516,101.5916633605957)"><rect rx="0" ry="0" x="-51.916664123535156" y="-23.35832977294922" width="103.83332824707031" height="46.71665954589844"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-41.916664123535156,-13.358329772949219)"><foreignObject width="83.83332824707031" height="26.716659545898438"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Square Rect</div></foreignObject></g></g></g><g class="node" style="opacity: 1;" id="B" transform="translate(285.19998931884766,49.94166564941406)"><circle x="-29.941665649414062" y="-23.35832977294922" r="29.941665649414062"></circle><g class="label" transform="translate(0,0)"><g transform="translate(-19.941665649414062,-13.358329772949219)"><foreignObject width="39.883331298828125" height="26.716659545898438"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Circle</div></foreignObject></g></g></g><g class="node" style="opacity: 1;" id="C" transform="translate(285.19998931884766,153.24166107177734)"><rect rx="5" ry="5" x="-50.400001525878906" y="-23.35832977294922" width="100.80000305175781" height="46.71665954589844"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-40.400001525878906,-13.358329772949219)"><foreignObject width="80.80000305175781" height="26.716659545898438"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Round Rect</div></foreignObject></g></g></g><g class="node" style="opacity: 1;" id="D" transform="translate(445.2774848937988,101.5916633605957)"><polygon points="59.677494049072266,0 119.35498809814453,-59.677494049072266 59.677494049072266,-119.35498809814453 0,-59.677494049072266" rx="5" ry="5" transform="translate(-59.677494049072266,59.677494049072266)"></polygon><g class="label" transform="translate(0,0)"><g transform="translate(-32.94999694824219,-13.358329772949219)"><foreignObject width="65.89999389648438" height="26.716659545898438"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">Rhombus</div></foreignObject></g></g></g></g></g></g></svg></div>
+</table><p>The #INCLUDE will help us reference the labels without the name of the routine.<br>
+instead of :</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">D GO^%ESLJX("aaa.html")
+</code></pre>
+<p>just write:</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">D GO("aaa.html")
+</code></pre>
+<h4 id="exmaple-3---links">exmaple 3 - links</h4>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>center</span><span class="token punctuation">&gt;</span></span>
+Click on image: 
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/images/tree.jpg</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>TREE<span class="token punctuation">'</span>,<span class="token punctuation">'</span>T<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+Click on a link:
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>#</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>GOINFO<span class="token punctuation">'</span>,<span class="token punctuation">'</span>G<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Info<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
+START ;
+   Q
+GOINFO ;
+	D GO("info.html")
+	Q
+TREE ;
+	D GO("tree.html")
+	Q
+	#INCLUDE %ESLJXI
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h3 id="embeded-bootstrap">Embeded bootstrap</h3>
+<p>it will be nice if the farmework will include support for bootstrap and include<br>
+the js files and the css files without the need to enter a long lines.<br>
+So the framework come the packs.</p>
+<h4 id="bootstrap-4--jquery-popper">bootstrap 4 + jquery +popper</h4>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m#import</span> <span class="token attr-name">mpak1</span> <span class="token punctuation">/&gt;</span></span>
+</code></pre>
+<p>This will include all the html need to use the bootstrap</p>
+<h5 id="example-1---simple-bootstrape-button">example 1 - simple bootstrape button</h5>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m#import</span> <span class="token attr-name">mpak1</span> <span class="token punctuation">/&gt;</span></span>
+
+INFO PAGE:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BR</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
+START ;
+   Q
+BACK	;
+	D GO^%ESLJX("start.html")
+	Q
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HR</span><span class="token punctuation">&gt;</span></span>
+&lt;button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')""&gt;Back<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p><img src="https://github.com/yaweli/pipi/blob/master/EXAMPLE2.png" alt=""></p>
+<h5 id="example-2---more-nice-bootstrap-elements">example 2 - more nice bootstrap elements</h5>
+<pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m#import</span> <span class="token attr-name">mpak1</span> <span class="token punctuation">/&gt;</span></span>
+
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>pos-f-t<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navbarToggleExternalContent<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>bg-dark p-4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn-group bg-dark p-4<span class="token punctuation">"</span></span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>group<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Button group<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-secondary<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span>30</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img-fluid<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/im/set.png</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+		  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-secondary<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>GOINFO<span class="token punctuation">'</span>,<span class="token punctuation">'</span>i<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span> <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span>30</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img-fluid<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span>/im/inf.png</span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>  
+		<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navbar navbar-dark bg-dark<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navbar-toggler<span class="token punctuation">"</span></span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">data-toggle</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>collapse<span class="token punctuation">"</span></span> <span class="token attr-name">data-target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>#navbarToggleExternalContent<span class="token punctuation">"</span></span> <span class="token attr-name">aria-controls</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navbarToggleExternalContent<span class="token punctuation">"</span></span> <span class="token attr-name">aria-expanded</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Toggle navigation<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>navbar-toggler-icon<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span> 
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h5</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text-white h4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Pi zero W board manager<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h5</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
+START	; next screen
+	D CARD("QUOT","BODY","W30%")
+	D CARD("JOBH","JOBB","W30%")
+	D CARD("IPH","IPB","W30%")
+	Q
+JOBH	W "Job" Q
+JOBB	W JB    Q
+IPH	W "I.P" Q
+IPB	W VRU("REMOTE_ADDR") Q
+	; 
+QUOT ;
+	W "Horolog"
+	Q
+BODY ;
+	W $H
+	Q
+GOINFO ;
+	D GO("pizinfo.html")
+	Q
+	#INCLUDE %ESBSI
+	#INCLUDE %ESLJXI
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>this time the mumps also generated a bootstrap elements with it’s library.<br>
+you can combine BS elements as html and also BS generated inside the mumps , it’s up to you.</p>
+<p><img src="https://github.com/yaweli/pipi/blob/master/EXAMPLE3.png" alt=""><br>
+note:<br>
+to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use to use the D CARD()</p>
+<h3 id="accessing-the-gpio-on-the-pi">accessing the GPIO on the pi</h3>
+<pre class=" language-html"><code class="prism  language-html">GPIO	;
+	S GL=$NA(^W(JB,11)) K @GL
+	D ACTIV(GL)
+	w "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TABLE</span> <span class="token attr-name">BORDER</span><span class="token attr-value"><span class="token punctuation">=</span>2</span><span class="token punctuation">&gt;</span></span>" D  W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TABLE</span><span class="token punctuation">&gt;</span></span>"
+	.W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TR</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TH</span><span class="token punctuation">&gt;</span></span>GPIO<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TH</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TH</span><span class="token punctuation">&gt;</span></span>DIR<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TH</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TH</span><span class="token punctuation">&gt;</span></span>Current Value<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TH</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TR</span><span class="token punctuation">&gt;</span></span>"
+	.FOR I IN @GL D
+	..S X=^(I)
+	..W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TR</span><span class="token punctuation">&gt;</span></span>" D  W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TR</span><span class="token punctuation">&gt;</span></span>"
+	...W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TD</span><span class="token punctuation">&gt;</span></span>",X,"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TD</span><span class="token punctuation">&gt;</span></span>" ; /sys/class/gpio/gpio14 
+	...W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TD</span><span class="token punctuation">&gt;</span></span>",$$DIR^%ESGP(X),"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TD</span><span class="token punctuation">&gt;</span></span>" ; in / out
+	...W "<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>TD</span><span class="token punctuation">&gt;</span></span>",$$VAL^%ESGP(X),"<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>TD</span><span class="token punctuation">&gt;</span></span>" ; 0/1
+	Q
+BACK ;
+	D GO^%ESLJX("start.html")
+	Q
+FLASH ;  FLASH THE RED LIGHT - RUN THIS IN JOB CMD
+	;
+	D EXP(14)
+	D SETDIR(14,"out") H 1
+	F  D FLASH1
+	Q
+FLASH1	;
+	D SETVAL(14,1) H 1
+	D SETVAL(14,0) H 1
+	Q
+	#INCLUDE %ESGPI
+	Q
+	;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>HR</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>button<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>btn btn-primary<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>BACK<span class="token punctuation">'</span>,<span class="token punctuation">'</span>b<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Back<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BR</span><span class="token punctuation">&gt;</span></span>
+to make the red light on the pi flash every second<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">&gt;</span></span>
+bash script code example:
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>pre</span><span class="token punctuation">&gt;</span></span>
+#!/bin/sh
+cd /sys/class/gpio
+echo "14" &gt; unexport
+echo "14" &gt; export
+cd gpio14
+echo out &gt; direction
+sleep 1
+while true
+do
+        echo "1" &gt; value
+        sleep 1
+        echo "0" &gt; value
+        sleep 1
+done
+
+if you start it on pi startup (using /etc/rc.local) the pi will flash the light forever
+</code></pre>
+<p><img src="https://github.com/yaweli/pipi/blob/master/led.png" alt=""></p>
+<p>see it works:<br>
+<a href="https://drive.google.com/file/d/1-1Cs0CPVFwJA_8xEhxe5D6U4bHGuoUnG/view?usp=sharing">https://drive.google.com/file/d/1-1Cs0CPVFwJA_8xEhxe5D6U4bHGuoUnG/view?usp=sharing</a></p>
+<p>one way is to run a bash script , to flash the light every second , also add it to the linux startup</p>
+<p>from th mumps with %ESGP you can</p>
+<p>action|description|same as command<br>
+–|-----<br>
+1|get the value or direction for each gpio|cat value<br>
+1|get a list of all live gpio|ls gpio*<br>
+2|set the value of the direction of the pin|echo out&gt;direction<br>
+4|set the value of the pin|echo “1” &gt; value<br>
+5|start / stop gpio pin by export function|echo “14”&gt;export</p>
+<h4 id="cgi-environment">cgi environment</h4>
+<p>the mumps include the VRU() vectore with all the linux environment where the cgi include envirment for the session posted from you browser.<br>
+examples:</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">VRU("QUERY_STRING")="a=Start&amp;REDUCI=ELI"
+VRU("REMOTE_ADDR")="192.168.88.9"
+VRU("REMOTE_PORT")=62994
+VRU("REQUEST_METHOD")="GET"
+VRU("REQUEST_SCHEME")="http"
+VRU("REQUEST_URI")="/cgi-bin/es?a=Start&amp;REDUCI=ELI"
+VRU(:)
+</code></pre>
+<p>the form variables from the url:</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">%PARK("REDUCI")="ELI"
+%PARK("a")="Start"
+</code></pre>
+<p>headers</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">VR("Referer")="http://elilap/proj/piz/"
+VR("User-Agent")="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0"
+</code></pre>
+<p>…and more, depends on the apache webserver</p>
+<h3 id="mumps-enviroment-system-wide">Mumps enviroment system wide</h3>
+<p>connect by ssh to getinto the linux enviroment<br>
+to log into the gtm (mumps) enter <strong>m</strong></p>
+<pre class=" language-sh"><code class="prism  language-sh">eli@eli-laptop:~/projects/mumps$ m
+
+MGR&gt;
+</code></pre>
+<p>This mumps is DSM style which have a subdevistions of database OR namespaces we call UCI.<br>
+first login will take you to the MGR uci<br>
+all routines from MGR can be see on all other uci’s</p>
+<p>switch between uci’s  enter <strong>D ^%UCI</strong> then the 3 upper case uci name</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">MGR&gt;D ^%UCI
+
+GT.M V6.3-005 Linux x86_64 JOB 26712
+UCI : ELI
+WELCOME TO E.S. GTM 1.01
+J26712 I/dev/pts/3
+----------------------------
+ELI&gt;
+</code></pre>
+<p>view the uci’s globals - __D ^%G __</p>
+<pre class=" language-mumps"><code class="prism  language-mumps">ELI&gt;D ^%G
+
+
+Global ^W()
+        W()
+Global ^%ZUCI
+        %ZUCI
+^%ZUCI("ELI") =
+^%ZUCI("ELI","G") = /gtm/ELI.gld
+^%ZUCI("ELI","R") = /gtm/eli/r/ /gtm/mgr/r/ /gtm/
+^%ZUCI("MGR") =
+^%ZUCI("MGR","G") = /gtm/MGR.gld
+^%ZUCI("MGR","R") = /gtm/mgr/r/ /gtm/
+Global ^
+</code></pre>
+<p>we are using dsm style global listing , include a lot of extensions , will be documented later on.</p>
+<h3 id="gtm-management">gtm management</h3>
+<p>login with ssh to the linux<br>
+enter <strong>gman</strong></p>
+<pre class=" language-sh"><code class="prism  language-sh">eli@eli-laptop:~/projects/mumps$ gman
+Mumps manager
+1 - gtm system
+2 - uci
+options :
+1
+ 1 - start gtm
+ 2 - stop gtm
+ option?
+1 - gtm system
+2 - uci
+N - CREATE NEW UCI
+D - DELETE UCI
+F - FIRST TIME CREATE MGR
+S - SHOW UCI INFO
+M - MOUNT UCI
+options:
+</code></pre>
+<p>Gtm management will be documented later<br>
+management gtm will let you</p>
+<ol>
+<li>start and stop gtm</li>
+<li>create remove or mount a uci</li>
+<li>first time create the MGR uci</li>
+</ol>
+<h3 id="routine-utilities">routine utilities</h3>
+<p>in addition to the GTM own utility (like %RO/%RI/%RD/%RSE/…)<br>
+the m framework come wi a set of % utility routines. part of the are the source of the runs framework and other part is the mumps general utility<br>
+routines:</p>
+
+<table>
+<thead>
+<tr>
+<th>routine name</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%ESD</td>
+<td>date and time manipulation</td>
+</tr>
+<tr>
+<td>%ESS</td>
+<td>string and general manipulation</td>
+</tr>
+<tr>
+<td>%ZU</td>
+<td>UCI manipulation</td>
+</tr>
+<tr>
+<td>%ESF</td>
+<td>Files manipulations</td>
+</tr>
+<tr>
+<td>%ESLIB</td>
+<td>Html web development</td>
+</tr>
+<tr>
+<td>%ESGP</td>
+<td>Pi GPIO utility</td>
+</tr>
+<tr>
+<td>%ESBS</td>
+<td>bootstrape web utility</td>
+</tr>
+<tr>
+<td>%ESLJX</td>
+<td>ajax</td>
+</tr>
+<tr>
+<td>%ESLJXI</td>
+<td>ajax include</td>
+</tr>
+<tr>
+<td>%ESDEV</td>
+<td>m framework internal routine</td>
+</tr>
+<tr>
+<td>%ESET</td>
+<td>Error trap</td>
+</tr>
+<tr>
+<td>%ESRL</td>
+<td>mumps macro extensions</td>
+</tr>
+<tr>
+<td>%ESWS</td>
+<td>cgi engine</td>
+</tr>
+<tr>
+<td>%ZGL</td>
+<td>D ^%G source</td>
+</tr>
+<tr>
+<td>%UCI</td>
+<td>mapped to D ^%ZU</td>
+</tr>
+<tr>
+<td>%G</td>
+<td>mapped to D ^%ZGL</td>
+</tr>
+<tr>
+<td>%MGR</td>
+<td>jump to uci MGR</td>
+</tr>
+</tbody>
+</table><p><strong>MGR</strong> uci will contain all the %routines + all the %globals</p>
 
