@@ -438,10 +438,12 @@ note the prompt will point to the current uci.
 ## mumps programing good practice
 
 - use the UCI structure for a large projects , each project it's own UCI
-- session : you have a JB in the partision which is unique to the 
+- session : you have a JB in the partision which is unique to the browser page , each entry , it's own JB. use this session number to save local information for the user , we like to use the W global for a temporary area. ^W(JB, (put here all the user temp data)
+- each restart to the system the ^W will be cleaned
+- make sure to clean it on first entry
+- 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTA3NDYyODUsLTIxMDU2Mjg2MzNdfQ
-==
+eyJoaXN0b3J5IjpbNTY0NTYzNDgsLTIxMDU2Mjg2MzNdfQ==
 -->
