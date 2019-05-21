@@ -95,9 +95,23 @@ Hi, this is a message
 </div>
 ```
 
+#### move from page to page by
+```
+D GO("nextpage.html")
+```
+
+### finis by returning to landing page
+```
+D GO("index.html")
+```
+dont forget to clean the environment of the session 
+```
+K ^W(JB)
+```
+
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMzIyODI2ODEsLTE2ODc0MjQwODBdfQ
-==
+eyJoaXN0b3J5IjpbLTEyMDgzMjg4MTEsLTIwMzIyODI2ODEsLT
+E2ODc0MjQwODBdfQ==
 -->
