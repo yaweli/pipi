@@ -228,8 +228,8 @@ GPIO	;
 	..S X=^(I)
 	..W "<TR>" D  W "</TR>"
 	...W "<TD>",X,"</TD>" ; /sys/class/gpio/gpio14 
-	...W "<TD>",$$DIR^%ESGP(X),"</TD>" ; in / out
-	...W "<TD>",$$VAL^%ESGP(X),"</TD>" ; 0/1
+	...W "<TD>",$$DIR(X),"</TD>" ; in / out
+	...W "<TD>",$$VAL(X),"</TD>" ; 0/1
 	Q
 BACK ;
 	D GO^%ESLJX("start.html")
@@ -289,7 +289,8 @@ With %ESGP you can control the gpio pin , read there value and set a new value
 
 action|description|same as command
 --|--|---
-1|get the value or direction for each gpio|cat value
+$$VAL(gpio)|get the value or direction for each gpio|cat value
+$$DIR(gpio)|get the direction for each gpio|cat value
 1|get a list of all live gpio|ls gpio*
 2|set the value of the direction of the pin|echo out>direction
 4|set the value of the pin|echo "1" > value
@@ -425,5 +426,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTkxNzg2MjgsLTEzMTgxMjldfQ==
+eyJoaXN0b3J5IjpbMTgzMjI4OTE5NywtMTMxODEyOV19
 -->
