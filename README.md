@@ -36,6 +36,7 @@ you can find this usefull when writing tools , and need to access a lot of label
 <p>each time you save the routine (whith changes) if you have a label name VERSION() the tool will automatically increment the subVersion , and add a timestamps , for example :</p>
 <pre><code>VERSION()  Q "1.01.006" ;14/03/2019 18:06:52
 </code></pre>
+<p><a href="/yaweli/pipi/blob/master/mext.md">Learn more</a></p>
 <h2 id="the-framework">the framework</h2>
 <p>html + mumps - one place development of your application</p>
 <h4 id="exmaple-1---simple-html">exmaple 1 - simple html</h4>
