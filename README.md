@@ -405,9 +405,10 @@ management gtm will let you
 3. first time create the MGR uci 
 
 
+
 ### routine utilities
 in addition to the GTM own utility (like %RO/%RI/%RD/%RSE/....)
-the m framework come wi a set of % utility routines. part of the are the source of the runs framework and other part is the mumps general utility
+the m framework come with a set of % utility routines. part of them are the source of the framework engiand other part is the mumps general utility
 routines:
 
 routine name | description
@@ -433,6 +434,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2Mjc4Mjc3ODQsLTE1MjU1NTY1OThdfQ
-==
+eyJoaXN0b3J5IjpbMTQzODYwMDI4MCwtMTUyNTU1NjU5OF19
 -->
