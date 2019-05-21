@@ -271,7 +271,7 @@ do
         sleep 1
 done
 ```
-if you start it on pi startup (using /etc/rc.local) the pi will flash the light forever
+
 
 
 ![](https://github.com/yaweli/pipi/blob/master/led.png)
@@ -279,9 +279,12 @@ if you start it on pi startup (using /etc/rc.local) the pi will flash the light 
 [see it works:](https://drive.google.com/file/d/1-1Cs0CPVFwJA_8xEhxe5D6U4bHGuoUnG/view?usp=sharing)
 
 
-one way is to run a bash script , to flash the light every second , also add it to the linux startup
+One way is to run a bash script , to flash the light every second , also add it to the linux startup (using /etc/rc.local) the pi will flash the light forever
 
-from th mumps with %ESGP you can
+###  gpio support:
+
+
+ with %ESGP you can
 
 action|description|same as command
 --|-----
@@ -421,5 +424,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMTgxMjldfQ==
+eyJoaXN0b3J5IjpbLTE2NDY0MTg0NDIsLTEzMTgxMjldfQ==
 -->
