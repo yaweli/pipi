@@ -441,9 +441,10 @@ note the prompt will point to the current uci.
 - session : you have a JB in the partision which is unique to the browser page , each entry , it's own JB. use this session number to save local information for the user , we like to use the W global for a temporary area. ^W(JB, (put here all the user temp data)
 - each restart to the system the ^W will be cleaned
 - make sure to clean it on first entry
+- using upper case/lower case command in mumps - up to you. macros only on upper case
 - 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTY0NTYzNDgsLTIxMDU2Mjg2MzNdfQ==
+eyJoaXN0b3J5IjpbMTEyNDAzNzg5MSwtMjEwNTYyODYzM119
 -->
