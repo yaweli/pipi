@@ -25,4 +25,31 @@ START	;
 	Q
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>m</span><span class="token punctuation">&gt;</span></span>
 </code></pre>
+<h3 id="the-extension-guide">the extension guide</h3>
 
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>for</th>
+<th>translated to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FOR I IN ^GL(1) D IT</td>
+<td>loop thru a list</td>
+<td>N I S I="" F  S I=$O(^GL(1,I)) Q:I=""  D IT</td>
+</tr>
+<tr>
+<td>#INCLUDE</td>
+<td>include a routine inside my code</td>
+<td></td>
+</tr>
+<tr>
+<td>VERSION()</td>
+<td>auto add versen for each update</td>
+<td>VERSION() Q “1.01.001”</td>
+</tr>
+</tbody>
+</table>
