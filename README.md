@@ -408,7 +408,7 @@ management gtm will let you
 
 ### routine utilities
 in addition to the GTM own utility (like %RO/%RI/%RD/%RSE/....)
-the m framework come with a set of % utility routines. part of them are the source of the framework engiand other part is the mumps general utility
+the m framework come with a set of % utility routines. part of them are the source of the framework engine and other part is the mumps general utility
 routines:
 
 routine name | description
@@ -424,15 +424,16 @@ routine name | description
 %ESLJXI|ajax include
 %ESDEV|m framework internal routine
 %ESET|Error trap
-%ESRL|mumps macro extensions
+%ESRL|mumps macro extensions .mes
 %ESWS|cgi engine
 %ZGL|D ^%G source
 %UCI|mapped to D ^%ZU
 %G|mapped to D ^%ZGL
-%MGR|jump to uci MGR
+%MGR|switch to uci MGR
 
 __MGR__ uci will contain all the %routines + all the %globals
+note the prompt will point the t
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzODYwMDI4MCwtMTUyNTU1NjU5OF19
+eyJoaXN0b3J5IjpbMTI5MDczOTM5OCwtMTUyNTU1NjU5OF19
 -->
