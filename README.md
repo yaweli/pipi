@@ -118,12 +118,12 @@ Click on image:
 Click on a link:
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation">=</span>#</span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>mLabel(<span class="token punctuation">'</span>GOINFO<span class="token punctuation">'</span>,<span class="token punctuation">'</span>G<span class="token punctuation">'</span>)<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Info<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
-START ;
-   Q
-GOINFO ;
+START	;
+	Q
+GOINFO	;
 	D GO("info.html")
 	Q
-TREE ;
+TREE	;
 	D GO("tree.html")
 	Q
 	#INCLUDE %ESLJXI
