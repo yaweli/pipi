@@ -27,7 +27,7 @@ submitting the form will run the first html page which is
 start.html
 ```
 
-This start.html will be page number one fot the m-framework software
+This start.html will be page number one for the m-framework software
 
 ### use the advance template with bootstrap 
 ```
@@ -97,5 +97,5 @@ Hi, this is a message
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAzNzgzMjI1XX0=
+eyJoaXN0b3J5IjpbLTIwMDU0MzUxNDEsMzAzNzgzMjI1XX0=
 -->
