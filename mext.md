@@ -96,4 +96,5 @@ On the <em>Development</em> system you will need this package in full. Run with 
 <td>behind an AWS load balancer as Docker Kubernetes. will publish a guide</td>
 </tr>
 </tbody>
-</table>
+</table><p><a href="README.md">back</a></p>
+
