@@ -398,6 +398,7 @@ options:
 ```
 
 Gtm management will be documented later
+
 management gtm will let you
 1. start and stop gtm
 2. create remove or mount a uci
@@ -432,5 +433,6 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE1MjU1NTY1OThdfQ==
+eyJoaXN0b3J5IjpbLTE2Mjc4Mjc3ODQsLTE1MjU1NTY1OThdfQ
+==
 -->
