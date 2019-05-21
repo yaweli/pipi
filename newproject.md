@@ -29,12 +29,12 @@ start.html
 
 This start.html will be page number one for the m-framework software
 
-### use the advance template with bootstrap 
+#### use the advance template with bootstrap 
 ```
 <m#import mpak1 />
 ```
 
-add upper toolbar for salability and smart devices support
+#### add upper toolbar for salability and smart devices support
 ```html
 <m#import mpak1 />
 
@@ -63,9 +63,9 @@ START	; next screen
 </m>
 ```
 
-you may duplicate this page for all other pages , or create a one page design
+#### you may duplicate this page for all other pages , or create a one page design
 
-- interact with the mumps to check for data entry with:
+####  interact with the mumps to check for data entry with:
 ```html
 <form>
 <input id=id100 type="text" value=80 name=var1 onChange="mLabel('CHECKN',this)" /> <br/>
@@ -82,7 +82,7 @@ CHECKN	;
 </w>
 ```
 
-- make use of the bootstrap to produce good ui
+####  make use of the bootstrap to produce good ui
 ```html
 <div class="container-fluid">
 	 <span class="alert alert-primary">
@@ -97,5 +97,5 @@ Hi, this is a message
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwMDU0MzUxNDEsMzAzNzgzMjI1XX0=
+eyJoaXN0b3J5IjpbLTE2ODc0MjQwODAsMzAzNzgzMjI1XX0=
 -->
