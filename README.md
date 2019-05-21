@@ -291,13 +291,13 @@ action|description|same as command
 --|--|---
 $$VAL(gpio)|get the value or direction for each gpio|cat value
 $$DIR(gpio)|get the direction for each gpio|cat direction
-ACTIV(GLO)|get a list of all live gpio|ls gpio*
-SETDIR(gpio,"out")|set the value of the direction of the pin|echo out>direction
-SETVAL(gpip,"1")|set the value of the pin|echo "1" > value
+D ACTIV(GLO)|get a list of all live gpio|ls gpio*
+D SETDIR(gpio,"out")|set the value of the direction of the pin|echo out>direction
+D SETVAL(gpip,"1")|set the value of the pin|echo "1" > value
 D EXP(gpio)|start gpio pin by export function|echo "14">export
 D UNEXP(gpio)|stop gpio pin by export function|echo "14">unexport
 
-
+[learn more about GPIO
 ####  cgi environment
 the mumps include the VRU() vectore with all the linux environment where the cgi include envirment for the session posted from you browser. 
 examples: 
@@ -427,5 +427,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjE0NTQxNzQ4NSwtMTMxODEyOV19
+eyJoaXN0b3J5IjpbLTIwNzc1MjYyMDEsLTEzMTgxMjldfQ==
 -->
