@@ -136,14 +136,14 @@ So the framework come the packs.</p>
 <h4 id="bootstrap-4--jquery-popper">bootstrap 4 + jquery +popper</h4>
 <pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m#import</span> <span class="token attr-name">mpak1</span> <span class="token punctuation">/&gt;</span></span>
 </code></pre>
-<p>This will include all the html need to use the bootstrap</p>
+<p><strong>mpak1</strong> : This will include all the html need to use the bootstrap + jquery</p>
 <h5 id="example-1---simple-bootstrape-button">example 1 - simple bootstrape button</h5>
 <pre class=" language-html"><code class="prism  language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m#import</span> <span class="token attr-name">mpak1</span> <span class="token punctuation">/&gt;</span></span>
 
 INFO PAGE:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>BR</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>m</span><span class="token punctuation">&gt;</span></span>
-START ;
-   Q
+START	;
+	Q
 BACK	;
 	D GO^%ESLJX("start.html")
 	Q
