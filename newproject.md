@@ -28,7 +28,7 @@ start.html
 ```
 
 This start.html will be page number one for the m-framework software
-the directory is the 
+the directory is the same as the index.html
 
 #### use the advance template with bootstrap 
 ```
@@ -98,5 +98,6 @@ Hi, this is a message
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg0MjQ1ODQxNSwtMTY4NzQyNDA4MF19
+eyJoaXN0b3J5IjpbLTIwMzIyODI2ODEsLTE2ODc0MjQwODBdfQ
+==
 -->
