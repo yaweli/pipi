@@ -284,10 +284,11 @@ One way is to run a bash script , to flash the light every second , also add it 
 ###  gpio support:
 
 
- with %ESGP you can
+With %ESGP you can control the gpio pin , read there value and set a new value
+
 
 action|description|same as command
---|-----
+--|--|---
 1|get the value or direction for each gpio|cat value
 1|get a list of all live gpio|ls gpio*
 2|set the value of the direction of the pin|echo out>direction
@@ -424,5 +425,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NDY0MTg0NDIsLTEzMTgxMjldfQ==
+eyJoaXN0b3J5IjpbLTE3OTkxNzg2MjgsLTEzMTgxMjldfQ==
 -->
