@@ -297,7 +297,9 @@ D SETVAL(gpip,"1")|set the value of the pin|echo "1" > value
 D EXP(gpio)|start gpio pin by export function|echo "14">export
 D UNEXP(gpio)|stop gpio pin by export function|echo "14">unexport
 
-[learn more about GPIO
+[learn more about GPIO](https://www.makeuseof.com/tag/raspberry-pi-gpio-pins-guide/)
+
+
 ####  cgi environment
 the mumps include the VRU() vectore with all the linux environment where the cgi include envirment for the session posted from you browser. 
 examples: 
@@ -427,5 +429,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzc1MjYyMDEsLTEzMTgxMjldfQ==
+eyJoaXN0b3J5IjpbMTQ4NTA4OTQ4OV19
 -->
