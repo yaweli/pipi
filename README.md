@@ -4,7 +4,7 @@
 ---
 
 <h1 id="pipi">pipi</h1>
-<p>This project include a full mumps framework running on the Raspberry pi<br>
+<p>mFrame project include a full mumps framework running on the Raspberry pi<br>
 accessed by the browser (desktop or mobile)<br>
 it’s a platform to develop a web apps / desktop apps and websites with mumps as a code<br>
 that will generate nice web ui using latest bootstap</p>
