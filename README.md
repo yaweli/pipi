@@ -313,7 +313,8 @@ VRU("REQUEST_SCHEME")="http"
 VRU("REQUEST_URI")="/cgi-bin/es?a=Start&REDUCI=ELI"
 VRU(:)..more
 ```
-the form variables from the url:
+the form variables from the url: mypi/cgi-bin/es?a=Start&REDUCI=ELI
+
 ```mumps
 %PARK("REDUCI")="ELI"
 %PARK("a")="Start"
@@ -430,5 +431,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMjE2MTA5NzUsMTQ4NTA4OTQ4OV19
+eyJoaXN0b3J5IjpbLTE3OTUxMzkwODEsMTQ4NTA4OTQ4OV19
 -->
