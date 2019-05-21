@@ -353,7 +353,7 @@ J26712 I/dev/pts/3
 ELI>
 ```
 
-view the uci's globals:- __D ^%G __
+view the uci's globals:  __D ^%G__
 
 ```mumps
 ELI>D ^%G
@@ -432,5 +432,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTI3OTQ2NjUwNywxNDg1MDg5NDg5XX0=
+eyJoaXN0b3J5IjpbLTEzMjk2MTQwMzgsMTQ4NTA4OTQ4OV19
 -->
