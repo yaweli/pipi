@@ -301,7 +301,8 @@ D UNEXP(gpio)|stop gpio pin by export function|echo "14">unexport
 
 
 ####  cgi environment
-the mumps include the VRU() vectore with all the linux environment where the cgi include envirment for the session posted from you browser. 
+the mumps include the VRU() vectore with all the linux environment where the cgi include environment for the session posted from your browser. 
+
 examples: 
 ```mumps
 VRU("QUERY_STRING")="a=Start&REDUCI=ELI"
@@ -310,7 +311,7 @@ VRU("REMOTE_PORT")=62994
 VRU("REQUEST_METHOD")="GET"
 VRU("REQUEST_SCHEME")="http"
 VRU("REQUEST_URI")="/cgi-bin/es?a=Start&REDUCI=ELI"
-VRU(:)
+VRU(:)..more
 ```
 the form variables from the url:
 ```mumps
@@ -429,5 +430,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NTA4OTQ4OV19
+eyJoaXN0b3J5IjpbLTEyMjE2MTA5NzUsMTQ4NTA4OTQ4OV19
 -->
