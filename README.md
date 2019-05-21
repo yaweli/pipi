@@ -432,8 +432,11 @@ routine name | description
 %MGR|switch to uci MGR
 
 __MGR__ uci will contain all the %routines + all the %globals
-note the prompt will point the t
+note the prompt will point to the current uci.
+
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTI5MDczOTM5OCwtMTUyNTU1NjU5OF19
+eyJoaXN0b3J5IjpbLTEwMDkxMDI0MDcsLTE1MjU1NTY1OThdfQ
+==
 -->
