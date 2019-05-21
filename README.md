@@ -371,7 +371,7 @@ Global ^%ZUCI
 ^%ZUCI("MGR","R") = /gtm/mgr/r/ /gtm/
 Global ^
 ```
-we are using dsm style global listing , include a lot of extensions , will be documented later on.
+we are using dsm style global listing , include a lot of extensions , [learn more](gdsm.md)
 
 
 ### gtm management
@@ -432,5 +432,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEzMjk2MTQwMzgsMTQ4NTA4OTQ4OV19
+eyJoaXN0b3J5IjpbLTE1MjU1NTY1OThdfQ==
 -->
