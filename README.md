@@ -327,9 +327,9 @@ VR("User-Agent")="Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:66.0) Gecko/201001
 ..and more, depends on the apache webserver
 
 
-### Mumps enviroment system wide
+### Mumps environment system wide
 
-connect by ssh to getinto the linux enviroment
+connect by ssh to get into the linux environment
 to log into the gtm (mumps) enter __m__
 ```sh
 eli@eli-laptop:~/projects/mumps$ m
@@ -337,7 +337,7 @@ eli@eli-laptop:~/projects/mumps$ m
 MGR>
 ```
 
-This mumps is DSM style which have a subdevistions of database OR namespaces we call UCI. 
+This mumps is DSM style which have a subdivisions of database OR namespaces we call UCI. 
 first login will take you to the MGR uci
 all routines from MGR can be see on all other uci's
 
@@ -353,7 +353,8 @@ J26712 I/dev/pts/3
 ELI>
 ```
 
-view the uci's globals - __D ^%G __
+view the uci's globals:- __D ^%G __
+
 ```mumps
 ELI>D ^%G
 
@@ -431,5 +432,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3OTUxMzkwODEsMTQ4NTA4OTQ4OV19
+eyJoaXN0b3J5IjpbLTI3OTQ2NjUwNywxNDg1MDg5NDg5XX0=
 -->
