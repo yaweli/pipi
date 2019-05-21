@@ -442,9 +442,16 @@ note the prompt will point to the current uci.
 - each restart to the system the ^W will be cleaned
 - make sure to clean it on first entry
 - using upper case/lower case command in mumps - up to you. macros only on upper case
-- 
+
+
+
+## create new project
+
+To create a new project , follow those guides :
+[Guide](newproject.md)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTEyNDAzNzg5MSwtMjEwNTYyODYzM119
+eyJoaXN0b3J5IjpbMTY0Mjg2MDIyOCwxMTI0MDM3ODkxLC0yMT
+A1NjI4NjMzXX0=
 -->
