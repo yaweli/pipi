@@ -52,4 +52,48 @@ START	;
 <td>VERSION() Q “1.01.001”</td>
 </tr>
 </tbody>
+</table><h4 id="performance">performance</h4>
+<p>the .mes files are compiled one time, the next time the routines run , it will run on the .m or better on the .o this will make the performance good the same as for the normal mumps source.</p>
+<h4 id="runtime-vs-development">runtime vs development</h4>
+<p>On the <em>Runtime</em> systems , you can user the .m source only , you will not need to compile the source a gain.<br>
+On the <em>Development</em> system you will need this package in full. Run with it’s development kit , including the .mes framework extension</p>
+<h4 id="why-only-on-raspberry-pi">Why only on Raspberry Pi?</h4>
+<p>No , we can use mumps framework on three other ways , we first invest for Raspberry pi since it give this peace of hardware a real boost.</p>
+<h3 id="other-platform-for-mumps-framwork">other platform for mumps framwork</h3>
+
+<table>
+<thead>
+<tr>
+<th>platform</th>
+<th>description</th>
+<th>how</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Raspberry Pi</td>
+<td>all versions , start with zero w</td>
+<td>we will publish a full system image</td>
+</tr>
+<tr>
+<td>Linux on the cloud as a server</td>
+<td>all linux support gt.m</td>
+<td>will publish a guide/aws public image</td>
+</tr>
+<tr>
+<td>Linux on my local station</td>
+<td>any station , server on working station</td>
+<td>will publish a guide</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>run on cloud or in any docker runtime</td>
+<td>will publish an image and a Dockerfile</td>
+</tr>
+<tr>
+<td>Fleet</td>
+<td>Use for large scalable systems</td>
+<td>behind an AWS load balancer as Docker Kubernetes. will publish a guide</td>
+</tr>
+</tbody>
 </table>
