@@ -1,4 +1,4 @@
-## new project guide
+## new project CYCLE guide
 
 
 1. create new directory in 
@@ -100,7 +100,12 @@ Hi, this is a message
 D GO("nextpage.html")
 ```
 
-### finis by returning to landing page
+#### make use of the session information
+```
+S ^W(JB,"INFO")=3000
+```
+
+### finish by returning to landing page
 ```
 D GO("index.html")
 ```
@@ -112,6 +117,6 @@ K ^W(JB)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTEyMDgzMjg4MTEsLTIwMzIyODI2ODEsLT
-E2ODc0MjQwODBdfQ==
+eyJoaXN0b3J5IjpbMTM5ODE0NzU0NSwtMjAzMjI4MjY4MSwtMT
+Y4NzQyNDA4MF19
 -->
