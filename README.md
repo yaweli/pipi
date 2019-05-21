@@ -435,8 +435,13 @@ __MGR__ uci will contain all the %routines + all the %globals
 
 note the prompt will point to the current uci.
 
+## mumps programing good practice
+
+- use the UCI structure for a large projects , each project it's own UCI
+- session : you have a JB in the partision which is unique to the 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIxMDU2Mjg2MzNdfQ==
+eyJoaXN0b3J5IjpbLTE2MTA3NDYyODUsLTIxMDU2Mjg2MzNdfQ
+==
 -->
