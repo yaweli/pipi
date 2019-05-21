@@ -290,10 +290,10 @@ With %ESGP you can control the gpio pin , read there value and set a new value
 action|description|same as command
 --|--|---
 $$VAL(gpio)|get the value or direction for each gpio|cat value
-$$DIR(gpio)|get the direction for each gpio|cat value
-1|get a list of all live gpio|ls gpio*
-2|set the value of the direction of the pin|echo out>direction
-4|set the value of the pin|echo "1" > value
+$$DIR(gpio)|get the direction for each gpio|cat direction
+ACTIV(GLO)|get a list of all live gpio|ls gpio*
+SETDIR(gpio,"out")|set the value of the direction of the pin|echo out>direction
+SETVAL(gpip,"1")|set the value of the pin|echo "1" > value
 5|start / stop gpio pin by export function|echo "14">export
 
 
@@ -426,5 +426,5 @@ routine name | description
 __MGR__ uci will contain all the %routines + all the %globals
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTgzMjI4OTE5NywtMTMxODEyOV19
+eyJoaXN0b3J5IjpbNjQxOTg5NjA2LC0xMzE4MTI5XX0=
 -->
