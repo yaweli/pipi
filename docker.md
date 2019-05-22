@@ -18,10 +18,12 @@ After running the docker on my linux , look for the i.p. the system set to the d
 and the url should be:
 for the docker image get:
 http://172.17.0.2/proj/dev/
+
 for my linux station side:
 http://172.17.0.1/proj/dev/
 
 the first page index.html will appear:
+
 ![](dev1.png)
 
 
@@ -30,5 +32,5 @@ the first page index.html will appear:
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExNTkwNzA4ODVdfQ==
+eyJoaXN0b3J5IjpbLTE4Mjc5NjkwMSwtMTE1OTA3MDg4NV19
 -->
