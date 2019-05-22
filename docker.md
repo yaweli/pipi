@@ -28,11 +28,11 @@ the first page index.html will appear:
 
 This docker include the support for bootstrap+jquery+gtm for linux. it's a runtime machine
 
-Soon a docker image with devel
+Soon a docker image with development kit for the Mumps framework. 
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk4NDAyODMwNSwtMTE1OTA3MDg4NV19
+eyJoaXN0b3J5IjpbLTEzNjg5NjM5OTBdfQ==
 -->
