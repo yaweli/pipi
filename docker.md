@@ -26,11 +26,13 @@ the first page index.html will appear:
 
 ![](dev1.png)
 
+This docker include the support for bootstrap+jquery+gtm for linux. it's a runtime machine
 
+Soon a docker image with devel
 
 
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4Mjc5NjkwMSwtMTE1OTA3MDg4NV19
+eyJoaXN0b3J5IjpbMTk4NDAyODMwNSwtMTE1OTA3MDg4NV19
 -->
