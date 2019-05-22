@@ -109,7 +109,7 @@ S ^W(JB,"INFO")=3000
 ```
 D GO("index.html")
 ```
-dont forget to clean the environment of the session 
+don't forget to clean the environment of the session 
 ```
 K ^W(JB)
 ```
@@ -117,6 +117,6 @@ K ^W(JB)
 
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTM5ODE0NzU0NSwtMjAzMjI4MjY4MSwtMT
-Y4NzQyNDA4MF19
+eyJoaXN0b3J5IjpbMTM4Mjc1NzM4MiwxMzk4MTQ3NTQ1LC0yMD
+MyMjgyNjgxLC0xNjg3NDI0MDgwXX0=
 -->
