@@ -4,7 +4,7 @@ accessed by the browser (desktop or mobile)
 it's a platform to develop a web apps / desktop apps and websites with mumps as a code 
 that will generate nice web ui using latest bootstap 
 
-His big brother runs this same framework on a docker , or on any linux machine.
+His big brother runs this same framework on a docker , or on any Linux machine.
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 ### Features
 #### mumps extension commands
@@ -450,7 +450,11 @@ note the prompt will point to the current uci.
 To create a new project , follow those guides :
 [Guide](newproject.md)
 
+## M framework on a docker
+
+Full guide coming soon 
+
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTY0Mjg2MDIyOF19
+eyJoaXN0b3J5IjpbLTE4ODAyNDI0MDAsMTY0Mjg2MDIyOF19
 -->
