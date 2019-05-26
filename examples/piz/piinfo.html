@@ -1,0 +1,26 @@
+<m#import mpak1 />
+INFO PAGE:<BR>
+
+<m>
+START	;
+	Q
+BACK ;
+	D GO^%ESLJX("start.html")
+	Q
+</m>
+gpio documentations: <br>
+<img width=500 src="https://www.raspberrypi.org/documentation/usage/gpio/images/gpio-numbers-pi2.png" />
+<hr>
+1. start pin gpio
+<br>echo 3 > /sys/class/gpio/export
+<br> will create: /sys/class/gpio/gpio3
+<br>echo "out" > /sys/class/gpio/gpio3/direction
+<br>or echo "in" > /sys/class/gpio/gpio3/direction
+<br>echo "1" > /sys/class/gpio/gpio3/value
+<br>echo "0" > /sys/class/gpio/gpio3/value
+<br>
+<img src="https://cdn.pimylifeup.com/wp-content/uploads/2015/09/Raspberry-Pi-GPIO-pinout-diagram-new.png" />
+<br><a href="https://wirenboard.com/wiki/index.php/%D0%A0%D0%B0%D0%B1%D0%BE%D1%82%D0%B0_%D1%81_GPIO/en">guide</a>
+
+<HR>
+<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')"">Back</button>

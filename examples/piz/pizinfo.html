@@ -1,0 +1,45 @@
+<m#import mpak1 />
+
+INFO PAGE:<BR>
+<m>
+START	;
+	W "PROJECTS:"
+	W "<TABLE border=2 CELLPADDING=2 CELLSPACING=2>" D  W "</TABLE>"
+	.FOR I IN ^%ESV(2,"INTERNET") D
+	..W "<TR>" D  W "</TR>"
+	...W "<TD>"_I_"</TD>"
+	;
+	W "GENERAL:<BR>"
+	W "CLOCK: "_$H_"<BR>"
+	W "M NAME: "_^["MGR"]CURRENT("NAME")
+	Q
+BACK ;
+	D GO^%ESLJX("start.html")
+	Q
+WIFI ;
+	D NELE^%ESLJX("wifi") D  D EELE^%ESLJX
+	.W "Scaning..."
+	D SELE^%ESLJX("wifi","") 
+	D NELE^%ESLJX("wifi") D  D EELE^%ESLJX
+	.S GLO=$NA(^W(JB,"F")) K @GLO
+	.D WIFIL^%ESF(GLO)
+	.FOR I IN @GLO D
+	..S A=^(I),WIFI=$P(A,D,1)
+	..W "<BR> - ",WIFI
+	Q
+MOREI ;
+	D GO^%ESLJX("piinfo.html")
+	Q
+GPIO ;
+	D GO^%ESLJX("gpio.html")
+	Q
+</m>
+<HR>
+<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')"">Back</button>
+<hr>
+<a href=# onclick="mLabel('WIFI','W')">Scan wifi networks</a>
+<span id=wifi></span>
+<hr>
+<a href=# onclick="mLabel('MOREI','M')">More PI info</a>
+<hr>
+<a href=# onclick="mLabel('GPIO','G')">GPIO info</a>
