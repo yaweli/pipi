@@ -1,0 +1,143 @@
+<m#import /paks/mpak1 />
+
+<div class="pos-f-t">
+  <div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+		<div class="btn-group bg-dark p-4" role="group" aria-label="Button group">
+		  <button type="button" class="btn btn-secondary"><img width=30 class="img-fluid" src=/im/set.png /></button>
+		  <button type="button" class="btn btn-secondary" onclick="mLabel('GOINFO','i')" >
+			<img width=30 class="img-fluid" src=/im/inf.png />
+		  </button>  
+		</div>
+    </div>
+  </div>
+  <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span> 
+    </button>
+    <h5 id=name class="text-white h4">Sl smadar</h5>
+  </nav>
+</div>
+<m> 
+START	; One page apps  , Shopping list
+	; 
+	I $D(MYCY) D  ; first time , come from the Landing page (index.html)
+	.S CY=MYCY ; SAVE FAMILY CODE (IF U NEED TO HANDLE MORE THAN ONE LIST IN THE SAME SERVER) 
+	.S FA=FNAM ; SAVE FAMILY NAME
+	;
+	S %LNG="E",%DLG="E" ; view languge="EN" database languge="EN" ; Future multi lang
+	;
+	D NAME
+	;
+	; inside a card
+	D CARD("QUOT","BODY","W90%")
+	Q
+QUOT ;
+	W "List"
+	Q
+BODY	;
+	w "<div data-role='page'>" D  W "</div>"
+	.w "<div role='main' class='ui-content'>",! D  W "</div>"
+	..w "<ul id=all class='list-group' data-role='listview'>",! D  w "</ul>"
+	...FOR L IN ^SL(CY,"L") D
+	....S A=^(L)
+	....D ONE(A,L)
+	.w "<div role='footer' class='ui-content' data-position='fixed' data-theme='a' data-tap-toggle='false'>",! D  W "</div>"
+	..w "<span id=add></span>"
+	..D PLUS
+	Q
+PLUS	; draw the button [+]
+	D BUT(" + ","plus","S",0,"ADD")
+	Q
+ONE(IT,L) ; draw one item
+	S NM=$$NM(IT)
+	W "<li id=el"_L_">"
+	D BUT("X","del_"_L,"D",0,"DEL1")
+	W " "
+	W NM
+	W "</li>"
+	Q
+DEL1 ; delete one line
+	S L=$P(M,D,2)
+	w "removeElement(""el"_L_""");"
+	K ^SL(CY,"L",L)
+	Q
+ADD	; open add item text box
+	D AJPOINT("add") ; POINT TO THIS ELEMENT
+	D AJ("ADDB")
+	D RMELE("plus")
+	D FOCUS("inpb")
+	Q
+ADDB	; the HTML part of the form text input
+	D INPUT("","inpb","Enter new grocery","ADD1")
+	D BUT("Add","addb","P",0,"")
+	D BUT("X","addx","P",0,"ADDX")
+	Q
+ADDX	; cancel the add item, press [x]
+	D RMELE("addb")
+	D RMELE("inpb")
+	D RMELE("addx")
+	;
+	D AJPOINT("add") ; POINT TO THIS ELEMENT
+	D AJ("UPD2")
+	Q
+ADD1	; confirm the add one item , after input item name
+	D ADDIF(M) ;-> OK,A
+	S RUN=1+$ZP(^SL(CY,"L",""))
+	S ^SL(CY,"L",RUN)=OK
+	D RMELE("addb")
+	D RMELE("inpb")
+	D SELE("add","")
+	;
+	; add new element
+	; 
+	D AJPOINT("all")
+	D AJ("UPD1")
+	;
+	; add plus sign 
+	;
+	D AJPOINT("add") ; POINT TO THIS ELEMENT
+	D AJ("UPD2")
+	;
+	Q
+UPD1	; add item to the <li>
+	D ONE(OK,RUN)
+	Q
+UPD2	; update the [+] button
+	D PLUS
+	Q
+ADDIF(TX) ; -> A,OK
+	; add to the list only if new name
+	s TX=$TR(TX,"+"," ")
+	S OK=0
+	FOR I IN ^IT(1) D  Q:OK
+	.S A=^(I)
+	.S NM=$$NM(I)
+	.I NM=TX S OK=I
+	I 'OK D
+	.D NEW(TX)
+	Q
+NEW(NM) ; --> A,OK
+	; add to the global
+	ZA ^M D  ZD ^M
+	.N I S I=1+$ZP(^IT(1,""))
+	.S A=""
+	.S $P(A,D,1)=NM
+	.S ^IT(1,I)=A
+	.S OK=I
+	Q
+NM(IT) ; Return item name
+	N A S A=$G(^IT(1,IT))
+	Q $P(A,D,1)
+GOINFO ;
+	D GO("info.html")
+	Q
+NAME	;
+	W !,"<script>"
+	W !,"document.getElementById('name').innerHTML='"_FA_"';"
+	W !,"</script>"
+	Q
+	#INCLUDE %ESBSI
+	#INCLUDE %ESLJXI
+	Q
+</m>
