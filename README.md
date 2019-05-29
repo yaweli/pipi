@@ -133,14 +133,14 @@ the js files and the css files without the need to enter a long lines.
 So the framework come the packs. 
 ####  bootstrap 4 + jquery +popper
 ```html
-<m#import mpak1 />
+<m#import /paks/mpak1 />
 ```
 
 __mpak1__ : This will include all the html need to use the bootstrap + jquery 
 
 ##### example 1 - simple bootstrape button
 ```html
-<m#import mpak1 />
+<m#import /paks/mpak1 />
 
 INFO PAGE:<BR>
 <m>
@@ -160,7 +160,7 @@ BACK	;
 
 ##### example 2 - more nice bootstrap elements
 ```html
-<m#import mpak1 />
+<m#import /paks/mpak1 />
 
 
 <form>
