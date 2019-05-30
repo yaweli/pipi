@@ -18,6 +18,7 @@
     <h5 id=name class="text-white h4">Sl smadar</h5>
   </nav>
 </div>
+<form>
 <m> 
 START	; One page apps  , Shopping list
 	; 
@@ -31,9 +32,10 @@ START	; One page apps  , Shopping list
 	;
 	; inside a card
 	D CARD("QUOT","BODY","W90%")
+	D CARD("INV","INVB","W90%")
 	Q
 QUOT ;
-	W "List"
+	W "Shopping list"
 	Q
 BODY	;
 	w "<div data-role='page'>" D  W "</div>"
@@ -41,7 +43,7 @@ BODY	;
 	..w "<ul id=all class='list-group' data-role='listview'>",! D  w "</ul>"
 	...FOR L IN ^SL(CY,"L") D
 	....S A=^(L)
-	....D ONE(A,L)
+	....D ONE($P(A,D,1),L)
 	.w "<div role='footer' class='ui-content' data-position='fixed' data-theme='a' data-tap-toggle='false'>",! D  W "</div>"
 	..w "<span id=add></span>"
 	..D PLUS
@@ -51,16 +53,63 @@ PLUS	; draw the button [+]
 	Q
 ONE(IT,L) ; draw one item
 	S NM=$$NM(IT)
+	S QUN=$$QUN(L)
 	W "<li id=el"_L_">"
-	D BUT("X","del_"_L,"D",0,"DEL1")
-	W " "
-	W NM
+	w "<table BORDER=0 width=100%><tr>" D  W "</tr></table>"
+	.W "<TD WIDTH=5%>" D  W "</TD>"
+	..D BUT("X","del_"_L,"D",0,"DEL1")
+	.W "<TD WIDTH=5%>" D  W "</TD>"
+	..I $$ISIMG(IT) W "<img src=""/im/sl/t"_IT_".png"" width=30 />" 
+	.W "<TD>" D  W "</TD>"
+	..W NM
+	.W "<TD WIDTH=5%>" D  W "</TD>"
+	..W "<span id=spin_"_L_">" D  W "</spin>"
+	...I QUN>1 D SPIN
+	.W "<TD WIDTH=5%>" D  W "</TD>"
+	..W "<span id=qun_"_L_">"_QUN_"</span>"
+	.W "<TD WIDTH=5%>" D  W "</TD>"
+	..D BUT("+","pl_"_L,"D",0,"PL1") ; QUN [+]
 	W "</li>"
+	Q
+PIN	; click qun [-]
+	S L=$P(M,D,2)
+	S OLD=$$QUN(L)
+	S OLD=OLD-1
+	I OLD=1 S OLD=""
+	D SETQUN(L,OLD)
+	D SELE("qun_"_L,"")
+	D AJPOINT("qun_"_L) ; POINT TO THIS ELEMENT
+	D AJ("PL2")
+	I OLD="" D RMELE("pin_"_L)
+	Q
+PL1	; click qun [+]
+	S L=$P(M,D,2)
+	S OLD=$$QUN(L)
+	I 'OLD S OLD=1 ;'
+	S OLD=OLD+1
+	D SETQUN(L,OLD)
+	D SELE("qun_"_L,"")
+	D AJPOINT("qun_"_L) ; POINT TO THIS ELEMENT
+	D AJ("PL2")
+	I OLD=2 D
+	.D AJPOINT("spin_"_L) ; POINT TO THIS ELEMENT
+	.D AJ("SPIN")
+	Q
+SPIN	; draw button qun [-]
+	D BUT("-","pin_"_L,"D",0,"PIN") ; QUN [-]
+	Q
+PL2	; ; draw qun
+	W OLD
 	Q
 DEL1 ; delete one line
 	S L=$P(M,D,2)
+	S OK=$P(^SL(CY,"L",L),D,1)
 	w "removeElement(""el"_L_""");"
 	K ^SL(CY,"L",L)
+	;
+	S RUN=L
+	D AJPOINT("inv")
+	D AJ("UPD3") ; add to inventory
 	Q
 ADD	; open add item text box
 	D AJPOINT("add") ; POINT TO THIS ELEMENT
@@ -81,24 +130,29 @@ ADDX	; cancel the add item, press [x]
 	D AJPOINT("add") ; POINT TO THIS ELEMENT
 	D AJ("UPD2")
 	Q
-ADD1	; confirm the add one item , after input item name
-	D ADDIF(M) ;-> OK,A
+ADDLI ; OK -> RUN
 	S RUN=1+$ZP(^SL(CY,"L",""))
-	S ^SL(CY,"L",RUN)=OK
+	S ^SL(CY,"L",RUN)=OK ; OK_D_QUN
+	Q
+ANE	;  add new element
+	; 
+	D AJPOINT("all")
+	D AJ("UPD1") ; add item to shoping list on screen
+	Q
+APS	; add plus sign 
+	;
+	D AJPOINT("add") ; POINT TO THIS ELEMENT
+	D AJ("UPD2") ; + button
+	Q
+ADD1	; confirm the add one item , after input item name
+	S M=$$FIX(M)
+	D ADDIF(M) ;-> OK,A
+	D ADDLI ; OK -> RUN
 	D RMELE("addb")
 	D RMELE("inpb")
 	D SELE("add","")
-	;
-	; add new element
-	; 
-	D AJPOINT("all")
-	D AJ("UPD1")
-	;
-	; add plus sign 
-	;
-	D AJPOINT("add") ; POINT TO THIS ELEMENT
-	D AJ("UPD2")
-	;
+	D ANE ; add new element
+	D APS ; add plus sign [+] button
 	Q
 UPD1	; add item to the <li>
 	D ONE(OK,RUN)
@@ -106,8 +160,7 @@ UPD1	; add item to the <li>
 UPD2	; update the [+] button
 	D PLUS
 	Q
-ADDIF(TX) ; -> A,OK
-	; add to the list only if new name
+ADDIF(TX) ; -> A,OK , ; add to the list only if item name is new
 	s TX=$TR(TX,"+"," ")
 	S OK=0
 	FOR I IN ^IT(1) D  Q:OK
@@ -125,19 +178,70 @@ NEW(NM) ; --> A,OK
 	.S $P(A,D,1)=NM
 	.S ^IT(1,I)=A
 	.S OK=I
+	.S ^Q("SL",I)=""
+	;J ^SL
 	Q
 NM(IT) ; Return item name
 	N A S A=$G(^IT(1,IT))
-	Q $P(A,D,1)
+	Q $$L1^%ESS($P(A,D,1))
+ISIMG(IT) ;
+	I $P($G(^IT(1,IT,"D")),D,1)="I" Q 1
+	Q 0
 GOINFO ;
 	D GO("info.html")
 	Q
-NAME	;
+NAME	; first time
 	W !,"<script>"
 	W !,"document.getElementById('name').innerHTML='"_FA_"';"
-	W !,"</script>"
+	W !,"</script>" ; </
 	Q
+INV	;
+	W "Inventory"
+	Q
+INVB ;
+	w "<div id=inv>" D  W "</div>"
+	.FOR I IN ^IT(1) D ONEV("",I)
+	Q
+ONEV(L,I) ;
+	S NM=$$NM(I)
+	I $$INUSE(I) Q
+	D BUT("X","ix_"_I,"D",0,"INVX")
+	D BUT(NM,"it_"_I,"W",0,"INVA")
+	W " "
+	Q
+INVA	;
+	; M="it_300"
+	S I=$P(M,D,2)
+	S OK=I
+	D ADDLI ; OK -> RUN
+	D ANE ; add new element
+	D RMELE("it_"_OK)
+	D RMELE("ix_"_OK)
+	Q
+INVX	;
+	S I=$P(M,D,2)
+	I $$INUSE(I) Q
+	D KIL(I)
+	D RMELE(M)
+	S $P(M,D,1)="it" D RMELE(M)
+	Q
+KIL(I) ;
+	K ^IT(1,I)
+	Q
+UPD3	;
+	D ONEV(RUN,OK)
+	Q
+INUSE(IT) ;
+	N INUSE
+	FOR J IN ^SL(CY,"L") I $P(^(J),D,1)=I S INUSE=1
+	Q $D(INUSE)
+FIX(A) ;
+	Q $$L1^%ESS(A)
 	#INCLUDE %ESBSI
 	#INCLUDE %ESLJXI
 	Q
+QUN(L) Q $P(^SL(CY,"L",L),D,2)
+SETQUN(L,V) S $P(^SL(CY,"L",L),D,2)=V Q
+	Q
 </m>
+</form>
