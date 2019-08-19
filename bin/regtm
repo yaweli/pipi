@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+#
+# regtm
+#
+if [ "x$USER" != "xroot" ]
+then echo "must be root"
+	 exit
+fi	 
+if [ "x`hostname`" != "xcontrol.aws.4m-a.org" ]
+then echo "Must be run on cloud"
+fi
+
+
+while true
+do
+	chmod 777 /gtm/mgr/r/*
+	chmod 777 /gtm/eli/r/*
+	chown eli:gtm /gtm/mgr/r/*
+	chown eli:gtm /gtm/eli/r/*
+	echo
+	echo "regtm MGR..."
+	mrun MGR REGTM^%ESF
+	echo
+	echo "regtm eli..."
+	mrun ELI REGTM^%ESF
+	echo "regtm mes..."
+	mrun ELI RES^FORML
+	echo -n "regtm  : Press enter for next one .."
+	while true
+	do
+		sleep 2
+		if [ -f /tmp/trigger ]
+		then rm -f /tmp/trigger
+			break
+		fi
+		echo -n ","
+	done
+done
+
+
+

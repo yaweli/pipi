@@ -1,0 +1,1115 @@
+#!/bin/sh
+# 08.01.2019
+#
+#------------------------------------
+# DO NOT EDIT !! SOURCE IS ON CCP SERVER $www/script/gtmman
+#------------------------------------
+# 
+function backman() {
+	while true 
+	do
+		echo "Backup manager"
+		echo "=============="
+		echo "1 - Do gtm online backup (WHILE GTM IS UP)"
+		echo "0 - exit"
+		echo -n "Option : ";read x
+		if [ "x$x" = "x0" ]
+		then return 
+		fi
+		if [ "x$x" = "x1" ]
+		then echo "Please note the target directory will be /jrn/online"
+			 echo "make sure free space!"
+			 mkdir /jrn/online 2>/dev/null
+			 guci "Enter uci to backup"
+			 if [ "x$guci" = "x" ]
+			 then continue
+			 fi
+			 if [ -f /jrn/online/$guci-online.dat ]
+			 then echo "file already exist , please erase old file /jrn/online/$guci-online.dat"
+				  continue
+			 fi
+			 ls -l /jrn/online/
+			 echo "Start backup $guci to /jrn/online/$guci-online.dat ..."
+			 #mupip backup "*" /jrn/online/acc-online.dat
+			 export gtm_dist=/cav/gtm/
+			 export gtmgbldir=/cav/gtm/$guci/$guci.gld
+			 /cav/gtm/mupip backup "*" /jrn/online/$guci-online.dat
+			 echo "finished"
+			 ls -l /jrn/online/
+		fi
+	done
+}
+function shadow_man() {
+	echo "To be run on shadow server only"
+	if [ ! -f /root/shadow ]
+	then echo "This is not a shadow server"
+	fi
+	while true 
+	do
+		echo "Shadow man"
+		echo "=========="
+		echo "1 - Stop shadow"
+		echo "2 - Start shadow"
+		echo "3 - show Shadow status"
+		echo "4 - show Shadow logs"
+		echo "5 - show Shadow errors"
+		echo "6 - mumps log display"
+		echo "7 - mumps error"
+		echo "0 - exit"
+		echo -n "Option : ";read x
+		if [ "x$x" = "x0" ]
+		then return 
+		fi
+		if [ "x$x" = "x1" ]
+		then /root/shadow/stopshadow
+			 continue
+		fi
+		if [ "x$x" = "x2" ]
+		then at now < /root/shadow/shadownew
+			 continue
+		fi
+		if [ "x$x" = "x3" ]
+		then ps -ef|grep ZCAVSHA
+			 continue
+		fi
+		if [ "x$x" = "x4" ]
+		then cat /var/log/shadow.err
+			 continue
+		fi
+		if [ "x$x" = "x5" ]
+		then echo "-----Top of list-------"
+			 cat /var/log/shadow.err  | egrep -v "(GTM-I|GTM-S)"
+			 echo "-----End of list-------"
+			 continue
+		fi
+		if [ "x$x" = "x6" ]
+		then echo "-----Top of list-------"
+		m -U MGR<<EndInp1
+zwr ^%LOG("S",*)
+
+H
+EndInp1
+			 echo "-----End of list-------"
+			 continue
+		fi
+		if [ "x$x" = "x7" ]
+		then echo "-----Top of list-------"
+			 m -U MGR "SHOW^%ZCAVSHA"
+			 echo "-----End of list-------"
+			 continue
+		fi
+	done
+}
+function trun_uci() {
+	echo "Shrink uci:"
+	echo "-----------"
+	echo "- the system will also shrink all connected uci , mgr , and all xyzW uci's"
+	echo "- the system can do it during live system work."
+	echo "- make sure linux filesystem have free space"
+	echo "- make sure uci have no ic errors on it"
+	echo "-----------"
+	guci "Enter uci name to shrink"
+	if [ "x$guci" = "x" ]
+	then echo "wrong"
+	     exit
+	fi
+	echo Uci is $guci
+	echo before Size is:
+	ls -l /cav/gtm/$guci/$guci.dat
+	echo ""
+	echo -n "Are you sure to Shrink uci $guci (y/n) (n) "
+	read x
+	if [ "x$x" == "xy" ]
+	then
+		date
+		echo "Stated..."
+		export gtm_dist=/cav/gtm/
+		export gtmgbldir=/cav/gtm/$guci/$guci.gld
+		echo "mupip REORG -TRUNCATE"
+		/cav/gtm/mupip REORG -TRUNCATE
+		echo "Ended...."
+		date
+		echo after Size is:
+		ls -l /cav/gtm/$guci/$guci.dat
+	else
+	    echo nothing to do
+	fi
+}
+#
+# system information
+function system_info() {
+	echo "System information:"
+	echo -n "Os is : "
+	osname
+	if [ -f /usr/sbin/dmidecode ]
+	then sudo dmidecode | grep "Manufacturer:"|head -1
+	fi
+	uname -a
+	echo "Aws info:"
+	for xx in instance-type instance-id
+	do
+		printf "%-10s : %20s\n" $xx `curl -s http://169.254.169.254/latest/meta-data/$xx`
+	done
+	echo " 1 - speed test "
+	echo ""
+	echo -n "option: ";read x
+	if [ "x$x" = "x1" ]
+	then python /cav/gtm/bin/speedtest.py
+	     echo ".....(enter)" ; read z
+	fi
+}
+#
+#
+# enter size function 
+# usage read_size "enter size of database" "10G" 1
+#                 text default block_factor_per_mega
+#                      |       |
+#                      in mega  =1 for mega =32 for blocks
+#
+################################################
+function read_size() {
+	export ans=""
+	tit=$1
+	def=$2
+	blk=$3
+	while true 
+	do
+		echo "Enter size in Mega or Giga in xxM or xxG"
+		echo "^ to terminate"
+		if [ "x$blk" = "x1" ]
+		then echo "(Every mega = $blk Blocks) enter sizes in mega"
+		fi
+		echo -n "$tit : < $def > "
+		read x
+		if [ "x$x" == "x^" ]
+		then ans=0
+			 return
+		fi
+		if [ "x$x" == "x" ]
+			then x=${def}M
+		fi
+		siz=${x: -1}  # return G or M
+		if [ "x$siz" == "xG" ]
+		then ans=`echo $x|sed 's/G//'`
+			 ans=`expr $ans \* 1000`
+			 if [ "x$blk" != "x1" ]
+			 then ans=`expr $ans \* $blk`
+			 fi
+			 return
+		fi
+		if [ "x$siz" == "xM" ]
+		then  ans=`echo $x|sed 's/M//'`
+			if [ "x$blk" != "x1" ]
+			then ans=`expr $ans \* $blk`
+			fi
+			return
+		fi
+		
+		ans=0 # error
+		echo "Error, try again (^ to exit)"
+	done
+}
+#
+#
+function pause() {
+	echo -n "Enter... ";read x
+}
+#
+# full gtm install
+#
+function global_map() {
+	guci "Enter uci name to show global mapping on"
+	if [ "x$guci" = "x" ]
+	then echo "wrong"
+	     exit
+	fi
+	while true
+	do
+		map_list $GUCI $guci
+		echo
+		echo Global Mapping Management for uci $guci
+		echo =========================================
+		echo M - Map a global to other uci
+		echo D - Delete global mapping
+		echo S - Show global mapping
+		echo EX - export Mapping configuration
+		echo IM - import Mapping configuration
+		echo
+		echo -n "select > " ; read x
+		if [ "x$x" = "x" ]
+		then exit
+		fi
+		if [ "x$x" = "xD" ]
+		then
+			echo -n "Global to cancel ^";read glo
+			if [ "x$glo" = "x" ] 
+			then echo "wrong"
+				 exit
+			fi
+			echo -n "dest uci: ";read to
+			tol=`echo $to|tr '[A-Z]' '[a-z]'`
+			if [ ! -f /cav/gtm/$tol/$tol.dat ]
+				 then    echo "No such target database file " /cav/gtm/$tol/$tol.dat
+						 return
+			fi
+			echo
+			echo -n "are you sure killing map global ^$glo? (y/n) <n> " ; read sure
+			if [ "x$sure" = "xy" ]
+				then killmap $GUCI $guci $to $glo
+			fi
+		fi
+		if [ "x$x" = "xM" ]
+		then
+			# 
+			#  to
+			# 
+			echo "map To uci: ";read to
+			tol=`echo $to|tr '[A-Z]' '[a-z]'`
+			if [ ! -f /cav/gtm/$tol/$tol.dat ]
+				 then    echo "No such target database file " /cav/gtm/$tol/$tol.dat
+						 return
+			fi
+			while true
+			do
+				#
+				# global
+				#
+				echo
+				echo -n "Global ^";read glo
+				if [ "x$glo" = "x" ]
+				then	echo "End of global maping"
+						break
+				fi
+				echo from $GUCI global $glo to $to
+				echo "-------------------------------------"
+				echo -n "Are you sure to map? [y/n]  <n> ";read are
+				if [ "x$are" = "xy" ]
+					then add_map $GUCI $guci $to $glo
+						 map_list $GUCI $guci
+					else echo "skip"
+				fi
+			done
+		fi
+		if [ "x$x" = "xEX" ]
+		then map_list $GUCI $guci| sed '1,/^ -----/d' |head -n -2  >/tmp/export.map.$guci.conf
+			 # %*                                 MGR
+			 # *                                  INT
+			 echo Export into file: 
+		     ls -l /tmp/export.map.$guci.conf
+		     echo Pause..;read xx
+		fi
+		if [ "x$x" = "xIM" ]
+		then echo "Import mapping for uci $GUCI"
+		     cat /tmp/export.map.$guci.conf
+		     echo "----------------------------------"
+			 if [ ! -f /tmp/export.map.$guci.conf ]
+		     then echo "No export file"
+		          return
+		     fi
+		     n=`cat /tmp/export.map.$guci.conf | wc -l`
+		     if [ $n -lt 3 ]
+		     then echo "Mapping file is empty" 
+		          return
+		     fi
+		     nn=`map_list $GUCI $guci| sed '1,/^ -----/d' |head -n -2 |wc -l`
+		     if [ $nn -gt 2 ]
+		     then echo ""
+				  echo "Uci alread have mapping"
+		          echo "delete all mapping first"
+		          echo "Enter....";read y
+		          # enter force for double mapping (on your risc)
+		          if [ "x$y" != "xforce" ]
+		          then continue
+		          fi
+		     fi
+		     echo ""
+		     echo -n "Are you sure ? [y/n] <n> "; read y
+		     if [ "x$y" != "xy" ]
+		     then continue
+		     fi
+		     
+			 # %*                                 MGR
+			 # *                                  INT
+			 while read i
+			 do	echo "$i"
+				export glo=`echo "$i"|awk '{ print $1 }'`
+				export to=`echo "$i"|awk '{ print $2 }'`
+				echo "Map global $glo to uci: $to"
+				echo -n "======================================="
+				if [ "x$to" = "xMGR" ]
+				then echo "MGR not supported"
+					 continue
+				fi
+				if [ "x$glo" = "x*" ]
+				then echo "* default map not supported"
+					 continue
+				fi
+				echo ""
+				echo "Mapping...."
+	 	        add_map $GUCI $guci $to "$glo"
+	 	        echo "==========="
+			 done < /tmp/export.map.$guci.conf
+		     echo Pause..;read xx
+		fi
+	done
+}
+##
+# replace automatically the gtm mains scripts
+# by taking them from ccp server
+# gtmman, gtmlst , ..
+	# first time install:
+#
+# cd /tmp;rm -f installgtm.sh;wget http://ccp.cavsystems.net/scripts/installgtm.sh;chmod 700 ./installgtm.sh;./installgtm.sh;
+#
+#
+function finstall() {
+	cd /tmp
+	rm installgtm.sh 2>/dev/null
+	wget http://ccp.cavsystems.net/scripts/installgtm.sh
+	x=`cat installgtm.sh|head -2|tail -1|grep key9090|wc -l`
+	if [ "x$x" != "x1" ]
+	then 	echo wget upload from ccp server fail
+			echo check domain ccp.cavsystems.net or open port 80
+			exit
+	fi
+	x=`cat installgtm.sh|wc -l`
+	if [ $x < 20 ]
+	then echo install file too short
+		 exit
+	fi
+	echo Ready:
+	cat installgtm.sh
+	chmod 700 installgtm.sh
+	echo -n "Ready? <y> ";read x
+	if [ "x$x" != "x" ]
+	then echo "not"
+		exit
+	fi
+	echo "Install started..."
+	./installgtm.sh
+	echo "Install completed..."
+}
+#
+# generic, get uci that exist
+# output: $GUCI  , $guci
+#
+function guci() {
+while true
+do
+	export GUCI=""
+	export guci=""
+	echo -n "$1 (UPPERCASE) : " ; read x
+	if [ "x$x" = "x" ]
+		 then return
+	fi
+	uci=$x
+	uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+	if [ ! -f /cav/gtm/$uciLower/$uciLower.dat ]
+		 then    echo "No such database file " /cav/gtm/$uciLower/$uciLower.dat
+				 return
+	fi
+	export GUCI=$uci
+	export guci=$uciLower
+	return
+done
+}
+#
+# Journals
+#
+
+function jour_recover() {
+	if [ ! -d /jrn ] 
+	then echo Missing journal install , dir /jrn missing
+		exit
+	fi
+	guci "Enter uci name to recover into"
+	if [ "x$guci" = "x" ]
+	then echo "wrong"
+	     exit
+	fi
+	echo "will now recover journal on uci $guci"
+	
+	jfile=/jrn/$guci.mjl
+	echo -n "Enter journal file to recover: <$jfile> ";read f
+	if [ "x$f" != "x" ]
+	then jfile=$f
+	fi
+	echo "File = $jfile"
+	if [ ! -f $jfile ]
+	then echo no journal file exist in $jfile
+	fi
+	
+	echo -n "are you sure? <n>" ; read x
+	if [ "x$x" != "xy" ]
+	then exit
+	fi
+
+	export gtm_dist=/cav/gtm/
+	export gtmgbldir=/cav/gtm/$guci/$guci.gld
+	/cav/gtm/mupip journal -recover -forward -NOCHAIN -NOCHECKTN $jfile
+}
+
+function jour_enable() {
+	if [ ! -d /jrn ] 
+	then echo Missing journal install , dir /jrn missing
+		exit
+	fi
+	guci "Enter uci name to enable journal on"
+	if [ "x$guci" = "x" ]
+	then echo "wrong"
+	     exit
+	fi
+	echo "will now enable journal on uci $guci"
+	
+	
+	export gtm_dist=/cav/gtm/
+    /cav/gtm/mupip set -journal="enable,on,before_images,AUTOSWITCHLIMIT=8386560,ALLOCATION=2048,EXTENSION=2048,file=/jrn/$guci.mjl" -file /cav/gtm/$guci/$guci.dat
+}
+function jour_disable() {
+	guci "Enter uci name to disable"
+	if [ "x$guci" = "x" ]
+	then echo "wrong"
+	     exit
+	fi
+	echo "will now disable journal on uci $guci"
+	export gtm_dist=/cav/gtm/
+    /cav/gtm/mupip set -journal="disable" -file /cav/gtm/$guci/$guci.dat
+}
+function journal_man() {
+	echo "ls -l /jrn:"
+	echo " ----------------------"
+    ls /jrn	
+	while true
+	do
+		echo " ------------------"
+		echo " Journal management"
+		echo " ------------------"
+		echo " 1 - enable uci journal"
+		echo " 2 - disable uci journal"
+		echo " 3 - show uci journal"
+		echo " 4 - recover uci from /jrn"
+		echo
+		echo -n "Select > " ; read x
+		case $x in 
+			1) jour_enable
+				pause
+				continue
+				;;
+			2) jour_disable
+				pause
+				continue
+				;;
+			3)  m -U MGR GTML^%ZCAVM
+				echo
+				pause
+				continue
+				;;
+			4)  jour_recover
+				echo
+				pause
+				continue
+				;;
+			*)	break
+				;;
+		esac
+	done
+}
+function osname() {
+	if [ -f /etc/os-release ]
+	then . /etc/os-release
+		#NAME="CentOS Linux"
+		#VERSION="7 (Core)"
+		#ID="centos"
+		#ID_LIKE="rhel fedora"
+		#VERSION_ID="7"
+		#PRETTY_NAME="CentOS Linux 7 (Core)"
+		#ANSI_COLOR="0;31"
+		#CPE_NAME="cpe:/o:centos:centos:7"
+		#HOME_URL="https://www.centos.org/"
+		#BUG_REPORT_URL="https://bugs.centos.org/"
+		#CENTOS_MANTISBT_PROJECT="CentOS-7"
+		#CENTOS_MANTISBT_PROJECT_VERSION="7"
+		#REDHAT_SUPPORT_PRODUCT="centos"
+		#REDHAT_SUPPORT_PRODUCT_VERSION="7"
+		# or 
+		#NAME="Ubuntu"
+		#VERSION="16.04.3 LTS (Xenial Xerus)"
+		#ID=ubuntu
+		#ID_LIKE=debian
+		#PRETTY_NAME="Ubuntu 16.04.3 LTS"
+		#VERSION_ID="16.04"
+		#HOME_URL="http://www.ubuntu.com/"
+		#SUPPORT_URL="http://help.ubuntu.com/"
+		#BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
+		#VERSION_CODENAME=xenial
+		#UBUNTU_CODENAME=xenial
+	    echo $PRETTY_NAME
+	    return
+	else if [ -f /etc/redhat-release ]
+	     then cat /etc/redhat-release
+			  # /etc/redhat-release
+			  return 
+	     else echo "unknow linux, pls call cav"
+	          return
+		 fi
+	fi
+}
+function killmap() {
+    uci=$1
+    uciLower=$2
+    to=$3
+    glo=$4
+    export gtm_dist=/cav/gtm
+    export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+    export lto=`echo $to|tr '[A-Z]' '[a-z]'`
+/cav/gtm/bin/gtm-up -U $uci ^GDE <<EOF
+del -name  $glo
+EXIT
+del -seg $to
+del -reg $to
+exit
+EOF
+
+}
+function map_list() {
+    uci=$1
+    uciLower=$2
+
+    export gtm_dist=/cav/gtm
+    export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+    echo "uci=$uci"
+    echo "ucilower=$uciLower"
+    { echo "d ^GDE"
+      echo SHOW -N
+      echo QUIT
+    } | /cav/gtm/bin/gtm-up -U $uci
+}
+
+# ic
+#
+function runic() {
+
+echo -n "Enter uci to check ic for (upper) " ; read x
+if [ "x$x" = "x" ]
+     then exit
+fi
+echo -n "on file? <S> "
+gtm_dist="/cav/gtm"; export gtm_dist
+ucilower=`echo $x|tr '[A-Z]' '[a-z]'`
+/cav/gtm/mupip INTEG -FULL -FILE /cav/gtm/$ucilower/$ucilower.dat
+}
+
+function add_map() {
+    uci=$1
+    uciLower=$2
+    to=$3
+    glo=$4
+    export gtm_dist=/cav/gtm
+    export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+    export lto=`echo $to|tr '[A-Z]' '[a-z]'`
+/cav/gtm/bin/gtm-up -U $uci ^GDE <<EOF1
+SETGD -FILE=$gtmgbldir
+add -segment $to  -file=/cav/gtm/$lto/$lto.dat
+add -region $to -d=$to
+add -name  $glo -region=$to
+SETGD -FILE=/cav/gtm/cav/cav.gld
+exit
+EOF1
+
+}
+#   A[DD] -G[BLNAME] global-name [-GBLNAME-qualifier ...]
+#   A[DD] -N[AME] namespace -R[EGION]=region-name
+#   A[DD] -R[EGION] region-name -D[YNAMIC]=segment-name [-REGION-qualifier...]
+#   A[DD] -S[EGMENT] segment-name [-SEGMENT-qualifier...] -F[ILE_NAME]=file-name
+
+
+# list all ucis
+listUcis() {
+cd /cav/gtm
+ls |grep gld|egrep -v help
+}
+#
+# extend uci
+#
+extendSpace() {
+echo -n "Enter uci name (3 or more uppercase) " ; read x
+if [ "x$x" = "x" ]
+     then exit
+fi
+uci=$x
+uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+if [ ! -f /cav/gtm/$uciLower/$uciLower.dat ]
+   then    echo "No such database file "/cav/gtm/$uciLower/$uciLower.dat
+   return
+fi
+
+echo -n "How meny to extend (in mega [1000 for 1G]) : "
+read x
+
+if [ "x$x" = "x" ]
+    then echo "Missing"
+    return
+fi
+
+sizeg=$x
+
+if [ $sizeg -lt 1 ]
+    then echo "error"
+    return
+fi
+echo "Size in mega: "$sizeg
+bl=`expr $sizeg \* 34`
+echo "Block to be extend: "$bl
+echo -n "Are you sure [y/n] <n> ? "
+read x
+
+if [ "x$x" = "xy" ]
+    then export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+         export gtm_dist='/cav/gtm'
+         echo "Wait..."
+         /cav/gtm/mupip EXTEND $uci -blocks=$bl
+         echo "Extend completed"
+fi
+}
+
+#
+# if you have external .dat file you can mount it as a new uci
+# put it in the durectory /cav/gtm/xxx   xxx-new uci name
+# and rename the file to xxx.dat , add xxx.gld  
+# and then run this mount proccess
+#
+# e.s. 4.9.2016
+#
+mountUci() {
+
+echo -n "Enter uci name (3 or more uppercase) " ; read x
+if [ "x$x" = "x" ]
+   then exit
+fi
+
+echo $x
+uci=$x
+uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+if [ ! -f /cav/gtm/$uciLower/$uciLower.dat ] 
+    then    echo "No such database file "/cav/gtm/$uciLower/$uciLower.dat
+    return
+fi
+export gtm_dist='/cav/gtm'
+export gtmgbldir=/cav/gtm/mgr/mgr.gld
+
+
+
+
+export glo='$D(^%ZUCIMAP("'$uci'"))'
+
+zz=`/cav/gtm/mumps -direct<<end2
+W "z",$glo h
+end2
+`
+ans=`echo $zz|cut -dz -f2`
+echo ans=$ans
+if [ x$ans = "x10" ]
+    then    echo "Uci already mounted"
+            return
+fi
+
+
+echo "Save into mumps:"
+/cav/gtm/mumps -direct<<end1
+S ^%ZUCIMAP("$uci","RTN")="/cav/gtm/$uciLower/"
+S ^%ZUCIMAP("$uci","GBL")="/cav/gtm/$uciLower/$uciLower.gld"
+S ^%ZUCIMAP("$uci","UCI")="$uci"
+S ^%ZUCIMAP("MGR","RTN")="/cav/gtm/mgr/ /cav/gtm/"
+end1
+ln -s /cav/gtm/$uci/$uci.gld /cav/gtm/$uci.gld
+
+echo "Done"
+return
+}
+#
+#make gtm uci
+#
+makeGtmUci() {
+uci=$1
+uciLower=$2
+
+
+
+# create
+#
+cd /cav/gtm
+export gtm_dist='/cav/gtm'
+export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+
+
+./mumps -run GDE<<EndInp
+rename -region DEFAULT $uci
+rename -segment DEFAULT $uci
+change -segment $uci -file=/cav/gtm/$uciLower/$uciLower.dat
+change -segment $uci -BLOCK_SIZE=31232
+change -segment $uci -GLOBAL_BUFFER_COUNT=4096
+change -segment $uci -allocation=$size
+change -segment $uci -extension=$exten
+change -segment $uci -LOCK_SPACE=4000
+change -region $uci -RECORD_SIZE=$rec_siz
+change -region $uci -KEY_SIZE=$key_siz
+add -name %* -region=MGR
+add -region MGR -dyn=MGR
+add -segment MGR -file=/cav/gtm/mgr/mgr.dat
+change -segment MGR -BLOCK_SIZE=31232
+change -segment $uci -GLOBAL_BUFFER_COUNT=4096
+change -segment MGR -allocation=$size
+change -segment MGR -extension=$exten
+change -segment MGR -LOCK_SPACE=4000
+change -region MGR -RECORD_SIZE=$rec_siz
+change -region MGR -KEY_SIZE=$key_siz
+exit
+EndInp
+
+# -BLOCK_SIZE=31232
+# change -segment ZZZ -BLOCK_SIZE=65024
+# change -region ZZZ -KEY_SIZE=999
+#
+
+
+
+echo "GDE completed. please check no error in the output"
+echo -n "continue? (y/n)"
+read x
+if [ "x$x" != "xy" ]
+        then    echo "will not continue to create"
+                exit
+fi
+echo "continue creating the database file"
+cd /cav/gtm
+./mupip create -reg=$uci
+echo "creating database file complete"
+echo "Link"
+ln -s $gtmgbldir /cav/gtm/$uci.gld
+echo "Linkn completed"
+echo "Update ^%ZUCIMAP"
+./mumps -direct<<eeeEEE
+S ^%ZUCIMAP("$uci","RTN")="/cav/gtm/$uciLower/"
+S ^%ZUCIMAP("$uci","GBL")="/cav/gtm/$uciLower/$uciLower.gld"
+S ^%ZUCIMAP("$uci","UCI")="$uci"
+S ^%ZUCIMAP("MGR","RTN")="/cav/gtm/mgr/ /cav/gtm/"
+eeeEEE
+echo "Update ok"
+}
+
+
+# Create new uci
+makeUci() 
+{
+uci=$1
+
+uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+echo uci is $uci directory $uciLower
+if [ ! -d /cav/gtm/$uciLower ]
+        then    echo "dir not exist. system will create new directory now"
+                echo -n "Create (y/n)" ; read x
+                if [ "x$x" = "xy" ]
+                        then mkdir /cav/gtm/$uciLower
+                             chmod 777 /cav/gtm/$uciLower
+                             chown cav:cav /cav/gtm/$uciLower
+                             echo "directory /cav/gtm/$uciLower created...[ok]"
+                             makeGtmUci $uci $uciLower
+                        else exit
+                fi
+        else    echo "dir exist, cannot make new database"
+                exit
+fi
+
+}
+
+# Show information for Namespace/Database (GDE)
+showUci() {
+while true
+do
+#echo "Show information for Namespace/Database"
+listUcis
+echo -n "Enter uci name (3 or more uppercase) " ; read x
+if [ "x$x" = "x" ]
+        then exit
+fi
+echo $x
+uci=$x
+uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+gtm -U MGR "^GDE"<<eeeEEE
+SETGD -FILE=/cav/gtm/$uciLower/$uciLower.gld
+show
+q
+eeeEEE
+done
+
+}
+
+# Show information for Namespace/Database (DSE)
+showUciDSE() {
+while true
+do
+	#echo "Show information for Namespace/Database"
+	listUcis
+	echo -n "Enter uci name (3 or more uppercase) " ; read x
+	if [ "x$x" = "x" ]
+			then exit
+	fi
+	echo $x
+	uci=$x
+	uciLower=`echo $uci|tr '[A-Z]' '[a-z]'`
+
+	export gtm_dist=/cav/gtm/
+	export gtmgbldir=/cav/gtm/$uciLower/$uciLower.gld
+
+	/cav/gtm/dse dump -fileheader
+
+done
+
+}
+
+
+# Create new uci custom
+newUciCust() {
+export size
+export ext
+export rec_siz
+export rec_siz_mgr
+export key_siz
+while true
+do 
+        echo "Create new uci for GTM - Cav tools - ** Custom ** "
+        echo "You can control the parameters"
+        listUcis
+        echo -n "Enter uci name (3 or more uppercase) " ; read x
+        if [ "x$x" = "x" ] 
+                then exit
+        fi
+        echo $x
+        uci=$x
+
+        #echo "note:  1Mega = 32Blocks"
+        #echo -n "Enter database size in blocks: (minimum=32) <4M - 128b> " ; read size
+        #if [ "x$size" = "x" ] 
+        #        then size=128
+        #fi
+        read_size "Database init size" 4 32
+        if [ "x$ans" = "x0" ] ;then return;fi; size=$ans
+
+        #echo -n "Enter extention in blocks: (min=32) <40M - 1280b> " ; read exten
+        #if [ "x$ext" = "x" ] 
+        #        then exten=1280
+        #fi
+        read_size "Enter extention" 40 32
+        if [ "x$ans" = "x0" ] ;then return;fi; exten=$ans
+        # new
+		echo -n "Do you want to disable extension? <n> (y/n) ";read x
+		if [ "x"$x = "xy" ] ;then exten=0;fi;
+		
+        #echo -n "Record size   (Global value length) (1024-65000) <31200> " ; read rec_siz
+        #if [ "x$rec_siz" = "x" ] 
+        #        then rec_siz=31200
+        #fi
+        read_size "Record size (Global value length)" 65000 1
+        if [ "x$ans" = "x0" ] ;then return;fi; rec_siz=$ans
+
+        #echo -n "Key size (global name length) (255-1000) <254> " ; read key_siz
+        #if [ "x$key_siz" = "x" ] 
+        #        then key_siz=254
+        #fi
+        read_size "Key size (global name length)" 1000 1
+        if [ "x$ans" = "x0" ] ;then return;fi; key_siz=$ans
+
+        echo "Uci name: "$uci
+        echo "Maximum database start size: "$size
+        echo "extetion: "$exten
+        echo "Record size: "$rec_siz
+        echo "Key size: "$key_siz
+
+        echo -n "Are you sure? (y/n)"
+        read v
+        if [ "x$v" = "xy" ] 
+                then makeUci $uci
+        fi
+done
+
+}
+
+# Create new uci
+newUci() {
+while true
+do 
+        echo "Create new uci for GTM - Cav tools"
+        listUcis
+        echo -n "Enter uci name (3 or more uppercase) " ; read x
+        if [ "x$x" = "x" ] 
+                        then exit
+        fi
+        echo $x
+        export size=128
+        export ext=1280
+        export rec_siz=31200
+        export key_siz=254
+        echo -n "Are you sure? (y/n)"
+        read v
+        if [ "x$v" = "xy" ] 
+                        then makeUci $x
+        fi
+done
+
+}
+# Delete uci
+deleteUci() {
+        listUcis
+        echo -n "Select uci to be deleted ? "; read x
+        if [ "x$x" = "x" ]
+        then exit
+        fi
+        uci=$x
+        luci=`echo $x|tr '[A-Z]' '[a-z]'` 
+        if [ -f /cav/gtm/$luci/$luci.dat ]
+        then echo -n "Are you sure to delete uci $uci (y/n)" ; read x
+             if [ "x$x" = "xy" ]
+             then echo "system will remove the link only"
+                  echo "to erase the files please use:"
+                  echo "rm -fr /cav/gtm/$luci"
+                  echo "which will erase the routines+database+gld file"
+                  rm -f /cav/gtm/$uci.gld
+                  gtm -U MGR<<End
+k ^%ZUCIMAP("$uci")
+h
+End
+                  echo "Uci $uci removed from the gtm system"
+                  echo "data files not erased"
+             fi
+        else echo "no such uci $uci"
+        fi
+}
+
+# Main
+while true
+do
+        echo "******************************************************"
+        echo "** GT.M System Management 2.15  ** [`hostname`]"
+        echo "******************************************************"
+        echo ""
+		if [ "$LOGNAME" != "root" ]
+		then echo must be root
+				 exit
+		fi
+        echo "C - Create new Database"
+        # echo "N - Create Namespace/Database (old)"
+        echo "D - Delete Database"
+        echo ""
+        echo "S - Show information for Database (GDE)"
+        echo "E - Show information for Database (DSE)"
+        echo "M - Mount exist database"
+        echo "EX - extend uci space     F1 - Freez database   START - gtm"
+        echo "FR - Free count size      F2 - Unfreez database STOP  - gtm"
+        echo "GM - global mapping       LI - list gtm ucis"
+        echo "SI - System information   TR - truncate uci"
+        echo "IC - run ic               JR - Journal management"
+        echo "SD - shadow management    BK - Backup man"
+        echo "In - install new version of gtm scripts"
+        echo -n "Select: " ; read x
+        if [ "x$x" = "x" ] 
+                then exit
+        fi
+        case $x in
+        N)      echo "Create Namespace/Database"
+                newUci
+				pause
+				continue
+                ;;
+        C)      echo "Create Namespace/Database Custom parameters"
+                newUciCust
+				pause
+				continue
+                ;;
+        D)      echo "Delete Namespace/Database"
+                deleteUci
+				pause
+				continue
+                ;;
+        S)      echo "Show information for Namespace/Database (GDE)"
+                showUci
+				pause
+				continue
+                ;;
+        E)      echo "Show information for Namespace/Database (DSE)"
+                showUciDSE
+				pause
+				continue
+                ;;
+        M)      echo "Mount uci"
+                mountUci
+				pause
+				continue
+                ;;
+        EX)     echo "Extend space"
+                extendSpace
+				pause
+				continue
+                ;;
+        F1)     echo "Freeze all"
+                /cav/gtm/bin/gtmfreez on
+				pause
+				continue
+                ;;
+        F2)     echo "Unfreeze all"
+                /cav/gtm/bin/gtmfreez off
+				pause
+				continue
+                ;;
+        FR)     m -U MGR "FREE^%ZCAVS"
+				pause
+				continue
+                ;;
+        GM)     global_map
+				pause
+				continue
+                ;;
+        SI)		system_info
+				pause
+				continue
+				;;
+		IC)		runic
+				pause
+				continue
+				;;
+		START)  /etc/init.d/gtm start
+				pause
+				continue
+				;;
+		STOP)   /etc/init.d/gtm stop
+				pause
+				continue
+				;;
+		LI)     cd /cav/gtm ; ls -lh */*.dat
+				pause
+				continue
+				;;
+		JR)     journal_man
+				pause
+				continue
+				;;
+		TR)     trun_uci
+				pause
+				continue
+				;;
+		SD)		shadow_man
+				pause
+				continue
+				;;
+		BK)		backman
+				pause
+				continue
+				;;
+		In)     finstall
+				break
+				;;
+        *)      break
+                ;;
+        esac
+done
+
+

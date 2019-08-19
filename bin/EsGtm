@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# cgi for gtm
+# (c) e.s. eli smadar 2019
+###############################
+echo "Content-type: text/html"
+echo ""
+exec /gtm/bin/mrun MGR ^%ZWEB1<<sOFTOV
+==DL1==
+`set`
+==DL2==
+`cat`
+==DL3==
+sOFTOV

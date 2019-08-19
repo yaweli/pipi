@@ -1,0 +1,34 @@
+#!/bin/sh
+#
+# send 4
+#
+if [ x$USER != xeli ]
+then echo must be ELI
+	exit
+fi
+
+if [ "x`hostname`" != "xeli-laptop" ]
+then echo "Only from eli laptop"
+fi
+
+while true
+do
+	echo -n "^mes gs + rsync ..."
+	mrun ELI "SAVE^FORML"
+	scp /tmp/mes.g 4cp:/tmp/
+	echo "OK"
+	cd /gtm/eli/r
+	echo rsyng src* .... 
+	rsync SRC*.m* 4cp:/gtm/eli/r/
+	rsync mes*.m 4cp:/gtm/eli/r/
+	echo rsyng form* .... 
+	rsync FORM*.m* 4cp:/gtm/eli/r/
+	#rsh 4cp "sudo regtm"
+	echo rsyng bin* .... 
+	rsync /gtm/bin/* 4cp:/gtm/bin/
+	rsync -r /var/www/html/proj/form* /var/www/html/proj/
+	#
+	date > /tmp/trigger
+	scp /tmp/trigger 4cp:/tmp/
+	echo -n "send4 : Press enter for next one .." ; read x
+done

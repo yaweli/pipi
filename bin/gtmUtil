@@ -1,0 +1,29 @@
+# gtm util
+function rundown() {
+    uci=$1
+    /gtm/mupip rundown -file /gtm/$uci/g/$uci.dat
+    return $?
+}
+
+
+function mes() {
+    export mes1="$1"
+    echo -n "$1 "
+    n=`expr 40 - ${#mes1}`
+    while [[ $n -gt 0 ]]
+    do
+        echo -n "."
+        n=`expr $n - 1`
+    done
+    echo
+}
+
+function rundownall() {
+    mes "Rundown"
+    list=`/gtm/bin/mrun.sh MGR luci^%ZU`
+    mes "uuci list = $list"
+    for u in $list
+    do
+        rundown $u
+    done
+}

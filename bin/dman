@@ -1,0 +1,106 @@
+#/bin/sh
+
+
+function disp {
+	echo "$1"
+}
+
+while true
+do
+
+
+echo "Docker man  v 1.01"
+echo "==================[ (c) e.s. 2019 ]=========="
+echo "pb - retar - pre build , create all tars"
+echo "g  - close + open gtm , before build , to clean the gtm rundown"
+echo "b  - build"
+echo "r  - run - first time (the build will run fitst time)"
+echo "ps - list all live dockers"
+echo "r1 - run bash into exist docker"
+echo "cl - clean all empty images - prune"
+echo "d0 - stop docker service"
+echo "d1 - start docker service"
+echo "ds - docker service status"
+echo "e  - exit"
+echo -n "option: "
+read x
+
+if [ "x$x" = "x" ]
+then break
+fi
+if [ "x$x" = "xe" ]
+then break
+fi
+
+if [ "x$x" = "xpb" ]
+then 
+	disp "retar..."
+	cd /home/eli/dev/docker/apache2
+	sh -x ./retar
+fi
+
+if [ "x$x" = "xg" ]
+then 
+	cd /gtm/bin
+	./gstop
+	./gstart
+fi
+
+if [ "x$x" = "xb" ]
+then 
+	disp "Building"
+	cd /home/eli/dev/docker/apache2
+	#/etc/init.d/gtm stop
+	docker build -t eli_dok_apache2 .
+fi
+
+if [ "x$x" = "xr" ]
+then 
+	disp "run..."
+	cd /home/eli/dev/docker/apache2
+	docker run -it eli_dok_apache2 
+fi
+
+if [ "x$x" = "xps" ]
+then 
+	disp "ps.."
+	docker ps
+fi
+
+if [ "x$x" = "xr1" ]
+then 
+	disp "run1"
+	id=`docker ps|tail -1|awk '{print $1}'`
+	echo "id=$id"
+	if [ "x$id" = "x" ]
+	then echo miussing id
+		 break
+	fi
+	docker exec -it $id  bash
+fi
+
+if [ "x$x" = "xcl" ]
+then 
+	dusp "prune"
+	docker system prune
+fi
+
+if [ "x$x" = "xd0" ]
+then 
+	disp "docker stop"
+	service docker stop
+fi
+if [ "x$x" = "xd1" ]
+then 
+	disp "docker start"
+	service docker start
+fi
+
+if [ "x$x" = "xds" ]
+then 
+	service docker status
+	docker ps
+fi
+
+
+done

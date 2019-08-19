@@ -1,0 +1,10 @@
+#!/bin/sh
+# eli smadar (c)
+if [ ! -d /gtm ]
+then echo missing /gtm
+fi
+mkdir /gtm/mgr
+chmod 775 /gtm/mgr
+groupadd gtm
+chgrp gtm /gtm
+chgrp gtm /gtm/mgr

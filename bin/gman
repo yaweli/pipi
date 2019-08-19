@@ -1,0 +1,244 @@
+# (c) eli smadar
+# manager
+###############################
+#
+. /gtm/bin/mgr_dist
+. /gtm/bin/gtmUtil
+# 32b = 1m ,  32000b = 1g , 300M ~ 10000
+    export size=10000
+    export exten=16000
+    export rec_siz=64000
+    export key_siz=1000
+###############################
+#
+
+function sysman() {
+	echo " 1 - start gtm"
+	echo " 2 - stop gtm"
+	echo -n " option? ";read x
+	case $x in
+	1)
+		gstart
+		;;
+	2)
+		gstop
+		;;
+	*)	echo error
+		;;
+	esac
+	
+	
+}
+function mntuci() {
+	echo enter uci to mount,
+	echo must be placed right in the directories
+	echo " Mount uci: "
+	guci
+	if [ "x$uu" = "x" ] ;then return;fi
+	/gtm/bin/m.sh<<endmnt
+S ^%ZUCI("$UU","R")="/gtm/$uu/r/ /gtm/mgr/r/ /gtm/"
+S ^%ZUCI("$UU","G")="/gtm/$UU.gld"
+S ^%ZUCI("$UU")=""
+endmnt
+}
+
+function shwuci() {
+	echo "Enter uci:"
+	guci
+	if [ "x$uu" = "x" ] ;then return;fi
+	export gtmroutines=/gtm
+	export gtm_dist=/gtm
+	export gtmgbldir=/gtm/$UU.gld
+	/gtm/mumps -run ^GDE<<sofgde
+SHOW
+EXIT
+sofgde
+	return	
+}
+function newmgr() {
+	if [ -d /gtm/mgr/g ] ; then echo Already exist ;exit ;fi
+	echo "Building new MGR...start"
+
+	size=100
+	uu=MGR
+	lower=mgr
+	cd /gtm
+	export gtmroutines=/gtm
+	export gtm_dist=/gtm
+	export gtmgbldir=/gtm/$uu.gld
+	
+	mkdir /gtm/$lower 2>/dev/null
+	mkdir /gtm/$lower/g 2>/dev/null
+	chmod 775 /gtm/$lower
+	chgrp gtm /gtm/$lower
+	chmod 775 /gtm/$lower/g
+	chgrp gtm /gtm/$lower/g
+	/gtm/mumps -run ^GDE<<sofsofmgr
+rename -region DEFAULT $uu
+rename -segment DEFAULT $uu
+change -segment $uu -file=/gtm/$lower/g/$lower.dat
+change -segment $uu -BLOCK_SIZE=31232
+change -segment $uu -GLOBAL_BUFFER_COUNT=4096
+change -segment $uu -allocation=$size
+change -segment $uu -extension=$exten
+change -segment $uu -LOCK_SPACE=3800
+change -region $uu -RECORD_SIZE=$rec_siz
+change -region $uu -KEY_SIZE=$key_siz
+add -region MGR -dyn=MGR
+exit
+sofsofmgr
+
+	/gtm/mupip create -reg=$uu
+	/gtm/mumps -direct<<sofsetmgr
+S ^%ZUCI("$uu","R")="/gtm/$lower/r/ /gtm/"
+S ^%ZUCI("$uu","G")="/gtm/$uu.gld"
+S ^%ZUCI("$uu")=""
+sofsetmgr
+
+	echo "Building new MGR...ended"
+	ls -l /gtm/MGR.gld
+	ls -l /gtm/mgr/
+
+}
+function listuci() {
+	ls -l /gtm/*.gld
+	return
+}
+#
+#
+function guci() {
+	export UU
+	export uu
+	echo -e "Uci: " ; read uu
+	if [ "x$uu" = "x" ];then return;fi
+	UU=`echo -n $uu|tr "[a-z]" "[A-Z]"`
+	uu=`echo -n $UU|tr "[A-Z]" "[a-z]"`
+	if [ ! -f /gtm/$UU.gld ]
+	then echo No such uci $UU
+		uu=""
+		UU=""
+		return
+	fi
+	return
+}
+function make_new_uci() {
+
+	uu=$1
+	lower=`echo $uu|tr '[A-Z]' '[a-z]'`
+	cd /gtm
+	export gtmroutines=/gtm
+	export gtm_dist=/gtm
+	export gtmgbldir=/gtm/$uu.gld
+
+	mkdir /gtm/$lower 2>/dev/null
+	mkdir /gtm/$lower/g 2>/dev/null
+	mkdir /gtm/$lower/r 2>/dev/null
+	chmod 775 /gtm/$lower
+	chgrp gtm /gtm/$lower
+	chmod 775 /gtm/$lower/g
+	chgrp gtm /gtm/$lower/g
+	chmod 775 /gtm/$lower/r
+	chgrp gtm /gtm/$lower/r
+
+	/gtm/mumps -run GDE<<sofsof
+rename -region DEFAULT $uu
+rename -segment DEFAULT $uu
+change -segment $uu -file=/gtm/$lower/g/$lower.dat
+change -segment $uu -BLOCK_SIZE=31232
+change -segment $uu -GLOBAL_BUFFER_COUNT=4096
+change -segment $uu -allocation=$size
+change -segment $uu -extension=$exten
+change -segment $uu -LOCK_SPACE=3800
+change -region $uu -RECORD_SIZE=$rec_siz
+change -region $uu -KEY_SIZE=$key_siz
+add -name %* -region=MGR
+add -region MGR -dyn=MGR
+add -segment MGR -file=/gtm/mgr/g/mgr.dat
+change -segment MGR -BLOCK_SIZE=31232
+change -segment MGR -GLOBAL_BUFFER_COUNT=4096
+change -segment MGR -allocation=$size
+change -segment MGR -extension=$exten
+change -segment MGR -LOCK_SPACE=3800
+change -region MGR -RECORD_SIZE=$rec_siz
+change -region MGR -KEY_SIZE=$key_siz
+exit
+sofsof
+	/gtm/mupip create -reg=$uu
+	/gtm/mumps -direct<<sofset
+S ^%ZUCI("$uu","R")="/gtm/$lower/r/ /gtm/mgr/r/ /gtm/"
+S ^%ZUCI("$uu","G")="/gtm/$uu.gld"
+S ^%ZUCI("$uu")=""
+sofset
+}
+function deluci() {
+	guci
+	if [ "x$uu" = "x" ]
+	then echo "nothing to do"
+		return
+	fi
+	echo -n "are you sure you wat to kill uci $uu: (y) <n> "
+	read x
+	if [ "x$x" = "xy" ]
+	then echo going to kill uci $uu
+		echo "Run down $uu.."
+		rundown $uu && 
+			mkdir /gtm/.old 2>/dev/null &&
+			mv /gtm/$UU.gld /gtm/.old/ &&
+			mv /gtm/$uu /gtm/.old/ &&
+			/gtm/mumps -direct<<sofdel
+K ^%ZUCI("$UU")
+sofdel
+		echo "Uci $UU was deleted, source saved to /gtm/.old/"
+	else echo Not killing
+		return
+	fi
+}
+function newuci() {
+	echo -n "enter new uci name:" ; read u
+	if [ "x$u" = "x" ] ;then return ;fi
+	if [[ $u != [A-Z] ]] ;then echo must be upper case;fi
+	lower=`echo $u|tr '[A-Z]' '[a-z]'`
+	if [ -d /gtm/$lower ] ;then echo exist;fi
+	echo Are you sure creating uci $u ?
+	echo -e "y/n <n> " ; read x
+	if [ "x$x" = "x" ] ;then return;fi
+	make_new_uci $u
+	echo end of make new uci $u .....
+}
+function uciman() {
+	while true 
+	do
+		listuci
+		echo N - CREATE NEW UCI
+		echo D - DELETE UCI
+		echo F - FIRST TIME CREATE MGR
+		echo S - SHOW UCI INFO
+		echo M - MOUNT UCI
+		echo -e options: ; read x
+		if [ "x$x" = "xN" ] ;then newuci;fi
+		if [ "x$x" = "xD" ] ;then deluci;fi
+		if [ "x$x" = "xF" ] ;then newmgr;fi
+		if [ "x$x" = "xS" ] ;then shwuci;fi
+		if [ "x$x" = "xM" ] ;then mntuci;fi
+		if [ "x$x" = "x" ] ;then break;fi
+	done
+}
+
+echo "Mumps manager"
+echo "1 - gtm system"
+echo "2 - uci"
+echo options : ; read x
+case $x in
+1)
+	sysman
+	;;
+2)
+	uciman
+	;;
+*)
+	break
+	;;
+esac
+
+echo end
+#####################################
