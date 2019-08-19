@@ -163,7 +163,7 @@ BACK	;
 	Q
 </m>
 <HR>
-<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')"">Back</button>
+<button type="button" class="btn btn-primary" onclick="mLabel('BACK','b')">Back</button>
 <hr>
 ```
 
