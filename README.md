@@ -1,4 +1,4 @@
-# The Mumps Framework (c)
+# The Mumps Framework
 (c) 2018 eli smadar yaweli@gmail.com
 
 mFrame project include a full mumps framework running on any linux including Raspberry pi
@@ -12,7 +12,8 @@ The only framwork in the world including nativly :
 1. Database
 2. Programming languge
 3. UI
-all edited in one source file !
+
+All edited in one source file ! (no more server/client side) 
 
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 ### Features
