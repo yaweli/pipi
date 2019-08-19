@@ -1,12 +1,12 @@
 # The Mumps Framework (c)
 (c) 2018 eli smadar yaweli@gmail.com
 
-mFrame project include a full mumps framework running on the Raspberry pi
-accessed by the browser (desktop or mobile) 
+mFrame project include a full mumps framework running on any linux including Raspberry pi
+and can be accessed by the browser (desktop or mobile) 
 it's a platform to develop a web apps / desktop apps and websites with mumps as a code 
 that will generate nice web ui using latest bootstap 
 
-His big brother runs this same framework on a docker , or on any Linux machine.
+Also cavn be run as framework on a docker , or on any Linux machine , laptop or on cloud.
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 ### Features
 #### mumps extension commands
