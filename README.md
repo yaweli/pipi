@@ -1,4 +1,6 @@
-# pipi
+# The Mumps Framework (c)
+(c) 2018 eli smadar yaweli@gmail.com
+
 mFrame project include a full mumps framework running on the Raspberry pi
 accessed by the browser (desktop or mobile) 
 it's a platform to develop a web apps / desktop apps and websites with mumps as a code 
