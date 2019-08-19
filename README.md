@@ -18,7 +18,7 @@ All edited in one source file ! (no more server/client side)
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 ### Features
 #### mumps extension commands
-####   a. for loop
+####   a. FOR-IN loop
       instead of those line:
 ```
       N I
@@ -43,7 +43,7 @@ this will merge the routineName into my routine,
 you can find this usefull when writing tools , and need to access a lot of labels of the tool during the entire routine , so including it will a) keep its current version and b) will let you reference the labels without label^routine - just the "label" which make a routine more clean. 
        
 ####    c. auto versioning 
- each time you save the routine (whith changes) if you have a label name VERSION() the tool will automatically increment the subVersion , and add a timestamps , for example :
+ each time you save the routine (with changes) if you have a label name VERSION() the tool will automatically increment the subVersion , and add a timestamps , for example :
 ```
 VERSION()  Q "1.01.006" ;14/03/2019 18:06:52
 ```
@@ -74,7 +74,7 @@ result:
 
 ![](https://github.com/yaweli/pipi/blob/master/example1.png)
 #### exmaple 2 - interact with forms
-somtimes on application you need to check and validate a form fields
+somtimes you need to check and validate a form fields
 
 ```html
 	<form>
@@ -95,7 +95,9 @@ CHECKN ;
 	#INCLUDE %ESLJXI
 </m>
 ```
-use onChange=mLabel("LABEL",this) to instruct the browser to come check the field value in the mumps !
+use onChange=mLabel("LABEL",this) to instruct the browser to check the field value in the mumps , on a label your choose!
+
+in the label you can check the value of the filed (ready for you in M) and call a different actions:
 
 
 actions  | description
