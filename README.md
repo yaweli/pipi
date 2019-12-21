@@ -75,7 +75,9 @@ result:
 
 ![](https://github.com/yaweli/pipi/blob/master/example1.png)
 #### exmaple 2 - interact with forms
-somtimes you need to check and validate a form fields
+Using forms and input elements is now simple. 
+To check the field on the server side just use mLabel(label,this) and the Framework will do
+the check on your server side label^routine, to reject the input just use D ALERT("message").
 
 ```html
 	<form>
@@ -96,7 +98,7 @@ CHECKN ;
 	#INCLUDE %ESLJXI
 </m>
 ```
-use onChange=mLabel("LABEL",this) to instruct the browser to check the field value in the mumps , on a label your choose!
+use onChange=mLabel("LABEL",this) to instruct the browser to check the field value in the mumps side, on a label your choose!
 
 in the label you can check the value of the filed (ready for you in M) and call a different actions:
 
@@ -108,6 +110,8 @@ FOCUS|restore focus to a field
 SETV|replace a value inside a form field
 GO|jump to a new url
 |...more to come
+
+The label will have the M with the field new value and in M("ID") the id of the field.
 
 The #INCLUDE will help us reference the labels without the name of the routine. 
 instead of : 
