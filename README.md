@@ -4,16 +4,17 @@
 mFrame project include a full mumps framework running on any linux including Raspberry pi
 and can be accessed by the browser (desktop or mobile) 
 it's a platform to develop a web apps / desktop apps and websites with mumps as a code 
-that will generate nice web ui using latest bootstap 
+that will generate nice web ui using latest bootstap.
 
-Also can be run as framework on a docker , or on any Linux machine , laptop or on cloud.
+Also can be run as framework on a docker , or on any Linux machine , laptop or on a cloud.
 
-The only framwork in the world including nativly : 
+The only framework in the world including nativly : 
 1. Database
 2. Programming languge
 3. UI
+4. Web enable and scaleable
 
-All edited in one source file ! (no more server/client side) 
+All edited in one source file style html 
 
 ![](https://pandao.github.io/editor.md/images/logos/editormd-logo-180x180.png)
 ### Features
