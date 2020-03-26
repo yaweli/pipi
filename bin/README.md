@@ -4,4 +4,6 @@ reside in /gtm/bin with the management scripts
 - gstart
 - gstop 
 etc..
+
+
 good practice is to add /gtm/bin to the linux $PATH
