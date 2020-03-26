@@ -3,6 +3,7 @@
 # (c) eli smadar 2019
 # was $cgi/Es 4 4sport/mil/shenhalit
 ##################################
+export LANG=en_US.UTF-8
 umask 0
 /gtm/bin/mrun MGR "^%ESWS"<<EndInp
 `set`
