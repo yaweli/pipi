@@ -1,3 +1,4 @@
+#!/bin/sh
 
 . /gtm/bin/mgr_dist
 . /gtm/bin/gtmUtil
