@@ -7,7 +7,7 @@ etc..
 
 
 good practice is to add /gtm/bin to the linux $PATH
-'HTML
+```HTML
 [gtm@dev bin]$ ls -al
 total 192
 drwxrwxr-x.  2 gtm  gtm   4096 Mar 26 00:02 .
@@ -42,4 +42,4 @@ lrwxrwxrwx.  1 gtm  gtm     10 Apr  9  2019 mumps -> /gtm/mumps
 -rwxrwxr-x.  1 gtm  gtm    658 Aug  4  2019 send4
 -rwxr-xr-x.  1 eli  www  49162 Aug 28  2019 xlsx2csv.py
 [gtm@dev bin]$ 
-'
+```
