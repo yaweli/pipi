@@ -347,11 +347,13 @@ More examples:
 
 
 
-### accessing the GPIO on the pi
+### accessing the GPIO on the Raspberry Pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
 
+![](https://github.com/yaweli/pipi/blob/master/pi.png)
 
 [Read more for support micro computers](pi.MD)
+
 
 
 ####  cgi environment
