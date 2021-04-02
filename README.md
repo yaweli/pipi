@@ -264,8 +264,19 @@ WAIT ;
     Q
 	:
 ```
-To understand whats happend lets look at the line <hr> the compiler will replace it with W "<hr>" , the same way any line detected as an HTML style line , will be done the same.
-In case of a mix (mumps+html lines) the compiler will try to seperate them , 
+
+To understand whats happend lets look at the line:
+```
+<hr>
+```
+The compiler will replace it with:
+```
+   W "<hr>"
+```
+The same way any line detected as an HTML style line will be converted.
+
+
+In case of a mixed (mumps+html lines) the compiler will try to seperate them , 
 example: 
 ```
 <td>D  </td>
