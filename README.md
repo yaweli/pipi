@@ -232,7 +232,7 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use th
 [Learn more about <m#import...](mimport.MD)
 
 ### Embeded html and Mumps code in the same line
-```
+```HTML
 WAIT ;
     N LN K ^W(JB,"X")
     D WR("Waiting for approval: ") D Button("logs","ID=LOGS/ML=LOGS/CLS=P")
@@ -266,11 +266,11 @@ WAIT ;
 ```
 
 To understand whats happend lets look at the line:
-```
+```HTML
 <hr>
 ```
 It will be replaced by:
-```
+```HTML
    W "<hr>"
 ```
 The same way any line detected as an HTML style line will be converted.
@@ -278,19 +278,19 @@ The same way any line detected as an HTML style line will be converted.
 
 In case of a mixed (mumps+html lines) it will be separeted:
 example: 
-```
+```HTML
 <td>D  </td>
 ```
 Will be converted to :
-```
+```HTML
 W "<td>" D  W "</td>"
 ```
 or, for example
-```
+```HTML
     ....<td>D ACTION</td>
 ```
 will be converted to:
-```
+```HTML
     ....W "<td>" D ACTION W "</td>"
 ```
 Embedding HTML+MUMPS lines will make your routine Small, minimalist and nice to look at.
@@ -298,16 +298,16 @@ Embedding HTML+MUMPS lines will make your routine Small, minimalist and nice to 
 Tip: for readability, maintain html tags <html> at lower case, and Mumps commands as a single char upper case W (for WRITE).
 
 ### Advance styling HTML tag
-```
+```HTML
     ....<span ||CLBLACK/BG#f5c96f/BR6||>D  </span>
 ```
 To shorten even more you can avoid using style as html and use short version with ||short_style||
 
 In this example the style will become:
-```
+```HTML
 <span style=color:BLACK;background:#f5c96f;border-radius:6px>D  </span>
 ```
-Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6
+Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
 
 To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
@@ -321,6 +321,20 @@ This will be converted to :
 	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
 ```
 This is usfull in runtime. 
+
+### Advance onclick form handling
+Using forms as a mean to interact with the user is important. to make the routin nice 
+as we handle click events you can use this short way of FORM onChange and onClick interactoine. 
+Instead of this:
+```HTML
+    <button type="button" onclick="mLabel('BACK',this)" class="btn btn-primary">Back</button>
+    <input type=text name=myVar onchange=mLabel("SAVE",this) />
+```
+Use this |method| shorthand:
+```HTML
+    <button type="button" |BACK,this| class="btn btn-primary">Back</button>
+    <input type=text name=myVar |SAVE,this| />
+```
 
 
 ### accessing the GPIO on the pi
