@@ -269,14 +269,14 @@ To understand whats happend lets look at the line:
 ```
 <hr>
 ```
-The compiler will replace it with:
+It will be replaced by:
 ```
    W "<hr>"
 ```
 The same way any line detected as an HTML style line will be converted.
 
 
-In case of a mixed (mumps+html lines) the compiler will try to seperate them , 
+In case of a mixed (mumps+html lines) it will be separeted:
 example: 
 ```
 <td>D  </td>
@@ -307,7 +307,8 @@ In this example the style will become:
 ```
 <span style=color:BLACK;background:#f5c96f;border-radius:6px>D  </span>
 ```
-Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6 , the compiler will complete and add the 'px'.
+Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6
+
 
 To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
 ```HTML
