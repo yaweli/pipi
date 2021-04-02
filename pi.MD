@@ -1,10 +1,6 @@
 ### accessing the GPIO on the pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
 
-
-
-[Read more for support micro computers](pi.MD)
-
 ```html
 GPIO	;
 	S GL=$NA(^W(JB,11)) K @GL
