@@ -1,4 +1,0 @@
-#!/bin/sh
-rut=`echo -n $2|cut -d. -f1`
-echo /gtm/bin/mrun $1 $rut
-/gtm/bin/mrun $1 $rut

@@ -1,4 +1,0 @@
-export gtm_dist="/gtm"
-export gtmgbldir="/gtm/MGR.gld"
-export gtmroutines="/gtm/mgr/r/ /gtm/"
-export gtm_prompt="MGR>"
