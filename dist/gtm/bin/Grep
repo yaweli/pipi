@@ -1,0 +1,5 @@
+#!/bin/bash
+str=$1
+dir='/gtm/eli/r/*.m /gtm/mgr/r/*m /gtm/for/mes/*.m* /var/www/html/proj/form/*html /var/www/html/proj/dev/*html'
+
+grep "$str" $dir

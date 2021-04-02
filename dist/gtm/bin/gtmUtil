@@ -1,0 +1,72 @@
+# gtm util
+rundown() {
+    uci=$1
+    /gtm/mupip rundown -file /gtm/$uci/g/$uci.dat
+    return $?
+}
+
+
+mes() {
+    export mes1="$1"
+    echo -n "$1 "
+    n=`expr 40 - ${#mes1}`
+    while [[ $n -gt 0 ]]
+    do
+        echo -n "."
+        n=`expr $n - 1`
+    done
+    echo
+}
+
+rundownall() {
+    mes "Rundown"
+    list=`/gtm/bin/mrun.sh MGR luci^%ZU`
+    mes "uuci list = $list"
+    for u in $list
+    do
+        rundown $u
+    done
+}
+
+proshow() {
+    ps -ef|grep mumps|egrep -v grep
+    echo "kill proccess: "
+    read x
+    if [ "x$x" = "x" ]
+    then echo continue
+         exit
+    fi
+    echo "Process before:"
+    ps -fp $x
+    echo Kill...
+    kill -15 $x
+    echo "Process after:"
+    ps -fp $x
+}
+#
+# backup ggtm
+bgtm() {
+    if [ x$LOGNAME != xroot ]
+    then echo "Must be root"
+        return 10
+    fi
+    export ftarget=/tmp/allgtm.tar.gz
+    export binftarget=/tmp/binallgtm.tar.gz
+    rm -f $ftarget
+    if [ -f $ftarget ]
+    then echo "Cannot erase old backup"
+        return 11
+    fi
+    #
+    echo "Wait , tarring...."
+    tar -czvf $ftarget /gtm/bin /gtm/mgr/r /gtm/eli/r /gtm/eli/r /gtm/for/mes --exclude='*.o'
+    ls -l $ftarget
+    cp $ftarget /var/www/html/files/
+    echo "/var/www/html/files/allgtm.tar.gz is ready ..."
+    #
+    echo "Wait , tarring bin ...."
+    tar -czvf $binftarget /gtm/bin
+    ls -l $binftarget
+    cp $binftarget /var/www/html/files/
+    echo "/var/www/html/files/binallgtm.tar.gz is ready ..."
+}

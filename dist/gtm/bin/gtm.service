@@ -1,0 +1,13 @@
+[Unit]
+Description=gtm framework
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/gtm/bin/gstart
+ExecStop=/gtm/bin/gstop
+RemainAfterExit=True
+
+[Install]
+WantedBy=multi-user.target

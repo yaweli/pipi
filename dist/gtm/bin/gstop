@@ -1,0 +1,36 @@
+#!/bin/bash
+. /gtm/bin/mgr_dist
+. /gtm/bin/gtmUtil
+mes "Gtm stop"
+
+nnn=`ps --no-headers -C mumps|wc -l`
+mes "$nnn sessions"
+if [ $nnn -gt 0 ]
+then echo "Live prosses running, going to kill them"
+    killall -15 mumps
+    sleep 1
+fi
+
+nnn=`ps --no-headers -C mumps|wc -l`
+mes "$nnn sessions"
+if [ $nnn -gt 0 ]
+then echo "Live prosses running, cannot stop"
+     exit
+fi
+
+
+if [ -f /gtm/mgr/r/ZSTOP.m ]
+then /gtm/bin/mrun.sh MGR ^ZSTOP
+fi
+sleep 1
+
+rundownall
+
+rm /gtm/bin/m      2>/dev/null
+rm /gtm/bin/mrun   2>/dev/null
+ln -s /gtm/bin/gtm-is-down /gtm/bin/m
+ln -s /gtm/bin/gtm-is-down /gtm/bin/mrun
+
+
+mes "Gtm is down"
+exit 0
