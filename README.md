@@ -294,26 +294,28 @@ will be converted to:
     ....W "<td>" D ACTION W "</td>"
 ```
 Embedding HTML+MUMPS lines will make your routine Small, minimalist and nice to look at.
+
 Tip: for readability, maintain html tags <html> at lower case, and Mumps commands as a single char upper case W (for WRITE).
 
 ### Advance styling HTML tag
 ```
     ....<span ||CLBLACK/BG#f5c96f/BR6||>D  </span>
 ```
-To shorten eveny more you minimalist routine , you can avoid using style as html and the short version with ||short_style||
+To shorten even more you can avoid using style as html and use short version with ||short_style||
+
 In this example the style will become:
 ```
 <span style=color:BLACK;background:#f5c96f;border-radius:6px>D  </span>
 ```
-Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6 , the compiler will copmplete and add the 'px'.
+Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6 , the compiler will complete and add the 'px'.
 
 To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
-```
-	....S COLOR="GREEN"
+```HTML
+    ....S COLOR="GREEN"
     ....<span ||CLBLACK/BG"_COLOR_"/BR6||>D  </span>
 ```
 This will be converted to : 
-```
+```HTML
 	....S COLOR="GREEN"
 	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
 ```
