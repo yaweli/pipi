@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/bs/last/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<title>mumps framework</title>
+</head>
+<body>
+<div class="container-fluid">
+	<form>
+		enter number: <input id=id100 type="text" value=80 name=var1 onChange="mLabel('CHECKN',this)" /> <br/>
+		enter number: <input id=id101 type="text" value=80 name=var2 /> <br/>
+		enter name: <input id=id102 type="text" value=80 name=name1 /> <br/>
+	</form>
+</div>
+<div class="container-fluid">
+	 <span class="alert alert-primary">
+We are here:
+	</span>
+	<span class="alert alert-success">
+hello green:
+	</span>
+
+<div class="alert alert-success" role="alert">
+  <h4 class="alert-heading">	interactive HTML 2 MUMPS engine</h4>
+  <p>(c) eli smadar 31.03.2019 Sunday 19:40</p>
+  <hr>
+</div>
+
+<a href="next.html" class="badge badge-primary">link to Primary</a>
+
+<h2> Hello world </h2>
+<h3> multiplication table </h3>
+<hr>
+</div>
+<m>
+START	;
+	W !,"DATE: ",$H,!
+	;
+	w !,"<div class=card>" D  W "</div>"
+	.w !,"<div class=card-body>" D  W "</div>"
+	..F LIN=1:1:10 W "<BR>" D
+	...F ROW=1:1:10 W " ",ROW*LIN
+	;
+	W "List of uci's: "
+	;
+	;
+	W "<TABLE BORDER=9>" D  W "</TABLE>"
+	.FOR X IN ^%ZUCI D
+	..W "<TR>" D  W "</TR>"
+	...W "<TD>" D  W "</TD>"
+	....W !,X
+	...W "<TD>" D  W "</TD>"
+	....W !,X
+	;
+	W "<HR>"
+	w "job: "_JB
+	Q
+CHECKN ; M  
+	;w "alert('info="_Info_"');"
+	;w "alert('itmval="_itmVal_"');"
+	;w "alert('itmval="_M_"');"
+	I M>100 D ALERT("BIG"),FOCUS("id100")
+	I M<100 D ALERT("SMALL"),FOCUS("id100") ;>
+	I M=100 D SETV("id100","CORRECT")
+	I M=100 D FOCUS("id102")
+	I M=90  D GO("next.html")
+	Q
+	#INCLUDE %ESLJXI
+	Q
+</m>
+<!-- 
+the new options:
+
+1. the <m> new tag is a group of mumps code , will be run ot the server side
+2. the m code is advance mode *.mes format support shortcut like FOR x IN global and macro like #INCLUDE
+3. support form fiedls validation on server side (under construction)
+
+uci's:eli + mgr
+rut: MGR: %ESWS, %ESWSE, %ESRL,  ELI:DEV, DEV0
+
+-->
+<script src="/bs/last/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="/bs/last/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+
+	<title>mumps framework</title>
+</head>
+<body>
+<!-- ##### end of top ######## -->
+
+<div class="container-fluid">
+
+<form>
+
+<m>
+START ;
+	D WORK
+	D RES
+	<div id=dish></div>
+	Q
+WORK ;
+	N GLW S GLW=$NA(^W(JB,13)) K @GLW
+	D EMPLIST^TAMRES(GLW)
+	S TR=0
+	<div class="row justify-content-center">
+	<div class="col-auto text-center my-auto">
+    <table class="table table-responsive">
+  W "<h1>LUNCH </h1><br>"
+	W "<h4>1) Who are you? </h4> <br>"
+	FOR I IN @GLW D
+	.I TR#4=0 W "<TR>" 
+	.W "<TD>" D  W "</TD>"
+	..S A=^(I)
+	..S EMP=$P(A,D,1)
+	..S N1=$P(A,D,2)
+	..S N2=$P(A,D,3)
+	..<div class="card bg-info text-white" style="width:200px">
+	..<label>
+  ..<img class="card-img-top" 
+  ..W "SRC=../im/emp/"_EMP_".JPG width: 100%>"
+  ..<div class="card-body">
+  ..<h4 class="card-title">
+  ..<INPUT TYPE=RADIO NAME=EMP onchange=mLabel("WC",this)
+	..W " VALUE="_EMP
+	..W " />"
+	..W " "_N1_" "_N2
+  ..</label>
+  ..</div>
+  ..</div>
+	.I TR#4=3 W "</TR>" 
+	.S TR=TR+1
+	</table>
+	</div>
+	</div>
+  <hr>
+	Q
+WC  ;
+	S WC=M
+	Q
+RES ;
+	N GLR S GLR=$NA(^W(JB,14)) K @GLR
+	D RESLIST^TAMRES(GLR)
+	S TR=0
+	<div class="row justify-content-center">
+	<div class="col-auto text-center my-auto">
+  <table class="table table-responsive">
+	W "<h4>2) Select a restaurant: </h4> <br>"
+	FOR I IN @GLR D
+	.I TR#4=0 W "<TR>" 
+	.W "<TD>" D  W "</TD>"
+	..S A=^(I)
+	..S RESNUM=$P(A,D,1)
+	..S RESNAME=$P(A,D,2)
+	..<div class="card bg-info text-white" style="width:200px">
+	..<label>
+  ..<img class="card-img-top" 
+  ..W "SRC=../im/emp/"_RESNUM_".JPG WIDTH=15 HEIGHT=190>"
+  ..<div class="card-body">
+  ..<h4 class="card-title">
+	..<INPUT TYPE=RADIO NAME=RES onchange=mLabel("DISH",this) 
+	..W " VALUE="_RESNUM
+	..W " /> "
+	..D WR(RESNAME)
+	..<label>
+  ..</div>
+  ..</div>
+	.I TR#4=3 W "</TR>" 
+	.S TR=TR+1
+	</table>
+	</div>
+	</div>
+  <hr>
+	Q
+DISH ;
+	S RESNUM=M
+	D SELE("dish","")
+	D AJPOINT("dish")
+	D AJ("DISH1")
+	Q
+DISH1 ;
+	N GLD S GLD=$NA(^W(JB,15)) K @GLD
+	D DLIST^TAMRES(RESNUM,GLD)
+	S TR=0
+	<div class="row justify-content-center">
+	<div class="col-auto text-center my-auto">
+  <table class="table table-responsive">
+	W "<h4>3) Select a dish: </h4> <br>"
+	FOR I IN @GLD D 
+	.I TR#4=0 W "<TR>" 
+	.W "<TD>" D  W "</TD>"
+	..S A=^(I)
+	..S DNUM=$P(A,D,1)
+	..S DNAME=$P(A,D,2)
+	..S DP=$P(A,D,3)
+	..<div class="card bg-info text-white" style="width:200px">
+	..<label>
+  ..<img class="card-img-top" 
+  ..W "SRC=../im/res/"_RESNUM_"_"_DNUM_".jpg WIDTH=15 HEIGHT=190>"
+  ..<div class="card-body">
+  ..<h4 class="card-title">
+  ..<INPUT TYPE=RADIO NAME=DISH onchange=mLabel("DC",this)
+	..W " VALUE="_DNUM
+	..W " /> "
+	..W DNAME_"<BR>"
+	..W "<B><p style=background-color:tomato>"_DP_"₪"_"</p><BR></label>"
+	..</label>
+  ..</div>
+  ..</div>
+	.I TR#4=3 W "</TR>" 
+	.S TR=TR+1
+	<INPUT TYPE=RADIO NAME=DISH onchange=mLabel("DC",this)
+	W " VALUE="_DNUM
+	W " /> "
+	</table>
+	D BUT("place order","PO","P",0,"SUBMIT")
+	</div>
+	</div>
+  <hr>
+	Q
+DC ;
+	S DC=M
+	Q
+SUBMIT ; 
+	D SUBMIT^TAMRES(WC,RESNUM,DC)
+	D ALERT("bon apetite!")
+	Q
+	#INCLUDE %ESBSI
+	#INCLUDE %ESLJXI
+</m>
+</div>
+</div>
+<!-- ########    start of bottom    ######### -->
+</form>
+<script src="/bs/last/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
+
