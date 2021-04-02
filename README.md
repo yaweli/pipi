@@ -229,7 +229,7 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use th
 ``` 
 
 
-[Learn more about <m#include...](minclude.md)
+[Learn more about <m#include...](mimport.MD)
 
 ### accessing the GPIO on the pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
