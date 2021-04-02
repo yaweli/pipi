@@ -323,8 +323,8 @@ This will be converted to :
 This is usfull in runtime. 
 
 ### Advance onclick form handling
-Using forms as a mean to interact with the user is important. to make the routin nice 
-as we handle click events you can use this short way of FORM onChange and onClick interactoine. 
+Using forms as a mean to interact with the user is important. to make the routing nice as we handle click events you can use this short way of FORM onChange and onClick interaction
+
 Instead of this:
 ```HTML
     <button type="button" onclick="mLabel('BACK',this)" class="btn btn-primary">Back</button>
@@ -334,6 +334,14 @@ Use this |method| shorthand:
 ```HTML
     <button type="button" |BACK,this| class="btn btn-primary">Back</button>
     <input type=text name=myVar |SAVE,this| />
+```
+
+More examples: 
+```HTML
+   ..<td align=center colspan=2>D  </td>
+    ...<div  |CALL,this| id=tt"_TEL_" ||POSR/BG"_STY("GREY")_"/CLWHITE/BR3/W327/H42/ACENTER||>D  </div>
+    ....<div ||POSR/T6||>D  </div>
+    .....<img src=/im/4dig/phone.sv
 ```
 
 
