@@ -229,7 +229,35 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use th
 ``` 
 
 
-[Learn more about <m#include...](mimport.MD)
+[Learn more about <m#import...](mimport.MD)
+
+### Embeded html and Mumps code in the same line
+```
+WAIT ;
+    N LN K ^W(JB,"X")
+    D WR("Waiting for approval: ") D Button("logs","ID=LOGS/ML=LOGS/CLS=P")
+    <HR>
+    <TABLE class=table> D  </table>
+    .<TR><TH width=10%>Action</TH><TH width=5%>Permit</TH><TH>Manager</TH><TH>Driver name</TH><th>pic</th><TH>license Plat</TH></TR>
+    .FOR P IN ^TRIG(0,PRO) D
+    ..N SID,DID,SD,DD
+    ..S SID=$P(P,D,2)
+    ..S DID=$P(P,D,3)
+    ..S ACT=$P(P,D,4)
+    ..D GETSID^APIDIG(SID,DID)
+    ..FOR M IN ^TRIG(0,PRO,P,"M") D
+    ...<tr>D  </tr>
+    ....I $I(LN)
+    ....<TD>D ACTION</TD>
+    ....<TD ALIGN=CENTER>D  </TD>
+    .....I ACT["RED" W "<span style=color:red>"_ACT_"</span><br><img width=140px src=/im/4map/alert1.gif />" Q
+    .....W ACT
+    ....<TD>D  </TD>
+    .....D MANK^FORDIG(M)
+    .....W N1_" "_N2
+	:
+```
+
 
 ### accessing the GPIO on the pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
