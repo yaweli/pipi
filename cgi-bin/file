@@ -1,8 +1,0 @@
-#!/bin/sh
-# 
-/usr/bin/rm -f /tmp/my.out /form/temp/my.jpg
-cat > /tmp/my.out
-/gtm/bin/mrun FOR GETFILE<<End
-`set`
-^start^
-End
