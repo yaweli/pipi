@@ -236,27 +236,77 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use th
 WAIT ;
     N LN K ^W(JB,"X")
     D WR("Waiting for approval: ") D Button("logs","ID=LOGS/ML=LOGS/CLS=P")
-    <HR>
-    <TABLE class=table> D  </table>
-    .<TR><TH width=10%>Action</TH><TH width=5%>Permit</TH><TH>Manager</TH><TH>Driver name</TH><th>pic</th><TH>license Plat</TH></TR>
+    <hr>
+    <table class=table> D  </table>
+    .<tr><th width=10%>Action</th><th width=5%>Permit</th><th>Manager</th><th>Driver name</th><th>pic</th><th>license Plat</th></TR>
     .FOR P IN ^TRIG(0,PRO) D
     ..N SID,DID,SD,DD
     ..S SID=$P(P,D,2)
     ..S DID=$P(P,D,3)
     ..S ACT=$P(P,D,4)
-    ..D GETSID^APIDIG(SID,DID)
+    ..D GETSID^APIDIG(SID,DID) ; -> SD,DD get sessio_id
     ..FOR M IN ^TRIG(0,PRO,P,"M") D
     ...<tr>D  </tr>
     ....I $I(LN)
-    ....<TD>D ACTION</TD>
-    ....<TD ALIGN=CENTER>D  </TD>
+    ....<td>D ACTION</td>
+    ....<td ALIGN=CENTER>D  </td>
     .....I ACT["RED" W "<span style=color:red>"_ACT_"</span><br><img width=140px src=/im/4map/alert1.gif />" Q
     .....W ACT
-    ....<TD>D  </TD>
+    ....<td>D  </td>
     .....D MANK^FORDIG(M)
     .....W N1_" "_N2
+    ....<td>D  </td>
+    .....W $G(SD("KIP",1))_" "_$G(SD("KIP",2))
+    ....<td>D  </td>
+    .....I $D(DD("FACEID")) W "<img width=30px src=/im/4dig/faces/f"_DD("FACEID")_".jpg />"
+    ....<td>D  </td>
+    .....W $G(DD("PLAT"))
+    Q
 	:
 ```
+To understand whats happend lets look at the line <hr> the compiler will replace it with W "<hr>" , the same way any line detected as an HTML style line , will be done the same.
+In case of a mix (mumps+html lines) the compiler will try to seperate them , 
+example: 
+```
+<td>D  </td>
+```
+Will be converted to :
+```
+W "<td>" D  W "</td>"
+```
+or, for example
+```
+    ....<td>D ACTION</td>
+```
+will be converted to:
+```
+    ....W "<td>" D ACTION W "</td>"
+```
+Embedding HTML+MUMPS lines will make your routine Small, minimalist and nice to look at.
+Tip: for readability, maintain html tags <html> at lower case, and Mumps commands as a single char upper case W (for WRITE).
+
+### Advance styling HTML tag
+```
+    ....<span ||CLBLACK/BG#f5c96f/BR6||>D  </span>
+```
+To shorten eveny more you minimalist routine , you can avoid using style as html and the short version with ||short_style||
+In this example the style will become:
+```
+<span style=color:BLACK;background:#f5c96f;border-radius:6px>D  </span>
+```
+Using the pixel mesurment attributes style like , width,height,left,right... you dont need to specify the 6px , just use 6 , the compiler will copmplete and add the 'px'.
+
+To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
+```
+	....S COLOR="GREEN"
+    ....<span ||CLBLACK/BG"_COLOR_"/BR6||>D  </span>
+```
+This will be converted to : 
+```
+	....S COLOR="GREEN"
+	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
+```
+This is usfull in runtime. 
 
 
 ### accessing the GPIO on the pi
