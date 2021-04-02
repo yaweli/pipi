@@ -35,12 +35,12 @@ just use this:
 ```
       FOR I IN ^MYGLO(V1,V2,V3) D SOMETHING(I)
 ```
-this new smart for loop can work on locals and on globals with any variations including indirection like this :
+This new smart for loop can work on locals and on globals with any variations including indirection like this :
 ```
       FOR J IN @GLO D IT
 ```
 ####    b. #INCLUDE routineName
-this will merge the routineName into my routine, 
+This will merge the routineName into my routine, 
 you can find this useful when writing tools , and need to access a lot of labels of the tool during the entire routine , so including it will a) keep its current version and b) will let you reference the labels without label^routine - just the "label" which make a routine more clean. 
        
 
@@ -93,9 +93,9 @@ CHECKN ;
 	#INCLUDE %ESLJXI
 </m>
 ```
-use onChange=mLabel("LABEL",this) to instruct the browser to check the field value in the mumps side, on a label your choose!
+Use onChange=mLabel("LABEL",this) to instruct the browser to check the field value in the mumps side, on a label your choose!
 
-in the label you can check the value of the filed (ready for you in M) and call a different actions:
+In the label you can check the value of the filed (ready for you in M) and call a different actions:
 
 
 actions  | description
@@ -227,6 +227,9 @@ to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use th
 ```
  D CARD()
 ``` 
+
+
+[Learn more about <m#include...](minclude.md)
 
 ### accessing the GPIO on the pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
