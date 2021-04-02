@@ -43,11 +43,6 @@ this new smart for loop can work on locals and on globals with any variations in
 this will merge the routineName into my routine, 
 you can find this useful when writing tools , and need to access a lot of labels of the tool during the entire routine , so including it will a) keep its current version and b) will let you reference the labels without label^routine - just the "label" which make a routine more clean. 
        
-####    c. auto versioning 
- each time you save the routine (with changes) if you have a label name VERSION() the tool will automatically increment the subVersion , and add a timestamps , for example :
-```
-VERSION()  Q "1.01.006" ;14/03/2019 18:06:52
-```
 
 [Learn more](mext.md)
 
