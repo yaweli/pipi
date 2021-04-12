@@ -1,0 +1,169 @@
+#/usr/bin/bash
+#
+#
+# install from scratch
+#
+# ginst() {
+export url="https://master.dl.sourceforge.net/project/fis-gtm/GT.M-amd64-Linux/V6.3-014/gtm_V63014_linux_x8664_pro.tar.gz"
+if [ x$LOGNAME != xroot ]
+then echo "Must be root"
+    return 10
+fi
+if [ -f /gtm ]
+then echo "dir /gtm already exist"
+    return 11
+fi
+
+mkdir /tmp/gin 2>/dev/null
+
+echo "First gtm install  ver 17.12.2020 e.s."
+echo "======================================"
+echo " 1 = load last gtm version from web"
+echo " 2 = extract gtm load files to /tmp/gin"
+echo " 3 = create user+grp gtm"
+echo " 4 = install gtm from scratch"
+echo " 5 = install incron (for m framework extensions)"
+echo " 6 = incron list"
+echo " 7 = add PATH to /gtm/bin"
+echo " 8 = get bin backup from 4m server"
+echo " 9 = restore bin only"
+echo " 10 = create 1.mgr 2. eli 3.for via gman"
+echo " 11 = restore ucis ELI FOR MGR routines + /gtm/bin"
+echo "    = manualy install apache cgi, set alias $www and $cgi , use script to $cgi/es"
+echo "    = manualy restore $www/paks/ files"
+echo " 12 = set name"
+echo " 13 = manualy set hostname for linux , edit /etc/hosts , add local host name , edit /etc/hostname with new name , reboot"
+echo "Option: " ; read x
+if [ x$x == x1 ]
+then 
+    cd /tmp
+    mkdir /tmp/gin
+    if [ ! -d /tmp/gin ]
+    then "No dir /tmp/gin"
+        return 13
+    fi
+    cd /tmp
+    cd /tmp/gin
+    rm -fr /tmp/gin/*
+    curl -s https://sourceforge.net/projects/fis-gtm/files/latest/download | grep use_mirror=master
+    echo "Edit the gtmUtil with the new link"
+    echo url=$url
+    echo "Abort if old image"
+    read x
+    cd /tmp/gin
+    pwd
+    echo "Loading...."
+    curl -s $url > gtm.tar.gz
+    echo "[ok]"
+    # 
+    if [ ! -f /tmp/gin/gtm.tar.gz ]
+    then echo "Download fail"
+        return 12
+    fi
+fi
+if [ x$x == x2 ] 
+then
+    cd /tmp/gin
+    echo "un tar... "
+    tar xvzf gtm.tar.gz
+    echo "[ok]"
+    if [ ! -f /tmp/gin/mumps ]
+    then "Untar does not seceed , missing mumps"
+        return 14
+    fi
+fi
+if [ x$x == x3 ]
+then 
+    groupadd gtm
+    useradd -g gtm gtm
+    echo "Enter password to gtm user..."
+    passwd gtm
+fi
+if [ x$x == x4 ]
+then 
+    echo "Now installing .... "
+    cd /tmp/gin
+    ./gtminstall --group gtm --installdir /gtm --distrib /tmp/gin
+    echo "[ok]"
+    if [ ! -f /gtm/mumps ]
+    then "Untar does not seceed , missing mumps"
+        return 15
+    fi
+fi
+if [ x$x == x5 ]
+then
+    echo " Now install incron"
+    apt-get -y install incron
+    if [ `cat /etc/incron.allow|wc -l` == 0 ] 
+    then echo root>>/etc/incron.allow
+        echo "Incron /etc/incron.allow was sets"
+        service incron reload
+    fi
+    echo " edit when you have UCI's using incrontab -e"
+fi
+if [ x$x == x6 ]
+then
+    echo "Incron list..."
+    incrontab -l
+fi
+if [ x$x == x7 ]
+then
+    # path
+    if [ `cat /etc/bash.bashrc|grep PATH|wc -l` == 0 ] 
+    then echo "export PATH=$PATH:/gtm/bin">>/etc/bash.bashrc
+    else echo Already set
+    fi
+fi
+if [ x$x == x8 ]
+then
+    cd /tmp/gin
+    rm -f allgtm.tar.gz
+    rm -f binallgtm.tar.gz
+    wget https://www.4map.dev.aws.4m-a.org/files/allgtm.tar.gz
+    wget https://www.4map.dev.aws.4m-a.org/files/binallgtm.tar.gz
+    if [ ! -f allgtm.tar.gz ]
+    then echo "Missing allgtm.tar.gz"
+    fi
+fi
+if [ x$x == x9 ]
+then
+    cd /tmp/gin
+    if [ ! -f /tmp/gin/binallgtm.tar.gz ]
+    then echo Missing files
+         exit
+    else cd /
+        tar xzvf /tmp/gin/binallgtm.tar.gz
+        echo "Tar restore complete.."
+    fi
+fi
+if [ x$x == x11 ]
+then
+    cd /tmp/gin
+    if [ ! -f /tmp/gin/allgtm.tar.gz ]
+    then echo Missing files
+         exit
+    else cd /
+        tar xzvf /tmp/gin/allgtm.tar.gz
+        echo "Tar restore complete.."
+    fi
+fi
+if [ x$x == x10 ]
+then echo "use gman"
+    exit
+fi
+if [ x$x == x12 ]
+then 
+    echo -e "Enter system name: " ; read y
+    if [ "x$y" != "x" ]
+    then 
+    M<<Endiii
+S ^CURRENT("NAME")="$y"
+zl "_ESWS"
+zl "_ESWSE"
+zl "_ESRL"
+zl "_ESDEV"
+zl "_ESDEV0"
+H
+Endiii
+    fi
+fi
