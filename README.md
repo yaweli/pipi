@@ -357,7 +357,7 @@ Raspberry pi computers have pins you can connect and attach a hardware , Leds li
 
 
 ####  cgi environment
-the mumps include the VRU() vectore with all the linux environment where the cgi include environment for the session posted from your browser. 
+the mumps include the VRU() vector with all the linux environment where the cgi include environment for the session posted from your browser. 
 
 examples: 
 ```mumps
@@ -497,7 +497,7 @@ note the prompt will point to the current uci.
 - session : you have a JB in the partision which is unique to the browser page , each entry , it's own JB. use this session number to save local information for the user , we like to use the W global for a temporary area. ^W(JB, (put here all the user temp data)
 - each restart to the system the ^W will be cleaned
 - make sure to clean it on first entry
-- using upper case/lower case command in mumps - up to you. macros only on upper case
+- using upper case/lower case command in mumps - up to you , better Upper case. macros only on upper case
 
 
 
@@ -516,7 +516,7 @@ eyJoaXN0b3J5IjpbLTU4MjA4NjkzMV19
 -->
 
 
-## M faremwork on Cloud Aws
+## M framework on Cloud Aws
 
 cloud 9 with ACE developing environmend will let you enjoy the 
 one place for all your project
