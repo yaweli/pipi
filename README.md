@@ -313,18 +313,6 @@ Using the pixel mesurment attributes style (width,height,left,right...) you don'
 	
 	
 
-To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
-```HTML
-    ....S COLOR="GREEN"
-    ....<span ||CLBLACK/BG"_COLOR_"/BR6||>D  </span>
-```
-This will be converted to : 
-```HTML
-	....S COLOR="GREEN"
-	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
-```
-This is usfull in runtime. 
-
 ### Advance onclick form handling
 Using forms as a mean to interact with the user is important. to make the routing nice as we handle click events you can use this short way of FORM onChange and onClick interaction
 
