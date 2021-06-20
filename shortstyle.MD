@@ -52,10 +52,27 @@ Automatic px:
 
 Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
-#Why doing that?
+## Why doing that?
 Mumps methodolgy is not to float the screen with code , make a nit clean code, Make long commands short connad (W instead of WRITE).
 
 So to do the same with those long decleration of style - use the style short method. 
+
+## Indirection
+Not all the time the style is known during coding , sometimes it know only during runtime. 
+
+Use Mumps indirection to use Variables
+
+
+```HTML
+<div ||L30/T"_TOPWINDOW_"/POSA||>Hello</div>
+```
+
+Will be translated to mumps
+```HTML
+W "<div style=left:30px;top="_TOPWINDOW_";position:absolute>Hello</div>"
+```
+
+
 
 
 
