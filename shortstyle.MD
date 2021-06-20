@@ -46,3 +46,8 @@ Each shortcut represent a style. T for top:0px , L for left:20px , etc
 
 
 advance users: see source code at routine %ESBS for more styles
+
+
+Automatic px:
+
+Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
