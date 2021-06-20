@@ -302,6 +302,7 @@ Tip: for readability, maintain html tags <html> at lower case, and Mumps command
     ....<span ||CLBLACK/BG#f5c96f/BR6||>D  </span>
 ```
 To shorten even more you can avoid using style as html and use short version with ||short_style||
+[Learn more](shortstyle.md)
 
 In this example the style will become:
 ```HTML
