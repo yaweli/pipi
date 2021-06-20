@@ -58,10 +58,9 @@ Mumps methodolgy is not to float the screen with code , make a nit clean code, M
 So to do the same with those long decleration of style - use the style short method. 
 
 ## Indirection
-Not all the time the style is known during coding , sometimes it know only during runtime. 
+Not allways the style is known during coding , sometimes it know only during runtime. 
 
-Use Mumps indirection to use Variables
-
+To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
 
 ```HTML
 <div ||L30/T"_TOPWINDOW_"/POSA||>Hello</div>
@@ -72,7 +71,17 @@ Will be translated to mumps
 W "<div style=left:30px;top="_TOPWINDOW_";position:absolute>Hello</div>"
 ```
 
+another example:
 
-
+```HTML
+    ....S COLOR="GREEN"
+    ....<span ||CLBLACK/BG"_COLOR_"/BR6||>D  </span>
+```
+This will be converted to : 
+```HTML
+	....S COLOR="GREEN"
+	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
+```
+Very usfull in runtime. 
 
 
