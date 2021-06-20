@@ -314,7 +314,7 @@ Using the pixel mesurment attributes style (width,height,left,right...) you don'
 	
 
 ### Advance onclick form handling
-Using forms as a mean to interact with the user is important. to make the routing nice as we handle click events you can use this short way of FORM onChange and onClick interaction
+Using forms as a mean to interact with the user is important. to make the routines short as we handle click events you can use this short way of FORM onChange and onClick interaction
 
 Instead of this:
 ```HTML
@@ -332,9 +332,8 @@ More examples:
    ..<td align=center colspan=2>D  </td>
     ...<div  |CALL,this| id=tt"_TEL_" ||POSR/BG"_STY("GREY")_"/CLWHITE/BR3/W327/H42/ACENTER||>D  </div>
     ....<div ||POSR/T6||>D  </div>
-    .....<img src=/im/4dig/phone.sv
+    .....<img src=/im/4dig/phone.svg />
 ```
-
 
 
 
