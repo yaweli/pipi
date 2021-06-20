@@ -8,8 +8,8 @@
 Each shortcut represent a style. T for top:0px , L for left:20px , etc
 
 
-|---------------|-------------------------|--------------|
 |shortcut       | style                   | automatic px |
+|---------------|-------------------------|--------------|
 |T  | top | yes|
 |T  | top | yes|
 |T  | top | yes|
