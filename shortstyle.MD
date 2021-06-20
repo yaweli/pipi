@@ -2,11 +2,11 @@
 
 
 ```HTML
-<div ||T0/L20/BR6||>Hello</div>
+<div ||T0/L20/BR6/POSA||>Hello</div>
 ```
 Will become
 ```HTML
-<div style="top:0px;left:20px;border-radius:6px">Hello</div>
+<div style="top:0px;left:20px;border-radius:6px;position:absolute">Hello</div>
 ```
 
 Each shortcut represent a style. T for top:0px , L for left:20px , etc
