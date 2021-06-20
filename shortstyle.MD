@@ -53,7 +53,7 @@ Automatic px:
 Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
 ## Why doing that?
-Mumps methodolgy is not to float the screen with code , make a nit clean code, Make long commands short connad (W instead of WRITE).
+Mumps methodolgy is not to float the screen with code , make a nit clean code, Make long commands short: (W instead of WRITE).
 
 So to do the same with those long decleration of style - use the style short method. 
 
