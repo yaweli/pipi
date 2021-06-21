@@ -338,6 +338,18 @@ More examples:
 ```
 
 
+### More form elements
+	
+![](bld.jpg)
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 ### accessing the GPIO on the Raspberry Pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
