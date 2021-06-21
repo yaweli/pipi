@@ -319,7 +319,7 @@ In this example the style will become:
 ```
 Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
-[Learn more](shortstyle.md)
+[Learn more](shortstyle.MD)
 	
 	
 
