@@ -372,7 +372,12 @@ Generate text input:
 ```
 	D Input("*ID=SURNAME")
 ```
-
+or:
+```
+	D WR("Enter project name : ")
+	<br />
+	D Input("PH=project name/ID=PRJNAME/NAME=PRJNAME/ML=CHECK/SSV")
+```
 ![](input.jpg)
 	
 This will generate text input with ID name and label "SURNAME"
