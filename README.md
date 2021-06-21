@@ -347,7 +347,8 @@ To generat button use:
 	D Button("Save","*ID=SAVE")
 ```	
 This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
-![](btn.jpg)	
+
+	![](btn.jpg)	
 	
 	
 more options on buttons
@@ -371,7 +372,9 @@ Generate text input
 ```
 	D Input("*ID=SURNAME")
 ```
-![](input.jpg)
+
+	![](input.jpg)
+	
 This will generate text input with ID name and label "SURNAME"
 Also the SSV mode is checked (will display error behind the field)
 
