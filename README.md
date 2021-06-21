@@ -399,13 +399,13 @@ CHECKNAME ;
 	Q
 ```
 Good answer:
+	
+	
 ![](good.jpg)
 Error:
+	
+	
 ![](err.jpg)
-	
-	
-	
-	
 	
 	
 	
