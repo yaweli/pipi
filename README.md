@@ -46,7 +46,7 @@ you can find this useful when writing tools , and need to access a lot of labels
 
 [Learn more](mext.md)
 
-## the framework
+## The framework
 html + mumps - one place development of your application
 
 #### exmaple 1 - simple html
@@ -142,17 +142,20 @@ TREE	;
 ```
 
 ### Embeded bootstrap
-it will be nice if the farmework will include support for bootstrap and include
-the js files and the css files without the need to enter a long lines. 
+The farmework include support for bootstrap and include the js files and the css files without the need to enter a long lines. 
+
 So the framework come the packs. 
-####  bootstrap 4 + jquery +popper
+
+A paks will add some html declartion at the top and at the end of the html. 
+
+example pak1:
+####  bootstrap 4 + jquery
 ```html
 <m#import /paks/mpak1 />
 ```
 
-__mpak1__ : This will include all the html need to use the bootstrap + jquery 
-
-##### example 1 - simple bootstrape button
+##### example 1 - simple bootstrap button
+As a simple html tags
 ```html
 <m#import /paks/mpak1 />
 
@@ -175,7 +178,6 @@ BACK	;
 ##### example 2 - more nice bootstrap elements
 ```html
 <m#import /paks/mpak1 />
-
 
 <form>
 <div class="pos-f-t">
@@ -219,15 +221,21 @@ GOINFO ;
 	#INCLUDE %ESLJXI
 </m>
 ```
-this time the mumps also generated a bootstrap elements with it's library.
-you can combine BS elements as html and also BS generated inside the mumps , it's up to you.
+this time the framework also generated a bootstrap elements with it's library.
+you can combine BS elements as html and also BS generated inside the mumps
 
 
 ![](https://github.com/yaweli/pipi/blob/master/EXAMPLE3.png)
 note:
-to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use the
+
+using the D CARD()
 ```
  D CARD()
+``` 
+
+You must include the BS library:
+```
+  #INCLUDE %ESBS
 ``` 
 
 
