@@ -351,7 +351,7 @@ This will generate the nice blue button , with name and id=SAVE and will jump to
 	
 	
 more options on buttons
-shortcut example|what it dose
+shortcut example|what it does
 ---|---
 CLS=P | P/C/... | button color
 ID=myid|
@@ -359,8 +359,23 @@ NAME=myname|
 SSV|form check mopde , will display ERR if present
 *ALL| submit all the variables
 ML=SAVE1|Jump to mumps label SAVE1
+AT=W300|Add styling
+HIDE|hide the button
+TIT=hello|Title
+DISA|Disable the button
+PH=Enter name|place holder
+VL=1|value (default in case of a text input)
+
 	
-	
+Generate text input
+```
+	D Input("*ID=SURNAME")
+```
+![](input.jpg)
+This will generate text input with ID name and label "SURNAME"
+Also the SSV mode is checked (will display error behind the field)
+
+see more options in the last table
 	
 	
 	
