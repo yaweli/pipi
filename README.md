@@ -347,6 +347,8 @@ To generat button use:
 	D Button("Save","*ID=SAVE")
 ```	
 This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
+![](btn.jpg)	
+	
 	
 more options on buttons
 shortcut example|what it dose
