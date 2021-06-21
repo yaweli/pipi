@@ -400,10 +400,9 @@ CHECKNAME ;
 ```
 Good answer:
 	
-	
 ![](good.jpg)
+
 Error:
-	
 	
 ![](err.jpg)
 	
