@@ -339,12 +339,24 @@ More examples:
 
 
 ### More form elements
+Based on bootstrap we generate buttons and varies form elements	
+![](bld2.jpg)
 	
-![](bld.jpg)
+To generat button use:
+```
+	D Button("Save","*ID=SAVE")
+```	
+This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
 	
-	
-	
-	
+more options on buttons
+shortcut example|what it dose
+---|---
+CLS=P | P/C/... | button color
+ID=myid|
+NAME=myname|
+SSV|form check mopde , will display ERR if present
+*ALL| submit all the variables
+ML=SAVE1|Jump to mumps label SAVE1
 	
 	
 	
