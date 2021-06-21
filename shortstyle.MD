@@ -53,14 +53,14 @@ Automatic px:
 Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
 ## Why doing that?
-Mumps methodolgy is not to float the screen with code , make a nit clean code, Make long commands short: (W instead of WRITE).
+Mumps methodolgy is not to float the screen with code , make a minimalist clean code -> Make long commands short: (W instead of WRITE).
 
 So to do the same with those long decleration of style - use the style short method. 
 
 ## Indirection
 Not allways the style is known during coding , sometimes it know only during runtime. 
 
-To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
+To use mumps variable as a value to the Styling, you can embedded the '_' to indicate its a variable.
 
 ```HTML
 <div ||L30/T"_TOPWINDOW_"/POSA||>Hello</div>
@@ -82,6 +82,6 @@ This will be converted to :
 	....S COLOR="GREEN"
 	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
 ```
-Very usfull in runtime. 
+Very usfull during runtime. 
 
 
