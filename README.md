@@ -342,7 +342,7 @@ More examples:
 Based on bootstrap we generate buttons and varies form elements	
 ![](bld2.jpg)
 	
-To generat button use:
+Generat button:
 ```
 	D Button("Save","*ID=SAVE")
 ```	
@@ -368,7 +368,7 @@ PH=Enter name|place holder
 VL=1|value (default in case of a text input)
 
 	
-Generate text input
+Generate text input:
 ```
 	D Input("*ID=SURNAME")
 ```
@@ -379,6 +379,23 @@ This will generate text input with ID name and label "SURNAME"
 Also the SSV mode is checked (will display error behind the field)
 
 see more options in the last table
+
+	
+SSV mode:
+	
+Use it to check fields content on server side, on change the system will call the server on it pre define label (ML=LABEL)
+and if the check will produce error the error will be display under the field , if the check confirmed the display will clear the error and display small green V to confirm. 
+
+To return error use FLDERR , to return good check use FLDOK
+```
+CHECKNAME ;
+	I N="" D FLDERR("name is must") Q
+	D FLDOK
+	Q
+```
+	
+	
+	
 	
 	
 	
