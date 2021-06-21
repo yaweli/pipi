@@ -98,12 +98,13 @@ Use onChange=mLabel("LABEL",this) to instruct the browser to check the field val
 In the label you can check the value of the filed (ready for you in M) and call a different actions:
 
 
-actions  | description
---------  | -------------
+actions  | description|example
+--------  | -------------|---
 ALERT | show an error message
 FOCUS|restore focus to a field
-SETV|replace a value inside a form field
+SETV|replace a value inside a form field|D SETV("mydiv","Hello")
 GO|jump to a new url
+SETC|run a label on a div id
 |...more to come
 
 The label will have the M with the field new value and in M("ID") the id of the field.
