@@ -376,7 +376,7 @@ or:
 ```
 	D WR("Enter project name : ")
 	<br />
-	D Input("PH=project name/ID=PRJNAME/NAME=PRJNAME/ML=CHECK/SSV")
+	D Input("PH=Project name/ID=PRJNAME/NAME=PRJNAME/ML=CHECK/SSV")
 ```
 ![](input.jpg)
 	
@@ -398,6 +398,11 @@ CHECKNAME ;
 	D FLDOK
 	Q
 ```
+Good answer:
+![](good.jpg)
+Error:
+![](err.jpg)
+	
 	
 	
 	
