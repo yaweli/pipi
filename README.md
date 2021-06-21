@@ -100,11 +100,12 @@ In the label you can check the value of the filed (ready for you in M) and call 
 
 actions  | description|example
 --------  | -------------|---
-ALERT | show an error message|D ALERT("Name is must, you enter ["_M_"]")
+ALERT | show an error message|D ALERT("Name is madatory")
 FOCUS|restore focus to a field|D FOCUS("myfield")
 SETV|replace a value inside a form field|D SETV("mydiv","Hello")
-GO|jump to a new url
-SETC|run a label on a div id
+GO|jump to a new url|D GO("next.html")
+SETC|run a label on a div id|D SETC("myid","","RUNNEXT")
+RESTYLE|change single style|D RESTYLE("popup","H",544)
 |...more to come
 
 The label will have the M with the field new value and in M("ID") the id of the field.
