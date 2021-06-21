@@ -394,7 +394,7 @@ and if the check will produce error the error will be display under the field , 
 To return error use FLDERR , to return good check use FLDOK
 ```
 CHECKNAME ;
-	I N="" D FLDERR("name is must") Q
+	I N="" D FLDERR("PROJECT NAME MUST BE A LEAST TWO CHARS") Q
 	D FLDOK
 	Q
 ```
