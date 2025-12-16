@@ -9,6 +9,7 @@ The AI part of the M Framework , Rot.M will generate code for you under the M Fr
 1. You will need to read the readme.MD under the git to learn what is M Framework
 2. You will have to learn Mumps of the gt.m linux version
 3. Learm the extensions to mumps, the extenstions are in the README.md here: https://raw.githubusercontent.com/yaweli/pipi/refs/heads/master/README.md
+4. https://raw.githubusercontent.com/yaweli/pipi/refs/heads/master/newproject.md this file contain more rules how to start new module
 4. read this For AI rules of how to write code the right way using Mumps prog languge
 
 

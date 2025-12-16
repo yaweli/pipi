@@ -609,3 +609,7 @@ Result:
 
 
 ![תמונה](https://github.com/user-attachments/assets/5f684f31-9c95-42df-8c8c-9cc9774ec1ec)
+
+
+More writeing mumps rules:
+- No blank spaces line , but identations are critical for the mumps programming
