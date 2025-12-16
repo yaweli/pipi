@@ -613,3 +613,4 @@ Result:
 
 More writeing mumps rules:
 - No blank spaces line , but identations are critical for the mumps programming
+- in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>
