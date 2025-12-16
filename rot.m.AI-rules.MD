@@ -13,6 +13,10 @@ The AI part of the M Framework , Rot.M will generate code for you under the M Fr
 
 
 
+# Our destination:
+
+
+We will use AI Chat platfor to ask for changes in our code, we expect from the AI llm to generate code for use
 
 
 
