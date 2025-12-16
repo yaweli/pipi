@@ -46,7 +46,7 @@ you can find this useful when writing tools , and need to access a lot of labels
 
 [Learn more](mext.md)
 
-## the framework
+## The framework
 html + mumps - one place development of your application
 
 #### exmaple 1 - simple html
@@ -98,12 +98,14 @@ Use onChange=mLabel("LABEL",this) to instruct the browser to check the field val
 In the label you can check the value of the filed (ready for you in M) and call a different actions:
 
 
-actions  | description
---------  | -------------
-ALERT | show an error message
-FOCUS|restore focus to a field
-SETV|replace a value inside a form field
-GO|jump to a new url
+actions  | description|example
+--------  | -------------|---
+ALERT | show an error message|D ALERT("Name is madatory")
+FOCUS|restore focus to a field|D FOCUS("myfield")
+SETV|replace a value inside a form field|D SETV("mydiv","Hello")
+GO|jump to a new url|D GO("next.html")
+SETC|run a label on a div id|D SETC("myid","","RUNNEXT")
+RESTYLE|change single style|D RESTYLE("popup","H",544)
 |...more to come
 
 The label will have the M with the field new value and in M("ID") the id of the field.
@@ -140,17 +142,20 @@ TREE	;
 ```
 
 ### Embeded bootstrap
-it will be nice if the farmework will include support for bootstrap and include
-the js files and the css files without the need to enter a long lines. 
+The farmework include support for bootstrap and include the js files and the css files without the need to enter a long lines. 
+
 So the framework come the packs. 
-####  bootstrap 4 + jquery +popper
+
+A paks will add some html declartion at the top and at the end of the html. 
+
+example pak1:
+####  bootstrap 4 + jquery
 ```html
 <m#import /paks/mpak1 />
 ```
 
-__mpak1__ : This will include all the html need to use the bootstrap + jquery 
-
-##### example 1 - simple bootstrape button
+##### example 1 - simple bootstrap button
+As a simple html tags
 ```html
 <m#import /paks/mpak1 />
 
@@ -173,7 +178,6 @@ BACK	;
 ##### example 2 - more nice bootstrap elements
 ```html
 <m#import /paks/mpak1 />
-
 
 <form>
 <div class="pos-f-t">
@@ -217,15 +221,21 @@ GOINFO ;
 	#INCLUDE %ESLJXI
 </m>
 ```
-this time the mumps also generated a bootstrap elements with it's library.
-you can combine BS elements as html and also BS generated inside the mumps , it's up to you.
+this time the framework also generated a bootstrap elements with it's library.
+you can combine BS elements as html and also BS generated inside the mumps
 
 
 ![](https://github.com/yaweli/pipi/blob/master/EXAMPLE3.png)
 note:
-to use and include mumps bootstrap library : #INCLUDE %ESBSI then you can use the
+
+using the D CARD()
 ```
  D CARD()
+``` 
+
+You must include the BS library:
+```
+  #INCLUDE %ESBS
 ``` 
 
 
@@ -309,21 +319,12 @@ In this example the style will become:
 ```
 Using the pixel mesurment attributes style (width,height,left,right...) you don't need to specify the 6px , just use 6
 
-
-To use mumps variable as a value to the Styling, you can emmbeded the '_' to indicate its a variable.
-```HTML
-    ....S COLOR="GREEN"
-    ....<span ||CLBLACK/BG"_COLOR_"/BR6||>D  </span>
-```
-This will be converted to : 
-```HTML
-	....S COLOR="GREEN"
-	....W "<span style=color:BLACK;background:"_COLOR_";border-radius:6px>" D  W "</span>"
-```
-This is usfull in runtime. 
+[Learn more](shortstyle.MD)
+	
+	
 
 ### Advance onclick form handling
-Using forms as a mean to interact with the user is important. to make the routing nice as we handle click events you can use this short way of FORM onChange and onClick interaction
+Using forms as a mean to interact with the user is important. to make the routines short as we handle click events you can use this short way of FORM onChange and onClick interaction
 
 Instead of this:
 ```HTML
@@ -341,11 +342,80 @@ More examples:
    ..<td align=center colspan=2>D  </td>
     ...<div  |CALL,this| id=tt"_TEL_" ||POSR/BG"_STY("GREY")_"/CLWHITE/BR3/W327/H42/ACENTER||>D  </div>
     ....<div ||POSR/T6||>D  </div>
-    .....<img src=/im/4dig/phone.sv
+    .....<img src=/im/4dig/phone.svg />
 ```
 
 
+### More form elements
+Based on bootstrap we generate buttons and varies form elements	
+![](bld2.jpg)
+	
+Generat button:
+```
+	D Button("Save","*ID=SAVE")
+```	
+This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
 
+![](btn.jpg)	
+	
+	
+more options on buttons
+shortcut example|what it does
+---|---
+CLS=P | P/C/... | button color
+ID=myid|
+NAME=myname|
+SSV|form check mopde , will display ERR if present
+*ALL| submit all the variables
+ML=SAVE1|Jump to mumps label SAVE1
+AT=W300|Add styling
+HIDE|hide the button
+TIT=hello|Title
+DISA|Disable the button
+PH=Enter name|place holder
+VL=1|value (default in case of a text input)
+
+	
+Generate text input:
+```
+	D Input("*ID=SURNAME")
+```
+or:
+```
+	D WR("Enter project name : ")
+	<br />
+	D Input("PH=Project name/ID=PRJNAME/NAME=PRJNAME/ML=CHECK/SSV")
+```
+![](input.jpg)
+	
+This will generate text input with ID name and label "SURNAME"
+Also the SSV mode is checked (will display error behind the field)
+
+see more options in the last table
+
+	
+SSV mode:
+	
+Use it to check fields content on server side, on change the system will call the server on it pre define label (ML=LABEL)
+and if the check will produce error the error will be display under the field , if the check confirmed the display will clear the error and display small green V to confirm. 
+
+To return error use FLDERR , to return good check use FLDOK
+```
+CHECKNAME ;
+	I N="" D FLDERR("PROJECT NAME MUST BE A LEAST 3 CHARS") Q
+	D FLDOK
+	Q
+```
+Good answer:
+	
+![](good.jpg)
+
+Error:
+	
+![](err.jpg)
+	
+	
+	
 
 ### accessing the GPIO on the Raspberry Pi
 Raspberry pi computers have pins you can connect and attach a hardware , Leds lights , engines , sensors
@@ -357,7 +427,7 @@ Raspberry pi computers have pins you can connect and attach a hardware , Leds li
 
 
 ####  cgi environment
-the mumps include the VRU() vectore with all the linux environment where the cgi include environment for the session posted from your browser. 
+the mumps include the VRU() vector with all the linux environment where the cgi include environment for the session posted from your browser. 
 
 examples: 
 ```mumps
@@ -497,7 +567,7 @@ note the prompt will point to the current uci.
 - session : you have a JB in the partision which is unique to the browser page , each entry , it's own JB. use this session number to save local information for the user , we like to use the W global for a temporary area. ^W(JB, (put here all the user temp data)
 - each restart to the system the ^W will be cleaned
 - make sure to clean it on first entry
-- using upper case/lower case command in mumps - up to you. macros only on upper case
+- using upper case/lower case command in mumps - up to you , better Upper case. macros only on upper case
 
 
 
@@ -516,9 +586,26 @@ eyJoaXN0b3J5IjpbLTU4MjA4NjkzMV19
 -->
 
 
-## M faremwork on Cloud Aws
+## M framework on Cloud Aws
 
 cloud 9 with ACE developing environmend will let you enjoy the 
 one place for all your project
 
 ![](https://github.com/yaweli/pipi/blob/master/ACE.png)
+
+
+
+# more examples:
+
+
+![תמונה](https://github.com/user-attachments/assets/9ea9e821-570e-4626-891b-0a0d5cf40a9b)
+
+look how nicelly the <html> tags stand together with the . hirachy of the MUMPS 
+
+
+
+
+Result: 
+
+
+![תמונה](https://github.com/user-attachments/assets/5f684f31-9c95-42df-8c8c-9cc9774ec1ec)
