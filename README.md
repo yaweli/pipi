@@ -353,8 +353,11 @@ Based on bootstrap we generate buttons and varies form elements
 Generat button:
 ```
 	D Button("Save","*ID=SAVE")
+	D Button("logs","ID=LOGS/ML=LOGS/CLS=P")
 ```	
 This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
+the ML stand for Mumps Label to jump to 
+the CLS stand for the style P = for primary
 
 ![](btn.jpg)	
 	
