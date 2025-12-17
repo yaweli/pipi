@@ -628,7 +628,7 @@ Result:
 More writeing mumps rules:
 - No blank spaces line , but identations are critical for the mumps programming
 - in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>  note the 2 spaces after the D
-- if you need to include a css a large amount of classes , use seperated file *.css , but if it just a small use , you can include <style> in the body
+- if you need to include a css a large amount of classes , use seperated file *.css , but if it just a small use , you can include <style> in the body. to include the css use absolute place: <link rel="stylesheet" href="/proj/kyti/all.css">
 - The globals are the Database, so if you need to set somthing new to the database , add for me a SET0 label in some example routine and I will run it like this D SET0^SETUP
 - write simple code , don't complex the code, example: to jump to new line use <br> avoide using a style if its not a must
 - make sure the DOR is in the right dimention, see next example:
@@ -658,5 +658,5 @@ h2{color:#2c3e50;font-weight:600}
 hr{border-color:#e0e0e0;margin:30px 0}
 
 instead alocate a class name and use it in the <hr> like this <hr class=myclass>   and in the css :  .myclass{border-color:#e0e0e0;margin:30px 0} 
-the why is , if i wil add in the future other <hr> i dont want him to behave otther than norman default . 
+the why is if i will add in the future other <hr> i dont want him to behave otther than norman default . 
 
