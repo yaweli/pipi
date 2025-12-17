@@ -653,3 +653,10 @@ better way:
 
 
 
+- style: do not add css to html elements, this is wrong:
+h2{color:#2c3e50;font-weight:600}
+hr{border-color:#e0e0e0;margin:30px 0}
+
+instead alocate a class name and use it in the <hr> like this <hr class=myclass>   and in the css :  .myclass{border-color:#e0e0e0;margin:30px 0} 
+the why is , if i wil add in the future other <hr> i dont want him to behave otther than norman default . 
+
