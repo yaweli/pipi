@@ -616,5 +616,7 @@ Result:
 
 More writeing mumps rules:
 - No blank spaces line , but identations are critical for the mumps programming
-- in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>
+- in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>  note the 2 spaces after the D
 - if you need to include a css a large amount of classes , use seperated file *.css , but if it just a small use , you can include <style> in the body
+- The globals are the Database, so if you need to set somthing new to the database , add for me a SET0 label in some example routine and I will run it like this D SET0^SETUP
+- 
