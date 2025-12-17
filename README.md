@@ -617,3 +617,4 @@ Result:
 More writeing mumps rules:
 - No blank spaces line , but identations are critical for the mumps programming
 - in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>
+- if you need to include a css a large amount of classes , use seperated file *.css , but if it just a small use , you can include <style> in the body
