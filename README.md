@@ -357,7 +357,18 @@ Generat button:
 ```	
 This will generate the nice blue button , with name and id=SAVE and will jump to the label SAVE when pressed
 the ML stand for Mumps Label to jump to 
-the CLS stand for the style P = for primary
+the CLS stand for the style P = for primary , for all other colors of bootstrape see this list:
+	S Q("P")="primary" ; BLUE
+	S Q("S")="secondary" ; GREY
+	S Q("C")="success" ; GREEN
+	S Q("R")="danger"  ; RED
+	S Q("W")="warning" ; YELLOW
+	S Q("I")="info"    ; CYAN
+	S Q("L")="light"   ; WHITE
+	S Q("D")="dark"    ; BLACK
+	S Q("K")="link"    ; 
+	S Q("M")="muted"   ; light gray
+	S Q("w")="white"   ; white
 
 ![](btn.jpg)	
 	
