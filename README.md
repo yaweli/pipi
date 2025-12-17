@@ -630,4 +630,26 @@ More writeing mumps rules:
 - in this example , next line must start with . (dot) since it exactly like a FOR loop :  <table width="100%">D  </table>  note the 2 spaces after the D
 - if you need to include a css a large amount of classes , use seperated file *.css , but if it just a small use , you can include <style> in the body
 - The globals are the Database, so if you need to set somthing new to the database , add for me a SET0 label in some example routine and I will run it like this D SET0^SETUP
-- 
+- write simple code , don't complex the code, example: to jump to new line use <br> avoide using a style if its not a must
+- make sure the DOR is in the right dimention, see next example:
+
+examle: the wrong way:
+1   <div class="patient-list">
+2   <div>D  </div>
+3   FOR I IN ^PAT(CY) D
+
+line 3 is wrong , it's missing a leading dot
+the right way:
+
+1   <div class="patient-list">
+2   <div>D  </div>
+3   .FOR I IN ^PAT(CY) D
+
+better way:
+1   <div class="patient-list">D  </div>
+2   .<div>D  </div>
+3   ..FOR I IN ^PAT(CY) D
+
+
+
+
